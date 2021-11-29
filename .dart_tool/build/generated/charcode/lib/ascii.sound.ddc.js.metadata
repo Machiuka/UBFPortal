@@ -1,0 +1,1 @@
+{"version":"1.0.2","name":"packages/charcode/ascii","closureName":"load__packages__charcode__ascii","sourceMapUri":"packages/charcode/ascii.sound.ddc.js.map","moduleUri":"packages/charcode/ascii.sound.ddc.js","fullDillUri":null,"libraries":[{"name":"ascii","importUri":"package:charcode/ascii.dart","fileUri":"/packages/charcode/ascii.dart","partUris":[]}],"soundNullSafety":true}

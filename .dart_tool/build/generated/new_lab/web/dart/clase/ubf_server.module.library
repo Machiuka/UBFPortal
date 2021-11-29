@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["http|lib/http.dart","new_lab|web/dart/clase/global.dart","new_lab|web/dart/clase/optiune.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async","convert"],"hasMain":false}

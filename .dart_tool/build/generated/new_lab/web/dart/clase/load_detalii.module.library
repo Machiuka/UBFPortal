@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["new_lab|web/dart/clase/loader.dart","new_lab|web/dart/clase/tabelare.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["convert","html"],"hasMain":false}

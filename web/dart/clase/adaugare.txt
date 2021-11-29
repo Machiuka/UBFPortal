@@ -1,0 +1,63 @@
+import 'dart:html';
+
+import 'global.dart';
+import 'optiune.dart';
+import 'query_server.dart';
+
+//Afiseaza un map intru-un tabel
+int i = 0;
+
+class Adaugare {
+  TableElement table;
+  Element divBtnSm;
+  Element divModif;
+  Element btnValModif;
+  InputElement mvanzare = querySelector("#mvanzare");
+  InputElement mdiverse = querySelector("#mdiverse");
+  InputElement mcheltuieli = querySelector("#mcheltuieli");
+  InputElement mcard = querySelector("#mcard");
+  InputElement mbanca = querySelector("#mbanca");
+  InputElement mpredati = querySelector("#mpredati");
+  InputElement mcazare = querySelector("#mcazare");
+
+  adauga() {
+    String _numeTabel = "#tabelDetalii";
+    table = querySelector(_numeTabel);
+    divModif = querySelector("#divModif");
+    divBtnSm = querySelector("#btnStMod");
+    btnValModif = querySelector("#btnValModif");
+    table.hidden = true;
+    divBtnSm.hidden = true;
+    divModif.hidden = false;
+
+    btnValModif.onClick.listen((e) {
+      Global.jurnal.vanzare = mvanzare.value;
+      Global.jurnal.diverse = mdiverse.value;
+      Global.jurnal.cheltuieli = mcheltuieli.value;
+      Global.jurnal.card = mcard.value;
+      Global.jurnal.banca = mbanca.value;
+      Global.jurnal.predati = mpredati.value;
+      Global.jurnal.cazare = mcazare.value;
+
+      valideaza();
+    });
+  }
+}
+
+valideaza() {
+  bool confirm = window.confirm("Doriti adaugarea inregistrarii ?");
+  if (confirm) {
+    i++;
+    QueryServer().queryServer(docuser: true);
+    Global.optiune = Optiune.cd;
+    confirm = false;
+    window.alert("Inregistrarea  a fost adaugata");
+//print ("I= "+i.toString());
+    Global.optiune = Optiune.rd;
+
+    window.location.reload();
+  }
+  confirm = false;
+  Global.optiune = Optiune.rd;
+  window.location.reload();
+}

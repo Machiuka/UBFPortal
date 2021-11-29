@@ -1,0 +1,49 @@
+ .netta-cta-box{margin:20px 0} 
+ .netta-cta-box .interc-items
+ {
+	cursor: pointer;
+ display:flex;
+ max-width:720px;margin:0 auto;
+ text-align:center
+ }
+ 
+ .netta-cta-box .btn-interc{
+
+	 font-family:Poppins,sans-serif;
+	 cursor: pointer;
+	 font-size:18px;
+	 color:#fff;
+	 background:#00539f;
+	 border-radius:24px;
+	 padding:13px 38px}
+ @media only screen and (max-width:480px){
+	 .netta-cta-box{margin:0;}
+	 .netta-cta-box .interc-items{
+		 -ms-flex-wrap:wrap;
+		 flex-wrap:wrap;}}
+ 
+.netta-cta-box .btn-interc{
+	cursor: pointer;
+	flex-shrink:0
+	!important;
+	color:#868686
+	!important;
+	background:unset!
+	important;
+	padding:9px 38px
+	!important;
+	border:1px solid #0051a4
+	!important;
+	box-shadow:inset 0 0 0 0 #0051a4
+	!important;
+	transition:800ms!
+	important}
+
+.netta-cta-box .btn-interc:hover{
+	cursor: pointer;
+	box-shadow:inset 400px 0 0 0 #0051a4
+	!important;
+	color:#fff
+	}
+
+

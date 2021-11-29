@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["new_lab|web/dart/clase/ubf_server.dart","http|lib/http.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["html","convert"],"hasMain":false}

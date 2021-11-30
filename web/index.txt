@@ -16,6 +16,8 @@
 <body>
 
   <div id="output"></div>
+  <div id="test"></div>
+  <div id="test1"></div>
   
 </body>
 </html>

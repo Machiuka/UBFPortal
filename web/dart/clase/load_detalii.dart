@@ -14,7 +14,7 @@ class LoadDetalii {
         .cautaPeServer(
             criteriu: caut,
             numeServer: numeServer,
-            optiune: 1,
+            optiune: 2,
             tabel: tabel,
             camp: camp)
         .then((rezultat) {

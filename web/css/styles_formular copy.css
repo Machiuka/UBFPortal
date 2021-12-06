@@ -9,7 +9,7 @@ flex-direction: column;
 justify-content: top;
 align-items: center;
 min-height: 10vh;
-background-image: url("../pictures/fundal4.jpg");
+background: rgba(255,255,255,0.1);
 z-index: -1;
 border-radius: 25px;
 }

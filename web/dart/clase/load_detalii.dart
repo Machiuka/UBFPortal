@@ -5,7 +5,11 @@ import 'loader.dart';
 import 'tabelare.dart';
 
 class LoadDetalii {
-  loadRetetar(String caut, String camp, String tabel, String numeServer) {
+  loadInterogare(
+      String caut, String camp, String tabel, String numeServerPrimar,
+      [String numeServerSecundar = '']) {
+    //cauta pe serverul primar ceea ce primeste din meniul cautare si afiseaza detaliile primite de pe serverul secundar
+    //de pe serverul primar primeste o lista clickabila si de pe cel secundar primeste un tabel cu detaliile elementului selectat din lista
     late final UListElement lista =
         querySelector('#listaDetalii') as UListElement;
     FormElement formDetalii = querySelector("#formDetalii") as FormElement;
@@ -13,7 +17,7 @@ class LoadDetalii {
     kk
         .cautaPeServer(
             criteriu: caut,
-            numeServer: numeServer,
+            numeServer: numeServerPrimar,
             optiune: 2,
             tabel: tabel,
             camp: camp)
@@ -30,7 +34,7 @@ class LoadDetalii {
                   criteriu: crit,
                   tabel: tabel,
                   camp: camp,
-                  numeServer: "servReteta",
+                  numeServer: numeServerSecundar,
                   optiune: 1)
               .then((value) async {
             final _js = json.decode(value);

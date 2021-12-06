@@ -2,7 +2,8 @@ class UBFUser {
   int? idx;
   String? numeUser;
   String? codUser;
-  int? nivelUser; //nivel de acces al userului
+  String?
+      nivelUser; //nivel de acces al userului g- gestiune, c-client, f-furnizor (sa nu fac clasa separata pt gestiuni si clienti/furnizori le-am inclus la useri), a-administrator, u - utilizator
   bool? activUser;
   String? adresaUser;
   String? telUser;

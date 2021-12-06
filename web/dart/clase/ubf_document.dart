@@ -1,14 +1,18 @@
+import 'global.dart';
+
 class UBFDocument {
   int? idx;
-  DateTime? dataDoc;
+  String? dataDoc;
   String? nrDoc;
   String? emitentDoc;
   String? destinatarDoc;
-  String? tipDoc;
+  String?
+      tipDoc; //fi-factura intrare, fe - factura iesire, av - aviz expeditie, rt - reteta
   String? continutDoc; //aici va fi un sir de tip JSON
   String? dateEmitentDoc; //si aici la fel
   String? dateDestinatarDoc; //si aici la fel
-  String? obsDoc; //optional named param
+  String? obsDoc;
+  String operator = Global.operator; //doar in test am nevoie de el
 
   UBFDocument(
       {this.idx,
@@ -21,4 +25,17 @@ class UBFDocument {
       this.dateEmitentDoc,
       this.dateDestinatarDoc,
       this.obsDoc});
+  Map toJson() => {
+        'idx': idx,
+        'dataDoc': dataDoc,
+        'nrDoc': nrDoc,
+        'emitentDoc': emitentDoc,
+        'destinatarDoc': destinatarDoc,
+        'tipDoc': tipDoc,
+        'continutDoc': continutDoc,
+        'dateEmitentDoc': dateEmitentDoc,
+        'dateDestinatarDoc': dateDestinatarDoc,
+        'obsDoc': obsDoc,
+        'operator': operator
+      };
 }

@@ -149,8 +149,7 @@ class Meniu {
   static void adaugareMeniuDoc(
       String titlu, String tabel, String server) async {
     //Aici adauga documente
-    //Element _divTopNav = querySelector('#top_nav') as Element;
-    //_divTopNav.hidden = true;
+
     UBFDocument document = UBFDocument();
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_document.html');

@@ -132,7 +132,8 @@ class Meniu {
           _formCautare.replaceWith(
               _formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare
           LoadDetalii ld = LoadDetalii();
-          ld.loadRetetar(caut, "den_pf", "tbl_retete", "servInit");
+          ld.loadInterogare(
+              caut, "den_pf", "tbl_retete", "servInit", "servReteta");
         } else {
           window.alert('Caut este null');
         }

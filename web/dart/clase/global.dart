@@ -7,6 +7,7 @@ class Global {
   //static String url = "http://127.0.0.1/serv.php?x={}";
   static String url = 'http://localhost/servPF.php?x={"obj":"pf"}';
   static String? bazaDate; //tabelul de care avem nevoie
+  static String operator = "Sorin Neagu";
 
   UBFUser _ubfUser = UBFUser as UBFUser;
 

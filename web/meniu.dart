@@ -1,14 +1,17 @@
 import 'dart:html';
 import 'dart:math';
 import 'dart/clase/global.dart';
+import 'package:intl/intl.dart';
 
 import 'dart/clase/optiune.dart';
 import 'dart/clase/load_detalii.dart';
+import 'dart/clase/ubf_document.dart';
+import 'dart/clase/ubf_user.dart';
 
 //Aici este actiunea cand se face click pe meniurile din meniu_nav.dart
 class Meniu {
   static void topMeniu() async {
-    LoadDetalii.barMeniu('html/top_nav.html');
+    LoadDetalii.incarcFormular('html/top_nav.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
     Element _btnAprovizionare = querySelector('#btnAprovizionare') as Element;
@@ -47,7 +50,7 @@ class Meniu {
   static void rapoarteMeniu() async {
     Element _divTopNav = querySelector('#top_nav') as Element;
     _divTopNav.hidden = true;
-    LoadDetalii.barMeniu('html/rapoarte_nav.html');
+    LoadDetalii.incarcFormular('html/rapoarte_nav.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
     Element _btnIntrari = querySelector('#btnIntrari') as Element;
@@ -75,14 +78,14 @@ class Meniu {
       _divRapoarteNav.hidden = true;
 
       window.location.reload(); //echivalent cu refresh pagina
-      LoadDetalii.barMeniu('html/top_nav.html');
+      LoadDetalii.incarcFormular('html/top_nav.html');
     });
   }
 
   static void formularMeniu(String titlu) async {
     Element _divTopNav = querySelector('#top_nav') as Element;
     _divTopNav.hidden = true;
-    LoadDetalii.barMeniu('html/form_detalii.html');
+    LoadDetalii.incarcFormular('html/form_detalii.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
     Element _btnCautare = querySelector('#btnCautare') as Element;
@@ -90,7 +93,7 @@ class Meniu {
     Element _btnModificare = querySelector('#btnModificare') as Element;
     Element _btnStergere = querySelector('#btnStergere') as Element;
     Element _titluH1 = querySelector('#titluDetalii') as Element;
-    UListElement _listaDetalii = querySelector('#listaDetalii') as UListElement;
+
     _titluH1.innerHtml = titlu;
 
     _btnCautare.onClick.listen((e) {
@@ -99,7 +102,9 @@ class Meniu {
       }
     });
     _btnAdaugare.onClick.listen((e) {
-      window.alert('Apasat buton Adaugare');
+      if (titlu == "RETETAR") {
+        adaugareMeniuDoc("Adauga Reteta", "tbl_retete", "serverCRUD");
+      }
     });
 
     _btnModificare.onClick.listen((e) {
@@ -115,14 +120,14 @@ class Meniu {
     //Element _divTopNav = querySelector('#top_nav') as Element;
     //_divTopNav.hidden = true;
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
-    LoadDetalii.barMeniu('html/form_cautare.html');
+    LoadDetalii.incarcFormular('html/form_cautare.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
     Element _btnOK = querySelector('#btnOK') as Element;
     FormElement _formCautare = querySelector('#formCautare') as FormElement;
     _formDetalii.replaceWith(_formCautare);
 
-    InputElement _txtCautare = querySelector("#cautare") as InputElement;
+    InputElement _txtCautare = querySelector("#txtCautare") as InputElement;
 
     _btnOK.onClick.listen((e) {
       if (titlu == "RETETAR") {
@@ -138,6 +143,63 @@ class Meniu {
           window.alert('Caut este null');
         }
       }
+    });
+  }
+
+  static void adaugareMeniuDoc(
+      String titlu, String tabel, String server) async {
+    //Aici adauga documente
+    //Element _divTopNav = querySelector('#top_nav') as Element;
+    //_divTopNav.hidden = true;
+    UBFDocument document = UBFDocument();
+    FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
+    LoadDetalii.incarcFormular('html/form_document.html');
+    await Future.delayed(const Duration(milliseconds: 150));
+
+    Element _btnAdauga = querySelector('#btnAdauga') as Element;
+    Element _btnAnulare = querySelector('#btnAnulare') as Element;
+    FormElement _formDocument = querySelector('#formDocument') as FormElement;
+    _formDetalii.replaceWith(_formDocument);
+    Element _titluDocument = querySelector('#titluDocument') as Element;
+    _titluDocument.innerHtml = titlu;
+
+    InputElement _dataDoc = querySelector("#dataDoc") as InputElement;
+    InputElement _nrDoc = querySelector("#nrDoc") as InputElement;
+    InputElement _emitentDoc = querySelector("#emitentDoc") as InputElement;
+    InputElement _destinatarDoc =
+        querySelector("#destinatarDoc") as InputElement;
+    InputElement _tipDoc = querySelector("#tipDoc") as InputElement;
+    InputElement _continutDoc = querySelector("#continutDoc") as InputElement;
+    InputElement _obsDoc = querySelector("#obsDoc") as InputElement;
+
+    if (titlu == "Adauga Reteta") {
+      _nrDoc.placeholder = "Cod Produs Finit";
+      _emitentDoc.placeholder = "Denumire Produs Finit";
+      _destinatarDoc.placeholder = "Termen de valabilitate in zile";
+    }
+
+    _btnAdauga.onClick.listen((e) {
+      // window.alert(_dataDoc.value.toString());
+      final DateTime dataCurenta = DateTime.parse(_dataDoc.value.toString());
+      final DateFormat formatareData = DateFormat('yyyy-M-dd');
+      final String dataDoc = formatareData.format(dataCurenta);
+
+      document.dataDoc = dataDoc;
+      document.nrDoc = _nrDoc.value;
+      document.emitentDoc =
+          _emitentDoc.value; //Pt reteta il folosim ca denumire produs finit
+      document.destinatarDoc = _destinatarDoc
+          .value; //Pt reteta il folosim ca termen de valabilitate in zile
+      document.tipDoc = _tipDoc.value;
+      document.continutDoc = _continutDoc.value;
+      document.obsDoc = _obsDoc.value;
+      LoadDetalii ld = LoadDetalii();
+      ld.loadIncarcareDoc(tabel, server, document);
+    });
+
+    _btnAnulare.onClick.listen((e) {
+      window.location.reload(); //echivalent cu refresh pagina
+      LoadDetalii.incarcFormular('html/top_nav.html');
     });
   }
 }

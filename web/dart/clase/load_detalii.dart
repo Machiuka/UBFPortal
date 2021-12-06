@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:html';
-
+import 'ubf_document.dart';
+import 'ubf_user.dart';
 import 'loader.dart';
 import 'tabelare.dart';
 
@@ -18,7 +19,7 @@ class LoadDetalii {
         .cautaPeServer(
             criteriu: caut,
             numeServer: numeServerPrimar,
-            optiune: 2,
+            optiune: "r",
             tabel: tabel,
             camp: camp)
         .then((rezultat) {
@@ -35,14 +36,14 @@ class LoadDetalii {
                   tabel: tabel,
                   camp: camp,
                   numeServer: numeServerSecundar,
-                  optiune: 1)
+                  optiune: "r")
               .then((value) async {
             final _js = json.decode(value);
 
             lista.children.clear();
             //       FormElement formDetalii =querySelector("#formDetalii") as FormElement;
 
-            barMeniu('html/form_tabel.html');
+            incarcFormular('html/form_tabel.html');
             await Future.delayed(const Duration(milliseconds: 50));
             Tabelare tabelul = Tabelare();
             FormElement formTabel = querySelector("#formTabel") as FormElement;
@@ -55,7 +56,7 @@ class LoadDetalii {
               formTabel.replaceWith(formDetalii);
             });
 
-            titluTabel.innerHtml = "Reteta pt $crit";
+            titluTabel.innerHtml = "Detalii pt $crit";
             //   window.alert(titluTabel.innerHtml);
 
             //window.alert(_js.toString());
@@ -65,7 +66,35 @@ class LoadDetalii {
     });
   }
 
-  static void barMeniu(String url) async {
+  loadIncarcareDoc(String tabel, String numeServer, UBFDocument? docData) {
+//Incarca date pe server. Despre Useri sau Documente
+    Loader kk = Loader();
+    kk
+        .adaugaPeServer(
+            numeServer: numeServer,
+            optiune: "c",
+            tabel: tabel,
+            docData: docData)
+        .then((rezultat) {
+      final _json = json.decode(rezultat);
+    });
+  }
+
+  loadIncarcareUser(String tabel, String numeServer, UBFUser? docUser) {
+//Incarca date pe server. Despre Useri sau Documente
+    Loader kk = Loader();
+    kk
+        .adaugaPeServer(
+            numeServer: numeServer,
+            optiune: "c",
+            tabel: tabel,
+            userData: docUser)
+        .then((rezultat) {
+      final _json = json.decode(rezultat);
+    });
+  }
+
+  static void incarcFormular(String url) async {
 //Metoda care insereaza formularele html in index.html
     //String url = 'html/top_nav.html';
     Element? _el = querySelector('#output');

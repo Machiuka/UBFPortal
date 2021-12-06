@@ -1,12 +1,20 @@
 body {
   margin:0;font-family:Arial;
-  background-image: url("../pictures/fundal4.jpg");
+  background-image: url("../pictures/fundalUBF.jpg");
   opacity: 1;
   zoom: 150%;
   text-align: left;
 color: lightgray;
 }
-
+div#container {
+  font: normal 12px Arial, Helvetica, Sans-serif;
+  background: white;
+  padding: 20px;
+}
+img.company-logo {
+  width: 250px;
+  height: 125px;
+}
 li { background:rgb(139, 43, 43, 0); 
 	cursor: pointer;
 }

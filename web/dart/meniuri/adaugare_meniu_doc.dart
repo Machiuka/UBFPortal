@@ -26,7 +26,7 @@ class AdaugareMeniuDoc {
     InputElement _emitentDoc = querySelector("#emitentDoc") as InputElement;
     InputElement _destinatarDoc =
         querySelector("#destinatarDoc") as InputElement;
-    InputElement _tipDoc = querySelector("#tipDoc") as InputElement;
+    //SelectElement _tipDoc = querySelector("#tipDoc") as SelectElement;
     InputElement _continutDoc = querySelector("#continutDoc") as InputElement;
     InputElement _obsDoc = querySelector("#obsDoc") as InputElement;
 
@@ -34,6 +34,7 @@ class AdaugareMeniuDoc {
       _nrDoc.placeholder = "Cod Produs Finit";
       _emitentDoc.placeholder = "Denumire Produs Finit";
       _destinatarDoc.placeholder = "Termen de valabilitate in zile";
+      document.tipDoc = 'rt';
     }
 
     _btnAdauga.onClick.listen((e) async {
@@ -48,7 +49,6 @@ class AdaugareMeniuDoc {
           _emitentDoc.value; //Pt reteta il folosim ca denumire produs finit
       document.destinatarDoc = _destinatarDoc
           .value; //Pt reteta il folosim ca termen de valabilitate in zile
-      document.tipDoc = _tipDoc.value;
       document.continutDoc = _continutDoc.value;
       document.obsDoc = _obsDoc.value;
       LoadDetalii ld = LoadDetalii();

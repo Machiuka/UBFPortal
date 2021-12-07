@@ -4,6 +4,8 @@ import 'ubf_document.dart';
 import 'ubf_user.dart';
 import 'loader.dart';
 import 'tabelare.dart';
+import 'raspuns_tabel.dart';
+import 'global.dart';
 
 class LoadDetalii {
   loadInterogare(
@@ -27,7 +29,7 @@ class LoadDetalii {
       lista.children.clear();
       for (int i = 0; i < _json.length; i++) {
         LIElement elem = LIElement();
-        lista.children.add(elem..text = _json[i][camp]); //['den_pf']);
+        lista.children.add(elem..text = _json[i][camp]); //['denumire']);
         elem.onClick.listen((e) {
           String crit = elem.innerHtml.toString();
           kk
@@ -76,8 +78,15 @@ class LoadDetalii {
             tabel: tabel,
             docData: docData)
         .then((rezultat) async {
-      final _json = json.decode(rezultat);
-      //Aici am ramas sa incarc rezultatul intr-un tabel
+      try {
+        //     final _json = json.decode(rezultat) as Map<String, dynamic>;
+        rezultat = rezultat.replaceAll("[", "");
+        rezultat = rezultat.replaceAll("]", "");
+        final _json = json.decode(rezultat);
+        RaspunsTabel.raspunsTabel(_json);
+      } catch (e) {
+        window.alert('EROARE...' + e.toString());
+      }
     });
   }
 
@@ -91,6 +100,8 @@ class LoadDetalii {
             tabel: tabel,
             userData: docUser)
         .then((rezultat) {
+      rezultat = rezultat.replaceAll("[", "");
+      rezultat = rezultat.replaceAll("]", "");
       final _json = json.decode(rezultat);
     });
   }

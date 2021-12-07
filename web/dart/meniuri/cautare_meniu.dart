@@ -24,7 +24,7 @@ class CautareMeniu {
               _formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare
           LoadDetalii ld = LoadDetalii();
           ld.loadInterogare(
-              caut, "den_pf", "tbl_retete", "servInit", "servReteta");
+              caut, "denumire", "tbl_retete", "servInit", "servReteta");
         } else {
           window.alert('Caut este null');
         }

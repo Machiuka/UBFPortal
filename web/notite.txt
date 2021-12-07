@@ -1,5 +1,0 @@
-In formular form_document.html cand fac click pe continutDoc apare un alt formular numit continut_doc.html. Acolo caut in baza de date produsul finit sau materia prima
-si o adaug. Creez un sir continut, care va fi incarcat in Global.ubfdocument.continutDoc
-Adaug ceva acum.
-Mai adaug ceva de pe laptop
-Adaug acum ceva de pe github.

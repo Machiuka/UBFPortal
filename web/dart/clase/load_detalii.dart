@@ -75,8 +75,9 @@ class LoadDetalii {
             optiune: "c",
             tabel: tabel,
             docData: docData)
-        .then((rezultat) {
+        .then((rezultat) async {
       final _json = json.decode(rezultat);
+      //Aici am ramas sa incarc rezultatul intr-un tabel
     });
   }
 

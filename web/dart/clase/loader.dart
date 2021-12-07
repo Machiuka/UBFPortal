@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'ubf_document.dart';
 import 'ubf_user.dart';
-import 'map_string.dart';
 
 class Loader {
   //nu am nevoie de headers, fiindca setarea e din serverul php

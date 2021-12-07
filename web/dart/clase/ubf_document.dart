@@ -35,7 +35,7 @@ class UBFDocument {
         'continutDoc': continutDoc,
         'dateEmitentDoc': dateEmitentDoc,
         'dateDestinatarDoc': dateDestinatarDoc,
-        'obsDoc': obsDoc,
+        'obs': obsDoc,
         'operator': operator
       };
 }

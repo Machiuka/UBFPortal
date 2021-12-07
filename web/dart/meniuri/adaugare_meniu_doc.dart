@@ -53,6 +53,7 @@ class AdaugareMeniuDoc {
       document.obsDoc = _obsDoc.value;
       LoadDetalii ld = LoadDetalii();
       ld.loadIncarcareDoc(tabel, server, document);
+      // ld.loadInterogare(document.emitentDoc.toString(), 'denumire', tabel, server);
     });
 
     _btnAnulare.onClick.listen((e) {

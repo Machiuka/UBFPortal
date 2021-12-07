@@ -5,7 +5,6 @@ import 'ubf_user.dart';
 import 'loader.dart';
 import 'tabelare.dart';
 import 'raspuns_tabel.dart';
-import 'global.dart';
 
 class LoadDetalii {
   loadInterogare(
@@ -78,15 +77,13 @@ class LoadDetalii {
             tabel: tabel,
             docData: docData)
         .then((rezultat) async {
+      final _json = json.decode(rezultat);
       try {
-        //     final _json = json.decode(rezultat) as Map<String, dynamic>;
-        rezultat = rezultat.replaceAll("[", "");
-        rezultat = rezultat.replaceAll("]", "");
-        final _json = json.decode(rezultat);
         RaspunsTabel.raspunsTabel(_json);
       } catch (e) {
-        window.alert('EROARE...' + e.toString());
+        window.alert(e.toString());
       }
+      //Aici am ramas sa incarc rezultatul intr-un tabel
     });
   }
 
@@ -100,8 +97,6 @@ class LoadDetalii {
             tabel: tabel,
             userData: docUser)
         .then((rezultat) {
-      rezultat = rezultat.replaceAll("[", "");
-      rezultat = rezultat.replaceAll("]", "");
       final _json = json.decode(rezultat);
     });
   }

@@ -8,6 +8,8 @@ class Global {
   static String url = 'http://localhost/servPF.php?x={"obj":"pf"}';
   static String? bazaDate; //tabelul de care avem nevoie
   static String operator = "Sorin Neagu";
+  //static Map<String, dynamic>? js;
+  static Map<String, dynamic>? js;
 
   UBFUser _ubfUser = UBFUser as UBFUser;
 

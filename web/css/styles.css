@@ -6,6 +6,7 @@ body {
   text-align: left;
 color: lightgray;
 }
+
 div#container {
   font: normal 12px Arial, Helvetica, Sans-serif;
   background: white;
@@ -145,4 +146,5 @@ table, th, td {
   .zoom {
     zoom: 150%;
   }
+  
 }

@@ -10,7 +10,21 @@ class RaspunsTabel {
     FormElement formTabel = querySelector("#formTabel") as FormElement;
     Element titluTabel = querySelector("#titluTabel") as Element;
     Element btnInapoi = querySelector("#btnCCC") as Element;
+    document.head!.append(StyleElement());
+    final styleSheet = document.styleSheets![0] as CssStyleSheet;
+    String rule;
 
+    //window.alert(js['mesaj']);
+    if (js['eroare'] == null) {
+      //@keyframes blinker este definit in styles_formular.css
+      rule = '#titluTabel {animation: blinker none;}';
+      styleSheet.insertRule(rule, 0);
+      titluTabel.innerHtml = "ADAUGARE REUSITA";
+    } else {
+      rule = '#titluTabel {animation: blinker 1s linear infinite;}';
+      styleSheet.insertRule(rule, 0);
+      titluTabel.innerHtml = "EROARE!!!";
+    }
     Tabelare tabelul = Tabelare();
 
     formDocument.replaceWith(
@@ -19,7 +33,5 @@ class RaspunsTabel {
     btnInapoi.onClick.listen((event) {
       window.location.reload(); //echivalent cu refresh pagina
     });
-
-    titluTabel.innerHtml = "Raspuns OK";
   }
 }

@@ -27,9 +27,9 @@ class Loader {
     // var response = await http.get(Uri.parse(path), headers: _headers);
     var response = await http.get(Uri.parse(path));
     if (response.statusCode == 200) {
-      final jsonString = response.body;
+      String rezultat = response.body;
 
-      return jsonString;
+      return rezultat;
     }
     // The GET request failed. Handle the error.
     else {
@@ -53,6 +53,7 @@ class Loader {
     };
 
     String _js = jsonEncode(_obj);
+    //window.alert(_js);
     String _path = 'http://localhost/' + numeServer + '?x=' + _js;
 
     // var response = await http.get(Uri.parse(path), headers: _headers);

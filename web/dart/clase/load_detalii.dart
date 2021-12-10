@@ -25,6 +25,7 @@ class LoadDetalii {
             tabel: tabel,
             camp: camp)
         .then((rezultat) {
+      // window.alert(rezultat);
       final _json = json.decode(rezultat);
       lista.children.clear();
       for (int i = 0; i < _json.length; i++) {
@@ -40,6 +41,8 @@ class LoadDetalii {
                   numeServer: numeServerSecundar,
                   optiune: "r")
               .then((value) async {
+            value = value.replaceAll("[", "");
+            value = value.replaceAll("]", "");
             final _js = json.decode(value);
 
             lista.children.clear();
@@ -78,14 +81,15 @@ class LoadDetalii {
             tabel: tabel,
             docData: docData)
         .then((rezultat) async {
+      //await Future.delayed(const Duration(milliseconds: 50));
+      //window.alert(rezultat);
       try {
-        //     final _json = json.decode(rezultat) as Map<String, dynamic>;
-        rezultat = rezultat.replaceAll("[", "");
-        rezultat = rezultat.replaceAll("]", "");
+        //     rezultat = rezultat.replaceAll("[", "");
+        // rezultat = rezultat.replaceAll("]", "");
         final _json = json.decode(rezultat);
         RaspunsTabel.raspunsTabel(_json);
       } catch (e) {
-        window.alert('EROARE...' + e.toString());
+        window.alert('EROARE!!!...' + e.toString());
       }
     });
   }
@@ -100,8 +104,6 @@ class LoadDetalii {
             tabel: tabel,
             userData: docUser)
         .then((rezultat) {
-      rezultat = rezultat.replaceAll("[", "");
-      rezultat = rezultat.replaceAll("]", "");
       final _json = json.decode(rezultat);
     });
   }

@@ -9,7 +9,7 @@ class Global {
   static String? bazaDate; //tabelul de care avem nevoie
   static String operator = "Sorin Neagu";
   //static Map<String, dynamic>? js;
-  static Map<String, dynamic>? js;
+  static Map<String, dynamic>? js; //nefolosit
 
   UBFUser _ubfUser = UBFUser as UBFUser;
 

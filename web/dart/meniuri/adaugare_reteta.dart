@@ -4,12 +4,14 @@ import '../clase/ubf_document.dart';
 import '../clase/global.dart';
 import 'package:intl/intl.dart';
 
-class AdaugareMeniuDoc {
-  static void adaugareMeniuDoc(
-      String titlu, String tabel, String server) async {
-    //Aici adauga documente
+import 'cautare_element.dart';
 
-    UBFDocument document = UBFDocument();
+class AdaugareReteta {
+  static void adaugareReteta(String titlu, String tabel, String server) async {
+    //Aici adauga retete
+
+    //UBFDocument document = UBFDocument();
+
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_document.html');
     await Future.delayed(const Duration(milliseconds: 150));
@@ -27,14 +29,12 @@ class AdaugareMeniuDoc {
     InputElement _destinatarDoc =
         querySelector("#destinatarDoc") as InputElement;
     //SelectElement _tipDoc = querySelector("#tipDoc") as SelectElement;
-    InputElement _continutDoc = querySelector("#continutDoc") as InputElement;
     InputElement _obsDoc = querySelector("#obsDoc") as InputElement;
-
     if (titlu == "Adauga Reteta") {
       _nrDoc.placeholder = "Cod Produs Finit";
       _emitentDoc.placeholder = "Denumire Produs Finit";
       _destinatarDoc.placeholder = "Termen de valabilitate in zile";
-      document.tipDoc = 'rt';
+      UBFDocument.tipDoc = 'rt';
     }
 
     _btnAdauga.onClick.listen((e) async {
@@ -43,16 +43,18 @@ class AdaugareMeniuDoc {
       final DateFormat formatareData = DateFormat('yyyy-M-dd');
       final String dataDoc = formatareData.format(dataCurenta);
 
-      document.dataDoc = dataDoc;
-      document.nrDoc = _nrDoc.value;
-      document.emitentDoc =
+      UBFDocument.dataDoc = dataDoc;
+      UBFDocument.nrDoc = _nrDoc.value;
+      UBFDocument.emitentDoc =
           _emitentDoc.value; //Pt reteta il folosim ca denumire produs finit
-      document.destinatarDoc = _destinatarDoc
+      UBFDocument.destinatarDoc = _destinatarDoc
           .value; //Pt reteta il folosim ca termen de valabilitate in zile
-      document.continutDoc = _continutDoc.value;
-      document.obsDoc = _obsDoc.value;
-      LoadDetalii ld = LoadDetalii();
-      ld.loadIncarcareDoc(tabel, server, document);
+      UBFDocument.obsDoc = _obsDoc.value;
+      bool _adaugare = true; //adauga in bucla pana se face false
+
+      _formDocument.remove();
+
+      CautareElement.cautareElement('RETETAR');
     });
 
     _btnAnulare.onClick.listen((e) {

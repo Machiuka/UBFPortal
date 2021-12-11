@@ -23,6 +23,9 @@ border-radius: 25px;
 input[type=date]{
     width: calc(20% - 18px);
     }
+    input[type="text"][disabled] {
+      color: black;
+   }
 input, textarea :not(input[type=date]){
 width: calc(100% - 18px);
 padding: 8px;

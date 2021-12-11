@@ -19,7 +19,7 @@ class CautareElement {
 
     InputElement _txtCautare = querySelector("#txtCautare") as InputElement;
 
-    _btnOK.onClick.listen((e) {
+    _btnOK.onClick.listen((e) async {
       LoadDetalii ld = LoadDetalii();
 
       if (titlu == "RETETAR") {
@@ -36,7 +36,12 @@ class CautareElement {
 
           UBFDocument.continutDoc = Global.continut;
           Global.continut = '';
+          LoadDetalii.incarcFormular(
+              'html/form_document.html'); //Este cerut la raspuns_tabel
+          await Future.delayed(const Duration(milliseconds: 50));
           //    window.alert(Global.continut);
+          _formCautare.remove();
+
           ld.loadIncarcareDoc("tbl_retete", "serverCRUD", UBFDocument());
         }
       }

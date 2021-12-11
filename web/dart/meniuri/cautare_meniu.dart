@@ -23,8 +23,7 @@ class CautareMeniu {
           _formCautare.replaceWith(
               _formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare
           LoadDetalii ld = LoadDetalii();
-          ld.loadInterogare(
-              caut, "denumire", "tbl_retete", "servInit", "servReteta");
+          ld.loadInterogare(caut, "tbl_retete", "servInit", "servReteta");
         } else {
           window.alert('Caut este null');
         }

@@ -8,8 +8,7 @@ import 'raspuns_tabel.dart';
 import 'global.dart';
 
 class LoadDetalii {
-  loadInterogare(
-      String caut, String camp, String tabel, String numeServerPrimar,
+  loadInterogare(String caut, String tabel, String numeServerPrimar,
       [String numeServerSecundar = '']) {
     //cauta pe serverul primar ceea ce primeste din meniul cautare si afiseaza detaliile primite de pe serverul secundar
     //de pe serverul primar primeste o lista clickabila si de pe cel secundar primeste un tabel cu detaliile elementului selectat din lista
@@ -19,27 +18,26 @@ class LoadDetalii {
     Loader kk = Loader();
     kk
         .cautaPeServer(
-            criteriu: caut,
-            numeServer: numeServerPrimar,
-            optiune: "r",
-            tabel: tabel,
-            camp: camp)
+      criteriu: caut,
+      numeServer: numeServerPrimar,
+      opt: "r",
+      tabel: tabel,
+    )
         .then((rezultat) {
-      // window.alert(rezultat);
+      window.alert(rezultat);
       final _json = json.decode(rezultat);
       lista.children.clear();
       for (int i = 0; i < _json.length; i++) {
         LIElement elem = LIElement();
-        lista.children.add(elem..text = _json[i][camp]); //['denumire']);
+        lista.children.add(elem..text = _json[i]['denumire']);
         elem.onClick.listen((e) {
           String crit = elem.innerHtml.toString();
           kk
               .cautaPeServer(
                   criteriu: crit,
                   tabel: tabel,
-                  camp: camp,
                   numeServer: numeServerSecundar,
-                  optiune: "r")
+                  opt: "r")
               .then((value) async {
             value = value.replaceAll("[", "");
             value = value.replaceAll("]", "");
@@ -76,10 +74,7 @@ class LoadDetalii {
     Loader kk = Loader();
     kk
         .adaugaPeServer(
-            numeServer: numeServer,
-            optiune: "c",
-            tabel: tabel,
-            docData: docData)
+            numeServer: numeServer, opt: "c", tabel: tabel, docData: docData)
         .then((rezultat) async {
       //await Future.delayed(const Duration(milliseconds: 50));
       //window.alert(rezultat);
@@ -99,10 +94,7 @@ class LoadDetalii {
     Loader kk = Loader();
     kk
         .adaugaPeServer(
-            numeServer: numeServer,
-            optiune: "c",
-            tabel: tabel,
-            userData: docUser)
+            numeServer: numeServer, opt: "c", tabel: tabel, userData: docUser)
         .then((rezultat) {
       final _json = json.decode(rezultat);
     });

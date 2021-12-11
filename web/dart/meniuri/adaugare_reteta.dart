@@ -2,12 +2,12 @@ import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/ubf_document.dart';
 import '../clase/global.dart';
+import '../clase/ubf_continut.dart';
 import 'package:intl/intl.dart';
 
-class AdaugareMeniuDoc {
-  static void adaugareMeniuDoc(
-      String titlu, String tabel, String server) async {
-    //Aici adauga documente
+class AdaugareReteta {
+  static void adaugareReteta(String titlu, String tabel, String server) async {
+    //Aici adauga retete
 
     UBFDocument document = UBFDocument();
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
@@ -27,9 +27,7 @@ class AdaugareMeniuDoc {
     InputElement _destinatarDoc =
         querySelector("#destinatarDoc") as InputElement;
     //SelectElement _tipDoc = querySelector("#tipDoc") as SelectElement;
-    InputElement _continutDoc = querySelector("#continutDoc") as InputElement;
     InputElement _obsDoc = querySelector("#obsDoc") as InputElement;
-
     if (titlu == "Adauga Reteta") {
       _nrDoc.placeholder = "Cod Produs Finit";
       _emitentDoc.placeholder = "Denumire Produs Finit";
@@ -49,10 +47,16 @@ class AdaugareMeniuDoc {
           _emitentDoc.value; //Pt reteta il folosim ca denumire produs finit
       document.destinatarDoc = _destinatarDoc
           .value; //Pt reteta il folosim ca termen de valabilitate in zile
-      document.continutDoc = _continutDoc.value;
       document.obsDoc = _obsDoc.value;
-      LoadDetalii ld = LoadDetalii();
-      ld.loadIncarcareDoc(tabel, server, document);
+      bool _adaugare = true; //adauga in bucla pana se face false
+      UBFContinut continutReteta = UBFContinut();
+      do {
+        continutReteta.incarcElementeDoc('rt');
+        _adaugare = window.confirm('Adaugati element?');
+      } while (_adaugare == true);
+      window.alert('Incarcare finalizata');
+      //LoadDetalii ld = LoadDetalii();
+      //ld.loadIncarcareDoc(tabel, server, document);
     });
 
     _btnAnulare.onClick.listen((e) {

@@ -1,6 +1,6 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
-import 'adaugare_meniu_doc.dart';
+import 'adaugare_reteta.dart';
 import 'cautare_meniu.dart';
 
 class FormularMeniu {
@@ -25,7 +25,7 @@ class FormularMeniu {
     });
     _btnAdaugare.onClick.listen((e) {
       if (titlu == "RETETAR") {
-        AdaugareMeniuDoc.adaugareMeniuDoc(
+        AdaugareReteta.adaugareReteta(
             "Adauga Reteta", "tbl_retete", "serverCRUD");
       }
     });

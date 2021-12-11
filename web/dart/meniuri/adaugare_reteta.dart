@@ -2,14 +2,16 @@ import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/ubf_document.dart';
 import '../clase/global.dart';
-import '../clase/ubf_continut.dart';
 import 'package:intl/intl.dart';
+
+import 'cautare_element.dart';
 
 class AdaugareReteta {
   static void adaugareReteta(String titlu, String tabel, String server) async {
     //Aici adauga retete
 
-    UBFDocument document = UBFDocument();
+    //UBFDocument document = UBFDocument();
+
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_document.html');
     await Future.delayed(const Duration(milliseconds: 150));
@@ -32,7 +34,7 @@ class AdaugareReteta {
       _nrDoc.placeholder = "Cod Produs Finit";
       _emitentDoc.placeholder = "Denumire Produs Finit";
       _destinatarDoc.placeholder = "Termen de valabilitate in zile";
-      document.tipDoc = 'rt';
+      UBFDocument.tipDoc = 'rt';
     }
 
     _btnAdauga.onClick.listen((e) async {
@@ -41,22 +43,18 @@ class AdaugareReteta {
       final DateFormat formatareData = DateFormat('yyyy-M-dd');
       final String dataDoc = formatareData.format(dataCurenta);
 
-      document.dataDoc = dataDoc;
-      document.nrDoc = _nrDoc.value;
-      document.emitentDoc =
+      UBFDocument.dataDoc = dataDoc;
+      UBFDocument.nrDoc = _nrDoc.value;
+      UBFDocument.emitentDoc =
           _emitentDoc.value; //Pt reteta il folosim ca denumire produs finit
-      document.destinatarDoc = _destinatarDoc
+      UBFDocument.destinatarDoc = _destinatarDoc
           .value; //Pt reteta il folosim ca termen de valabilitate in zile
-      document.obsDoc = _obsDoc.value;
+      UBFDocument.obsDoc = _obsDoc.value;
       bool _adaugare = true; //adauga in bucla pana se face false
-      UBFContinut continutReteta = UBFContinut();
-      do {
-        continutReteta.incarcElementeDoc('rt');
-        _adaugare = window.confirm('Adaugati element?');
-      } while (_adaugare == true);
-      window.alert('Incarcare finalizata');
-      //LoadDetalii ld = LoadDetalii();
-      //ld.loadIncarcareDoc(tabel, server, document);
+
+      _formDocument.remove();
+
+      CautareElement.cautareElement('RETETAR');
     });
 
     _btnAnulare.onClick.listen((e) {

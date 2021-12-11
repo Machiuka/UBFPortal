@@ -25,6 +25,8 @@ class CautareMeniu {
           LoadDetalii ld = LoadDetalii();
           ld.loadInterogare(caut, "tbl_retete", "servInit", "servReteta");
         } else {
+          //Cand este null inseamna ca am introdus tot continutul retetei
+
           window.alert('Caut este null');
         }
       }

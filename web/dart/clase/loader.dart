@@ -22,7 +22,7 @@ class Loader {
     String path = 'http://localhost/' +
         numeServer +
         '?x={"criteriu":"$criteriu", "tabel":"$tabel"}';
-
+    //window.alert(path);
     // var response = await http.get(Uri.parse(path), headers: _headers);
     var response = await http.get(Uri.parse(path));
     if (response.statusCode == 200) {
@@ -54,6 +54,7 @@ class Loader {
     String _js = jsonEncode(_obj);
     //window.alert(_js);
     String _path = 'http://localhost/' + numeServer + '?x=' + _js;
+//    window.alert(_path);
 
     // var response = await http.get(Uri.parse(path), headers: _headers);
     var response = await http.get(Uri.parse(_path));

@@ -1,0 +1,241 @@
+
+    <div id="container">
+    
+      
+        <section id="memo">
+          <div>
+          <div class="company-info">
+            <div>{company_name}</div>
+            <br>
+            <span>{company_address}</span> <br>
+            <span>{company_city_zip_state}</span><br>
+            <span>{company_phone_fax}</span> <br>
+            <span>{company_email_web}</span> </div>
+          <div class="middle">
+            <section id="invoice-title-number">
+            <table width="100%" height="100" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td>
+                    <div id="title" align="center" >F A C T U R A</div>
+                    <div>Data
+                      facturii: 03.05.2021<br>
+                      Data scadentă: 17.05.2021 </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </section>
+          </div>
+          <div class="logo"><img
+            src="pictures/logo.png" alt="logo" title="logo"> </div>
+            </div>
+        </section>
+        <table style="height:842px; width:595px;font-size:12px;" align="center"
+          cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td valign="top">
+                
+                                <br>
+                <table width="100%" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <td style="font-size:12px;" width="35%" valign="top"> <strong></strong><br>
+                      </td>
+                      <td width="35%" valign="top"> <br>
+                      </td>
+                      <td style="font-size:12px;" width="30%" valign="top"><strong>Numele
+                          clientului]</strong><br>
+                        [Adresa clientului] <br>
+                        Reg. com.: [Nr.Reg.Comertului]<br>
+                        CIF: [CIF al clientului] </td>
+                    </tr>
+                  </tbody>
+                </table>
+               
+                <table width="100%" cellspacing="0" cellpadding="2" bordercolor="#CCCCCC"
+                  border="1">
+                  <tbody>
+                    <tr>
+                      <td><strong>Denumire </strong></td>
+                      <td><strong>Cant.</strong></td>
+                      <td><strong>Preț unitar</strong></td>
+                      <td><strong>Total</strong></td>
+                    </tr>
+                    <tr>
+                      <td>produsul meu</td>
+                      <td>5 </td>
+                      <td>650,00 </td>
+                      <td>3 250,00 </td>
+                    </tr>
+                    <tr>
+                      <td>serviciul meu</td>
+                      <td>1 </td>
+                      <td>700,00 </td>
+                      <td>700,00 </td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                                      <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td><strong> </strong><br>
+                      </td>
+                      <td>
+                        <div class="sumar">
+                          <div class="stanga"> </div>
+                          <div class="totaluri">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td>Total</td>
+                                  <td>3 950,00 Lei</td>
+                                  <td> <br>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>TVA(19.00%)</td>
+                                  <td>750,50 Lei</td>
+                                </tr>
+                                <tr>
+                                  <td><b>Total de plata</b></td>
+                                  <td><b>4 700,50 Lei</b></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td><br>
+                                Factura valabilă fără semnatură şi
+                                ştampilă cf. art.V, alin (2) din Ordonanţa
+                                nr.17/2015 şi art. din Legea nr. 227/2015
+                                privind Codul fiscal.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td><b>[Denumire firma]</b><br>
+                                Reg. com.: [Nr.Reg.Comertului]<br>
+                                CIF: [CIF]<br>
+                                Capital social: [Capital social]<br>
+                              </td>
+                              <td> [Adresă] <br>
+                                Telefon: [Telefon]<br>
+                              </td>
+                              <td>[Nume Bancă]<br>
+                                [IBAN] <br>
+                                SWIFT / BIC: [SWIFT / BIC] <br>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><br>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+

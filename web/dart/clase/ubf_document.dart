@@ -10,9 +10,15 @@ class UBFDocument {
       tipDoc; //fi-factura intrare, fe - factura iesire, av - aviz expeditie, rt - reteta
   static String? continutDoc; //aici va fi un sir de tip JSON
   static String? dateEmitentDoc; //si aici la fel
+  static String? denumire;
   static String? dateDestinatarDoc; //si aici la fel
   static String? obsDoc;
   static String operator = Global.operator; //doar in test am nevoie de el
+  static double? pretVanzare;
+  static int? cotaTVA;
+  static int? valabilitate;
+  static String? descriere;
+  static String? codElem;
 
   /*
   UBFDocument(
@@ -31,7 +37,10 @@ class UBFDocument {
   Map toJson() => {
         'idx': idx,
         'dataDoc': dataDoc,
+        'denumire': denumire,
         'nrDoc': nrDoc,
+        'codElem': codElem,
+        'valabilitate': valabilitate,
         'emitentDoc': emitentDoc,
         'destinatarDoc': destinatarDoc,
         'tipDoc': tipDoc,
@@ -39,6 +48,9 @@ class UBFDocument {
         'dateEmitentDoc': dateEmitentDoc,
         'dateDestinatarDoc': dateDestinatarDoc,
         'obs': obsDoc,
+        'descriere': descriere,
+        'pretVanzare': pretVanzare,
+        'cotaTVA': cotaTVA,
         'operator': operator
       };
 }

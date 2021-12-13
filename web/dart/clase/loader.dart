@@ -21,7 +21,7 @@ class Loader {
     //const path = 'https://netta.ro/ubf/test/'.?numeServer.'?x={"obj":"pf"}';
     String path = 'http://localhost/' +
         numeServer +
-        '?x={"criteriu":"$criteriu", "tabel":"$tabel"}';
+        '?x={"criteriu":"$criteriu", "tabel":"$tabel", "opt":"$opt"}';
     //window.alert(path);
     // var response = await http.get(Uri.parse(path), headers: _headers);
     var response = await http.get(Uri.parse(path));

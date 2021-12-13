@@ -1,0 +1,98 @@
+
+    <div id="container">
+      <div class="left-stripes">
+        <div class="circle c-upper"></div>
+        <div class="circle c-lower"></div>
+      </div>
+      <div class="right-invoice">
+        <section id="memo">
+          <div class="company-info">
+            <div>{company_name}</div>
+            <br>
+            <span>{company_address}</span> <span>{company_city_zip_state}</span>
+            <br>
+            <span>{company_phone_fax}</span> <br>
+            <span>{company_email_web}</span> </div>
+          <div class="logo"> <img src="pictures/logo.png" alt="logo" title="logo">
+          </div>
+        </section>
+        <section id="invoice-title-number">
+          <div id="title" style="width: 391px; margin-left: 376px;">F A C T U R
+            A</div>
+          <div class="title-top"> <span class="x-hidden">{issue_date_label}</span>
+            <span style="width: 154px; margin-left: 372px;">{issue_date}</span>
+            <span id="number">{invoice_number}</span> </div>
+        </section>
+        <section id="client-info"> <span>{bill_to_label}</span>
+          <div class="client-name"> <span>{client_name}</span> </div>
+          <div> <span>{client_address}</span> </div>
+          <div> <span>{client_city_zip_state}</span> </div>
+          <div> <span>{client_phone_fax}</span> </div>
+          <div> <span>{client_email}</span> </div>
+          <div> <span>{client_other}</span> </div>
+        </section>
+        <div class="clearfix"></div>
+        <section id="invoice-info">
+          <div> <span>{net_term_label}</span> <span>{net_term}</span> </div>
+          <div> <span>{due_date_label}</span> <span>{due_date}</span> </div>
+          <div> <span>{po_number_label}</span> <span>{po_number}</span> </div>
+        </section>
+        <div class="clearfix"></div>
+        <div class="currency" style="background-color: white;"> <span>{currency_label}</span>
+          <span>{currency}</span> </div>
+        <section id="items">
+          <table id="tbl_factura" cellspacing="0" cellpadding="0" class="tbl_invoice">
+            <tbody>
+              <tr>
+                <th class="nrCrt">Nr.crt.</th>
+                <th class="descriere">Descriere</th>
+                <th class="cantitate">Cantitate</th>
+                <th class="pretUnitar">Pret unitar</th>
+                <th class="valoare">Valoare</th>
+                <th class="tva">Cota TVA</th>
+              </tr>
+              <tr data-iterate="item">
+                <td>{item_row_number}</td>
+                <!-- Don't remove this column as it's needed for the row commands -->
+                <td>{item_description}</td>
+                <td>{item_quantity}</td>
+                <td>{item_price}</td>
+                <td>{item_tax}</td>
+                <td>{item_line_total}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section id="sums">
+          <table cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr>
+                <th>Total fara TVA</th>
+                <td>TVA</td>
+              </tr>
+              <tr data-iterate="tax">
+                <th>{tax_name}</th>
+                <td>{tax_value}</td>
+              </tr>
+              <tr class="amount-total">
+                <!-- {amount_total_label} -->
+                <td colspan="2">TOTAL</td>
+              </tr>
+              <!-- You can use attribute data-hide-on-quote="true" to hide specific information on quotes.
+                 For example Invoicebus doesn't need amount paid and amount due on quotes  -->
+            </tbody>
+          </table>
+        </section>
+        <div class="clearfix"></div>
+        <section id="terms"> <span>{terms_label}</span>
+          <div>{terms}</div>
+        </section>
+        <div class="payment-info">
+          <div>{payment_info1}</div>
+          <div>{payment_info2}</div>
+          <div>{payment_info3}</div>
+          <div>{payment_info4}</div>
+          <div>{payment_info5}</div>
+        </div>
+      </div>
+    </div>

@@ -1,10 +1,15 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
-import 'adaugare_reteta.dart';
 import 'cautare_meniu.dart';
+import '../clase/css.dart';
+import 'adaugare_reteta.dart';
+import 'stergere_reteta.dart';
 
 class FormularMeniu {
   static void formularMeniu(String titlu) async {
+    CSS.aplicaCSS("css/styles.css");
+    CSS.aplicaCSS("css/styles_button.css");
+    CSS.aplicaCSS("css/styles_formular.css");
     Element _divTopNav = querySelector('#top_nav') as Element;
     _divTopNav.hidden = true;
     LoadDetalii.incarcFormular('html/form_detalii.html');
@@ -35,7 +40,9 @@ class FormularMeniu {
     });
 
     _btnStergere.onClick.listen((e) {
-      window.alert('Apasat buton Stergere');
+      if (titlu == "RETETAR") {
+        StergereReteta.stergere("Sterge Reteta", "tbl_retete", "servInit");
+      }
     });
   }
 }

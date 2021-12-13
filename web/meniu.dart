@@ -4,10 +4,15 @@ import 'dart/clase/global.dart';
 import 'package:intl/intl.dart';
 import 'dart/meniuri/rapoarte_meniu.dart';
 import 'dart/meniuri/formular_meniu.dart';
+import 'dart/meniuri/invoice.dart';
+import 'dart/clase/css.dart';
 
 //Aici este actiunea cand se face click pe meniurile din meniu_nav.dart
 class Meniu {
   static void topMeniu() async {
+    CSS.aplicaCSS("css/styles.css");
+    CSS.aplicaCSS("css/styles_button.css");
+    CSS.aplicaCSS("css/styles_formular.css");
     LoadDetalii.incarcFormular('html/top_nav.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
@@ -19,12 +24,10 @@ class Meniu {
     Element _btnAdministrare = querySelector('#btnAdministrare') as Element;
 
     _btnAprovizionare.onClick.listen((e) {
-      Element _divTopNav = querySelector('#top_nav') as Element;
-      _divTopNav.hidden = true;
+      Invoice.invoice();
     });
     _btnLivrare.onClick.listen((e) {
-      window.alert('Apasat buton Livrare');
-      print('BtnIesiri');
+      Invoice.invoice();
     });
 
     _btnRetetar.onClick.listen((e) {

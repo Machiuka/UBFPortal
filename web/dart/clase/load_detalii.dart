@@ -110,6 +110,67 @@ class LoadDetalii {
     });
   }
 
+  loadStergere(String caut, String tabel, String numeServer) {
+    //cauta pe serverul si primeste o lista clickabila. Sterge apoi elementul selectat, dupa id
+    late final UListElement lista =
+        querySelector('#listaDetalii') as UListElement;
+    FormElement formDetalii = querySelector("#formDetalii") as FormElement;
+    Loader kk = Loader();
+    kk
+        .cautaPeServer(
+      criteriu: caut,
+      numeServer: numeServer,
+      opt: "r",
+      tabel: tabel,
+    )
+        .then((rezultat) {
+      //   window.alert(rezultat);
+      final _json = json.decode(rezultat);
+      lista.children.clear();
+      for (int i = 0; i < _json.length; i++) {
+        LIElement elem = LIElement();
+        lista.children.add(elem..text = _json[i]['denumire']);
+        elem.onClick.listen((e) {
+          String crit = _json[i]['id'].toString();
+          //    window.alert('Criteriul de stergere este $crit');
+          kk
+              .cautaPeServer(
+                  criteriu: crit,
+                  tabel: tabel,
+                  numeServer: numeServer,
+                  opt: "d")
+              .then((value) async {
+            value = value.replaceAll("[", "");
+            value = value.replaceAll("]", "");
+
+            final _js = json.decode(value);
+
+            lista.children.clear();
+            //       FormElement formDetalii =querySelector("#formDetalii") as FormElement;
+
+            incarcFormular('html/form_tabel.html');
+            await Future.delayed(const Duration(milliseconds: 50));
+            Tabelare tabelul = Tabelare();
+            FormElement formTabel = querySelector("#formTabel") as FormElement;
+            Element titluTabel = querySelector("#titluTabel") as Element;
+            Element btnInapoi = querySelector("#btnCCC") as Element;
+            formDetalii.replaceWith(
+                formTabel); //inlocuie formDetalii cu formTabel. Proprietatea hidden nu a functionat, iar remove() pierde metodele atasate butoanelor
+            tabelul.adauga(_js, 'tabelDetalii', 0);
+            btnInapoi.onClick.listen((event) {
+              formTabel.replaceWith(formDetalii);
+            });
+
+            titluTabel.innerHtml = "Detalii pt ${_json[i]['denumire']}";
+            //   window.alert(titluTabel.innerHtml);
+
+            //window.alert(_js.toString());
+          });
+        });
+      }
+    });
+  }
+
   loadIncarcareDoc(String tabel, String numeServer, UBFDocument? docData) {
 //Incarca date pe server. Despre Useri sau Documente
     Loader kk = Loader();
@@ -118,7 +179,7 @@ class LoadDetalii {
             numeServer: numeServer, opt: "c", tabel: tabel, docData: docData)
         .then((rezultat) async {
       //await Future.delayed(const Duration(milliseconds: 50));
-      //window.alert(rezultat);
+      // window.alert(rezultat);
       try {
         //     rezultat = rezultat.replaceAll("[", "");
         // rezultat = rezultat.replaceAll("]", "");

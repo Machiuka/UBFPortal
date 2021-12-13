@@ -39,7 +39,7 @@ class CautareElement {
           LoadDetalii.incarcFormular(
               'html/form_document.html'); //Este cerut la raspuns_tabel
           await Future.delayed(const Duration(milliseconds: 50));
-          //    window.alert(Global.continut);
+          //   window.alert(Global.continut);
           _formCautare.remove();
 
           ld.loadIncarcareDoc("tbl_retete", "serverCRUD", UBFDocument());

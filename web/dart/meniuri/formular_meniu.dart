@@ -30,18 +30,19 @@ class FormularMeniu {
     });
     _btnAdaugare.onClick.listen((e) {
       if (titlu == "RETETAR") {
-        AdaugareReteta.adaugareReteta(
-            "Adauga Reteta", "tbl_retete", "serverCRUD");
+        AdaugareReteta.adaugareReteta("Adauga Reteta", "tbl_produse", "serverAdaugReteta");
       }
     });
 
     _btnModificare.onClick.listen((e) {
-      window.alert('Apasat buton Modificare');
+      if (titlu == "RETETAR") {
+        CautareMeniu.cautareMeniu('MODIFICARE PRODUS FINIT');
+      }
     });
 
     _btnStergere.onClick.listen((e) {
       if (titlu == "RETETAR") {
-        StergereReteta.stergere("Sterge Reteta", "tbl_retete", "servInit");
+        StergereReteta.stergere("Sterge Reteta", "tbl_produse", "serverCautStergReteta");
       }
     });
   }

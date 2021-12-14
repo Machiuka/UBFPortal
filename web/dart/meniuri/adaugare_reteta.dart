@@ -28,6 +28,7 @@ class AdaugareReteta {
     InputElement _valabilitate = querySelector("#valabilitate") as InputElement;
     InputElement _pretVanzare = querySelector("#pretVanzare") as InputElement;
     InputElement _descriere = querySelector("#descriere") as InputElement;
+    InputElement _gramaj = querySelector("#gramaj") as InputElement;
     InputElement _obsDoc = querySelector("#obsDoc") as InputElement;
 
     if (titlu == "Adauga Reteta") {
@@ -47,6 +48,7 @@ class AdaugareReteta {
       UBFDocument.descriere = _descriere.value;
       UBFDocument.denumire = _denumirePF.value;
       UBFDocument.valabilitate = _valabilitate.valueAsNumber as int?;
+      UBFDocument.gramaj = _gramaj.valueAsNumber as int?;
       UBFDocument.obsDoc = _obsDoc.value;
       UBFDocument.pretVanzare = _pretVanzare.valueAsNumber as double?;
 

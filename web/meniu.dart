@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'dart/meniuri/rapoarte_meniu.dart';
 import 'dart/meniuri/formular_meniu.dart';
 import 'dart/meniuri/invoice.dart';
+
 import 'dart/clase/css.dart';
 
 //Aici este actiunea cand se face click pe meniurile din meniu_nav.dart
@@ -16,16 +17,12 @@ class Meniu {
     LoadDetalii.incarcFormular('html/top_nav.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
-    Element _btnAprovizionare = querySelector('#btnAprovizionare') as Element;
     Element _btnLivrare = querySelector('#btnLivrare') as Element;
     Element _btnRetetar = querySelector('#btnRetetar') as Element;
     Element _btnRapoarte = querySelector('#btnRapoarte') as Element;
     Element _btnPreviziuni = querySelector('#btnPreviziuni') as Element;
     Element _btnAdministrare = querySelector('#btnAdministrare') as Element;
 
-    _btnAprovizionare.onClick.listen((e) {
-      Invoice.invoice();
-    });
     _btnLivrare.onClick.listen((e) {
       Invoice.invoice();
     });

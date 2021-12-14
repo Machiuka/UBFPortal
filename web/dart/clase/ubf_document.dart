@@ -6,8 +6,7 @@ class UBFDocument {
   static String? nrDoc;
   static String? emitentDoc;
   static String? destinatarDoc;
-  static String?
-      tipDoc; //fi-factura intrare, fe - factura iesire, av - aviz expeditie, rt - reteta
+  static String? tipDoc; //fi-factura intrare, fe - factura iesire, av - aviz expeditie, rt - reteta
   static String? continutDoc; //aici va fi un sir de tip JSON
   static String? dateEmitentDoc; //si aici la fel
   static String? denumire;
@@ -19,6 +18,8 @@ class UBFDocument {
   static int? valabilitate;
   static String? descriere;
   static String? codElem;
+  static int? gramaj;
+  static String? linkPhoto;
 
   /*
   UBFDocument(
@@ -44,6 +45,7 @@ class UBFDocument {
         'emitentDoc': emitentDoc,
         'destinatarDoc': destinatarDoc,
         'tipDoc': tipDoc,
+        'gramaj': gramaj,
         'continutDoc': continutDoc,
         'dateEmitentDoc': dateEmitentDoc,
         'dateDestinatarDoc': dateDestinatarDoc,
@@ -51,6 +53,7 @@ class UBFDocument {
         'descriere': descriere,
         'pretVanzare': pretVanzare,
         'cotaTVA': cotaTVA,
+        'linkPhoto': linkPhoto,
         'operator': operator
       };
 }

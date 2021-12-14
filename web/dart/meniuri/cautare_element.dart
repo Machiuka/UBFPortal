@@ -28,21 +28,21 @@ class CautareElement {
         if (caut != '') {
           //sterg formularul pentru a nu se adauga cautare peste cautare
 
-          ld.loadElement(caut!, "tbl_mp", "servInit");
+          ld.loadElement(caut!, "tbl_mp", "serverCautare");
         } else {
           int lungime = Global.continut.length;
+          if (lungime > 1) {
+            Global.continut = Global.continut.substring(0, lungime - 1);
 
-          Global.continut = Global.continut.substring(0, lungime - 1);
-
-          UBFDocument.continutDoc = Global.continut;
+            UBFDocument.continutDoc = Global.continut;
+          }
           Global.continut = '';
-          LoadDetalii.incarcFormular(
-              'html/form_document.html'); //Este cerut la raspuns_tabel
+          LoadDetalii.incarcFormular('html/form_document.html'); //Este cerut la raspuns_tabel
           await Future.delayed(const Duration(milliseconds: 50));
           //   window.alert(Global.continut);
           _formCautare.remove();
 
-          ld.loadIncarcareDoc("tbl_retete", "serverCRUD", UBFDocument());
+          ld.loadIncarcareDoc("tbl_produse", "serverAdaugReteta", UBFDocument());
         }
       }
     });

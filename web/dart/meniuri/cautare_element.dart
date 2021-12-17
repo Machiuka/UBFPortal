@@ -4,6 +4,7 @@ import 'dart:svg';
 import '../clase/load_detalii.dart';
 import '../clase/global.dart';
 import '../clase/ubf_document.dart';
+import '../clase/load_factura.dart';
 
 class CautareElement {
   static void cautareElement(String titlu) async {
@@ -21,6 +22,7 @@ class CautareElement {
 
     _btnOK.onClick.listen((e) async {
       LoadDetalii ld = LoadDetalii();
+      LoadFactura lf = LoadFactura();
 
       if (titlu == "RETETAR") {
         //Aici se ocupa de butonul Retetar
@@ -37,6 +39,23 @@ class CautareElement {
             UBFDocument.continutDoc = Global.continut;
           }
           Global.continut = '';
+          LoadDetalii.incarcFormular('html/form_document.html'); //Este cerut la raspuns_tabel
+          await Future.delayed(const Duration(milliseconds: 50));
+          //   window.alert(Global.continut);
+          _formCautare.remove();
+
+          ld.loadIncarcareDoc("tbl_produse", "serverAdaugReteta", UBFDocument());
+        }
+      }
+      if (titlu == 'FACTURA') {
+        String? caut = _txtCautare.value;
+        if (caut != '') {
+          //sterg formularul pentru a nu se adauga cautare peste cautare
+
+          lf.loadArticol(caut!, "tbl_produse", "serverCautare");
+        } else {
+          //De actualizat
+
           LoadDetalii.incarcFormular('html/form_document.html'); //Este cerut la raspuns_tabel
           await Future.delayed(const Duration(milliseconds: 50));
           //   window.alert(Global.continut);

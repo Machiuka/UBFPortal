@@ -7,8 +7,8 @@ import 'package:intl/intl.dart';
 
 import 'cautare_element.dart';
 
-class AdaugareReteta {
-  static void adaugareReteta(String titlu, String tabel, String server) async {
+class AdaugareFactura {
+  static void adaugareFactura(String titlu, String tabel, String server) async {
     //Aici adauga retete
 
     //UBFDocument document = UBFDocument();
@@ -17,7 +17,7 @@ class AdaugareReteta {
     CSS.aplicaCSS("css/styles_formular.css");
 
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
-    LoadDetalii.incarcFormular('html/form_reteta.html');
+    LoadDetalii.incarcFormular('html/form_factura.html');
     await Future.delayed(const Duration(milliseconds: 150));
 
     Element _btnAdauga = querySelector('#btnAdauga') as Element;
@@ -58,7 +58,7 @@ class AdaugareReteta {
 
       _formDocument.remove();
 
-      CautareElement.cautareElement('RETETAR');
+      CautareElement.cautareElement('FACTURA');
     });
 
     _btnAnulare.onClick.listen((e) {

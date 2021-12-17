@@ -1,0 +1,52 @@
+.tiparire{
+  background-image: url("../pictures/logo_fundal_doc.png");
+  background-repeat: no-repeat;
+  background-position:center;
+  background-size: 60%;
+  
+  
+}
+
+.ingust{
+  width:10%;
+}
+
+
+.capTabel{
+  text-align:"center";
+  vertical-align:middle;
+  table-layout: auto !important;
+
+}
+div{
+  color:black;
+}
+
+#invoice-title-number {
+  background-color:lightgray;
+  font-size: 18px;
+}
+
+#invoice-data-number {
+  background-color:lightgray;
+  font-size: 14px;
+}
+
+#textMic{
+  font-size: 9px;
+  font-weight:lighter;
+  font-style: italic;
+}
+
+.table100-head{
+  background-color:lightgray;
+  font-size: 18px;
+
+}
+img {
+  
+  width: 150px;
+  height: 100px;
+}
+
+

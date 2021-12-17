@@ -1,9 +1,10 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
-import 'cautare_meniu.dart';
+import 'cautare_reteta.dart';
 import '../clase/css.dart';
 import 'adaugare_reteta.dart';
 import 'stergere_reteta.dart';
+import 'cautare_client.dart';
 
 class FormularMeniu {
   static void formularMeniu(String titlu) async {
@@ -11,7 +12,7 @@ class FormularMeniu {
     CSS.aplicaCSS("css/styles_button.css");
     CSS.aplicaCSS("css/styles_formular.css");
     Element _divTopNav = querySelector('#top_nav') as Element;
-    _divTopNav.hidden = true;
+    _divTopNav.remove();
     LoadDetalii.incarcFormular('html/form_detalii.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
@@ -25,18 +26,21 @@ class FormularMeniu {
 
     _btnCautare.onClick.listen((e) {
       if (titlu == "RETETAR") {
-        CautareMeniu.cautareMeniu(titlu);
+        CautareReteta.cautareReteta(titlu);
       }
     });
     _btnAdaugare.onClick.listen((e) {
       if (titlu == "RETETAR") {
         AdaugareReteta.adaugareReteta("Adauga Reteta", "tbl_produse", "serverAdaugReteta");
       }
+      if (titlu == "FACTURA") {
+        CautareClient.cautareClient(titlu);
+      }
     });
 
     _btnModificare.onClick.listen((e) {
       if (titlu == "RETETAR") {
-        CautareMeniu.cautareMeniu('MODIFICARE PRODUS FINIT');
+        CautareReteta.cautareReteta('MODIFICARE PRODUS FINIT');
       }
     });
 

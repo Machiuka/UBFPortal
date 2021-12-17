@@ -372,6 +372,17 @@ th.descriere{
  * If the printed invoice is not looking as expected you may tune up
  * the print styles (you can use !important to override styles)
  */
-@media print {
-  /* Here goes your print styles */
+ @media print {
+  .container{
+      background-color: white;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 15px;
+      font-size: 14px;
+      line-height: 18px;
+  }
 }

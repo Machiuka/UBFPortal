@@ -1,11 +1,11 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
 import 'actualizare_reteta.dart';
+import '../clase/load_factura.dart';
 
-class CautareMeniu {
-  static void cautareMeniu(String titlu) async {
-    //Element _divTopNav = querySelector('#top_nav') as Element;
-    //_divTopNav.hidden = true;
+class CautareClient {
+  static void cautareClient(String titlu) async {
+    //Se foloseste atat la cautare cat si la actualizare
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_cautare.html');
     await Future.delayed(const Duration(milliseconds: 50));
@@ -18,21 +18,23 @@ class CautareMeniu {
 
     _btnOK.onClick.listen((e) {
       String? caut = _txtCautare.value;
-      if (titlu == "RETETAR") {
-        //Aici se ocupa de butonul Retetar
+      if (titlu == "FACTURA") {
+        //Aici se ocupa de butonul Adaugare factura
 
         if (caut != null) {
           _formCautare.replaceWith(_formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare
-          LoadDetalii ld = LoadDetalii();
-          ld.loadInterogare(caut, "tbl_produse", "serverCautStergReteta", "servReteta");
+          LoadFactura lf = LoadFactura();
+          lf.loadClient(caut, 'tbl_clienti', 'serverCautStergClient');
+          //AdaugareFactura.adaugareFactura(caut, "tbl_clienti", "serverCautStergClient");
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }
-      } else if (titlu == 'MODIFICARE PRODUS FINIT') {
+      } else if (titlu == 'MODIFICARE FACTURA') {
+        //modifica doar ultima factura
         if (caut != null) {
           _formCautare.replaceWith(_formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare
           ActualizareReteta actualizareReteta = ActualizareReteta();
-          actualizareReteta.actualizareReteta(caut, "tbl_produse", "serverCautStergReteta");
+          actualizareReteta.actualizareReteta(caut, "tbl_produse", "serverCautStergClient");
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }

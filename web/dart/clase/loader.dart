@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'ubf_document.dart';
 import 'ubf_user.dart';
+import 'ubf_client.dart';
 
 class Loader {
   //nu am nevoie de headers, fiindca setarea e din serverul php
@@ -32,7 +33,12 @@ class Loader {
   }
 
   Future<String> adaugaPeServer(
-      {required String tabel, required String numeServer, required String opt, UBFDocument? docData, UBFUser? userData}) async {
+      {required String tabel,
+      required String numeServer,
+      required String opt,
+      UBFDocument? docData,
+      UBFUser? userData,
+      UBFClient? clientData}) async {
     numeServer = numeServer + ".php";
     Map<String, dynamic> _obj = {"tabel": tabel, "docData": docData!.toJson(), "userData": userData};
 

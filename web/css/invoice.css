@@ -1,395 +1,97 @@
-/*! Invoice Templates @author: Invoicebus @email: info@invoicebus.com @web: https://invoicebus.com @version: 1.0.0 @updated: 2015-03-27 14:03:24 @license: Invoicebus */
-/* Reset styles */
+#container {
+  position: relative;
+  width: 100%
+  }
 
 div {
-  line-height: 1;
+border-radius: 5px;
+color:black;
 }
 
-ol, ul {
-  list-style: none;
+#header {
+height: 0px;
+background-color: #F38630;
+margin-bottom: 10px;
 }
 
-
-th.nrCrt{
-  width:5%;
-}
-th.descriere{
-  width:40%;
-}
-th.nrCrt, th.tva, th.cantitate, th.pretUnitar, th.valoare {
-  width: 20%
-}
-
-
-
-caption,th,td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-q, blockquote {
-  quotes: none;
-}
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-a img {
-  border: none;
-}
-
-
-
-/* Invoice styles */
-/**
- * DON'T override any styles for the <html> and <body> tags, as this may break the layout.
- * Instead wrap everything in one main <div id="container"> element where you may change
- * something like the font or the background of the invoice
- */
-
-
-/** 
- * IMPORTANT NOTICE: DON'T USE '!important' otherwise this may lead to broken print layout.
- * Some browsers may require '!important' in oder to work properly but be careful with it.
- */
-.clearfix {
-  display: block;
-  clear: both;
-}
-
-.x-hidden {
-  display: none !important;
-}
-
-.hidden {
-  display: none;
-}
-
-b, strong, .bold {
-  font-weight: bold;
-}
-
-#container {
-  font: normal 13px/1.4em 'Open Sans', Sans-serif;
-  margin: 0 auto;
-  min-height: 1158px;
-  position: relative;
-  color:black;
-}
-
-.left-stripes {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100px;
-  background: url("../pictures/stripe-bottom.png") center bottom no-repeat, url("../pictures/stripe-bg.jpg") repeat;
-}
-.left-stripes .circle {
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  background: #415472;
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  left: 33%;
-}
-.left-stripes .circle.c-upper {
-  top: 440px;
-}
-.left-stripes .circle.c-lower {
-  top: 690px;
-}
-
-.right-invoice {
-  padding: 40px 30px 40px 130px;
-  min-height: 1078px;
-}
-#container {
-  font: normal 13px/1.4em 'Open Sans', Sans-serif;
-  margin: 0 auto;
-  min-height: 1158px;
-  position: relative;
-}
-
-.left-stripes {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100px;
-  background: url("../pictures/stripe-bottom.png") center bottom no-repeat, url("../pictures/stripe-bg.jpg") repeat;
-}
-.left-stripes .circle {
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  background: #415472;
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  left: 33%;
-}
-.left-stripes .circle.c-upper {
-  top: 440px;
-}
-.left-stripes
-#memo .company-info {
-  float: left;
-}
-
-.company-info{
-  font-size: 14px;
+.left {
   
+width: 95%;
+background-color: #A7DBD8;
+margin-bottom: 10px;
+  
+}
+
+.right {
+height: 100%;
+width: 25%;
+background-color: #E0E4CC;
+position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+margin-bottom: 10px;
+  
+}
+
+#footer {
+height: 0px;
+background-color: #69D2E7;
+clear: both;
+}
+
+#fixedright {
+  height: 50px;
+  width: calc(25% - 6px);
+  background-color: #FFFFFF;
+  position: fixed;
+ margin: 1px 1px 1px 1px;
+}
+
+thead {
+background: #231E5E;
+color: #FFF;
+}
+
+tbody tr:nth-child(odd) {
+background: #E9F5D7;
+  
+
+}
+
+tbody tr:hover {
+background-color: #86C133;
+}
+
+.customertable {
+  table-layout: fixed;
+  overflow-x:auto;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.shortcolumn {
+  width: 10%;
+  
+}
+
+.longcolumn {
+  width: 45%;
+  
+}
+
+.numbercolumn {
   width: 25%;
-  line-height: 1em;
-  color: #302e2e;
-  float: left;
-  height:100px;
-}
-.middle{
-  float:left; 
-    width:40%;
-  height:100px;
-}
- .logo {
-  float: right;
-  width:25%;
-  margin-left: 15px;
-  height:100px;
-}
-#memo .logo img {
-  width: 80px;
-  height: 80px;
-}
-#memo:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-#invoice-title-number {
-  margin: 50px 0 20px 0;
-  text-align: center;
   
-  float: center;
+  
 }
-#invoice-title-number .title-top {
-  font-size: 15px;
+#textMic{
+  font-size: 8px;
+  font-style: italic;
+}
+#invoice-title-number {
+  font-size: 14px;
   margin-bottom: 5px;
   text-align: center;
   color: #858585;
-}
-#invoice-title-number .title-top span {
- 
-  min-width: 20px;
-}
-#invoice-title-number .title-top #number {
-  text-align: center;
-  float: center;
- 
-}
-#invoice-title-number .title-top:after {
-  content: '';
-  display: block;
-   clear: both;
-}
-#invoice-title-number #title {
-  display: inline-block;
-  background: #c9c3c3;
-  color: white;
-  font-size: 20px;
-  padding: 7px;
-  
- 
-  line-height: 1em;
-}
-
-#client-info {
-  float: right;
-  text-align: right;
-  color: #858585;
-  min-width: 220px;
-}
-#client-info .client-name {
-  font-weight: bold;
-  font-size: 15px;
-  text-transform: uppercase;
-  margin: 7px 0;
-}
-#client-info > div {
-  margin-bottom: 3px;
-  min-width: 20px;
-}
-#client-info span {
-  display: block;
-  min-width: 20px;
-}
-#client-info > span {
-  text-transform: uppercase;
-  color: #646262;
-  font-size: 15px;
-}
-table{
-  width: 100%;
-}
-table th, table td {
-  vertical-align: top;
-  /* word-break: keep-all;
-   word-wrap: break-word; */
-}
-tr:nth-child(even) {background-color: #dac7c7;}
-th.descriere{
-  width: 40%;
-}
-#invoice-info {
-  float: left;
-  margin-top: 10px;
-}
-#invoice-info div {
-  margin-bottom: 3px;
-}
-#invoice-info div span {
-  display: inline-block;
-  min-width: 20px;
-  min-height: 18px;
-}
-#invoice-info div span:first-child {
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-right: 10px;
-}
-#invoice-info:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-.currency {
-  margin-top: 20px;
-  text-align: right;
-  color: #858585;
-  font-style: italic;
-  font-size: 12px;
-}
-.currency span {
-  display: inline-block;
-  min-width: 20px;
-}
-
-#items {
-  margin-top: 10px;
-}
-#items .first-cell, #items table th:first-child, #items table td:first-child {
-  width: 18px;
-  text-align: center;
-}
-#items table {
-  border-collapse: separate;
-  width: 100%;
-}
-#items table th {
-  font-family: Sanchez, Serif;
-  font-size: 12px;
-  text-transform: uppercase;
-  padding: 5px 3px;
-  text-align: center;
-  background: #b0b4b3;
-  color: white;
-}
-#items table th:nth-child(2) {
-  width: 30%;
-  text-align: left;
-}
-#items table th:last-child {
-  text-align: center;
-}
-#items table td {
-  padding: 10px 3px;
-  text-align: right;
-  border-bottom: 1px solid #ddd;
-}
-#items table td:first-child {
-  text-align: left;
-}
-#items table td:nth-child(2) {
-  text-align: left;
-}
-
-#sums {
-  float: right;
-  margin-top: 30px;
-}
-#sums table tr th, #sums table tr td {
-  min-width: 100px;
-  padding: 8px 3px;
-  text-align: center;
-}
-#sums table tr th {
-  padding-right: 25px;
-}
-#sums table tr.amount-total td {
-  background: #b7adad;
-  color: white;
-   font-size: 20px;
-  line-height: 1em;
-  padding: 7px !important;
-}
-#sums table tr.due-amount th, #sums table tr.due-amount td {
-  font-weight: bold;
-}
-
-#terms {
-  margin-top: 60px;
-}
-#terms > span {
-  font-weight: bold;
-  display: inline-block;
-  min-width: 20px;
-  text-transform: uppercase;
-}
-#terms > div {
-  min-height: 50px;
-  min-width: 50px;
-}
-
-.payment-info {
-  font-size: 12px;
-  color: #858585;
-  margin-top: 30px;
-}
-.payment-info div {
-  min-width: 20px;
-}
-.payment-info div:first-child {
-  font-weight: bold;
-}
-
-.ib_invoicebus_fineprint {
-  text-align: left !important;
-  padding-left: 130px !important;
-  width: auto !important;
-}
-
-/**
- * If the printed invoice is not looking as expected you may tune up
- * the print styles (you can use !important to override styles)
- */
-
-@media print {
-  .container{
-      background-color: white;
-      height: 100%;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      margin: 0;
-      padding: 15px;
-      font-size: 14px;
-      line-height: 18px;
-  }
 }

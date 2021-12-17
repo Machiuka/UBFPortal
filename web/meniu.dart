@@ -4,8 +4,9 @@ import 'dart/clase/global.dart';
 import 'package:intl/intl.dart';
 import 'dart/meniuri/rapoarte_meniu.dart';
 import 'dart/meniuri/formular_meniu.dart';
-import 'dart/meniuri/invoice.dart';
-
+import 'dart/meniuri/incarc_factura.dart';
+import 'dart/clase/svg_file.dart';
+import 'dart/meniuri/livrare_meniu.dart';
 import 'dart/clase/css.dart';
 
 //Aici este actiunea cand se face click pe meniurile din meniu_nav.dart
@@ -24,7 +25,7 @@ class Meniu {
     Element _btnAdministrare = querySelector('#btnAdministrare') as Element;
 
     _btnLivrare.onClick.listen((e) {
-      Invoice.invoice();
+      LivrareMeniu.livrareMeniu();
     });
 
     _btnRetetar.onClick.listen((e) {
@@ -36,7 +37,7 @@ class Meniu {
       RapoarteMeniu.rapoarteMeniu();
     });
     _btnPreviziuni.onClick.listen((e) {
-      window.alert('Apasat buton Previziuni');
+      SvgFile.svgFile();
     });
 
     _btnAdministrare.onClick.listen((e) {

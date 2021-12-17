@@ -1,18 +1,20 @@
 import 'dart:convert';
 import 'dart:html';
+import '../meniuri/cautare_element.dart';
 import 'ubf_document.dart';
-import 'ubf_user.dart';
 import 'loader.dart';
 import 'tabelare.dart';
 import 'raspuns_tabel.dart';
-import 'global.dart';
+import 'ubf_factura.dart';
 import 'detalii_element.dart';
 import 'ubf_client.dart';
+import 'load_detalii.dart';
+import 'detalii_factura.dart';
+import '../meniuri/adaugare_factura.dart';
 
-class LoadDetalii {
-  Future loadElement(String caut, String tabel, String numeServer) async {
-    //cauta pe serverul primar ceea ce primeste din meniul cautare si afiseaza detaliile primite de pe serverul secundar
-    //de pe serverul primar primeste o lista clickabila si de pe cel secundar primeste un tabel cu detaliile elementului selectat din lista
+class LoadFactura {
+  Future loadArticol(String caut, String tabel, String numeServer) async {
+    //cauta produse pt factura
 
     FormElement _formCautare = querySelector("#formCautare") as FormElement;
     LoadDetalii.incarcFormular('html/form_detalii.html');
@@ -38,11 +40,56 @@ class LoadDetalii {
         LIElement elem = LIElement();
         lista.children.add(elem..text = _json[i]['denumire']);
         elem.onClick.listen((e) async {
-          Global.cod_elem = _json[i]['cod_elem'];
-          Global.denumire = _json[i]['denumire'];
-          DetaliiElement detaliiElement = DetaliiElement();
+          UBFFactura.articol['codElem'] = _json[i]['cod_elem'];
+          UBFFactura.articol['denumire'] = _json[i]['denumire'];
+          UBFFactura.articol['pret'] = _json[i]['pret_vanzare'];
+          UBFFactura.articol['ctva'] = _json[i]['cota_tva'];
 
-          detaliiElement.detaliiElement();
+          DetaliiFactura detaliiFactura = DetaliiFactura();
+          detaliiFactura.detaliiArticol();
+        });
+      }
+    });
+  }
+
+  //****************************** */
+  Future loadClient(String caut, String tabel, String numeServer) async {
+    //Cauta clientul dupa criteriul de cautare si returneaza datele lui, spre a fi adaugate in factura
+
+    // FormElement _formCautare = querySelector("#formCautare") as FormElement;
+    // LoadDetalii.incarcFormular('html/form_detalii.html');
+    //await Future.delayed(const Duration(milliseconds: 50));
+    //FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
+    //_formCautare.replaceWith(_formDetalii);
+
+    late final UListElement lista = querySelector('#listaDetalii') as UListElement;
+
+    Loader kk = Loader();
+    kk
+        .cautaPeServer(
+      criteriu: caut,
+      numeServer: numeServer,
+      opt: "r",
+      tabel: tabel,
+    )
+        .then((rezultat) {
+      //   window.alert(rezultat);
+      final _json = json.decode(rezultat);
+      lista.children.clear();
+      for (int i = 0; i < _json.length; i++) {
+        LIElement elem = LIElement();
+        lista.children.add(elem..text = _json[i]['denumire']);
+        elem.onClick.listen((e) async {
+          UBFClient.adresa = _json[i]['adresa'];
+          UBFClient.denumire = _json[i]['denumire'];
+          UBFClient.ciNr = _json[i]['ci_nr'];
+          UBFClient.ciPol = _json[i]['ci_pol'];
+          UBFClient.delegat = _json[i]['delegat'];
+          UBFClient.masina = _json[i]['masina'];
+          UBFClient.discount = int.parse(_json[i]['discount']);
+          UBFClient.tPlata = int.parse(_json[i]['t_plata']);
+          //Am stabilit clientul acum cautam articolele din factura
+          CautareElement.cautareElement('FACTURA');
         });
       }
     });
@@ -78,7 +125,7 @@ class LoadDetalii {
             lista.children.clear();
             //       FormElement formDetalii =querySelector("#formDetalii") as FormElement;
 
-            incarcFormular('html/form_tabel.html');
+            LoadDetalii.incarcFormular('html/form_tabel.html');
             await Future.delayed(const Duration(milliseconds: 50));
             Tabelare tabelul = Tabelare();
             FormElement formTabel = querySelector("#formTabel") as FormElement;
@@ -134,7 +181,7 @@ class LoadDetalii {
               lista.children.clear();
               //       FormElement formDetalii =querySelector("#formDetalii") as FormElement;
 
-              incarcFormular('html/form_tabel.html');
+              LoadDetalii.incarcFormular('html/form_tabel.html');
               await Future.delayed(const Duration(milliseconds: 50));
               Tabelare tabelul = Tabelare();
               FormElement formTabel = querySelector("#formTabel") as FormElement;
@@ -173,45 +220,6 @@ class LoadDetalii {
         RaspunsTabel.raspunsTabel(_json);
       } catch (e) {
         window.alert('EROARE!!!...' + e.toString());
-      }
-    });
-  }
-
-  loadIncarcareClient(String tabel, String numeServer, UBFClient? clientData) {
-//Incarca date pe server. Despre Useri sau Documente
-    Loader kk = Loader();
-    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tabel: tabel, clientData: clientData).then((rezultat) async {
-      //await Future.delayed(const Duration(milliseconds: 50));
-      // window.alert(rezultat);
-      try {
-        //     rezultat = rezultat.replaceAll("[", "");
-        // rezultat = rezultat.replaceAll("]", "");
-        final _json = json.decode(rezultat);
-        RaspunsTabel.raspunsTabel(_json);
-      } catch (e) {
-        window.alert('EROARE!!!...' + e.toString());
-      }
-    });
-  }
-
-  loadIncarcareUser(String tabel, String numeServer, UBFUser? docUser) {
-//Incarca date pe server. Despre Useri sau Documente
-    Loader kk = Loader();
-    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tabel: tabel, userData: docUser).then((rezultat) {
-      final _json = json.decode(rezultat);
-    });
-  }
-
-  static void incarcFormular(String url) async {
-//Metoda care insereaza formularele html in index.html
-    //String url = 'html/top_nav.html';
-    Element? _el = querySelector('#output');
-    await HttpRequest.postFormData(url, {}).then((HttpRequest response) {
-      String formular;
-
-      if (response.status == 200) {
-        formular = response.responseText!;
-        _el!.insertAdjacentHtml('beforebegin', formular);
       }
     });
   }

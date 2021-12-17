@@ -1,58 +1,53 @@
 
     <div id="container">
     
-      
+     <div class="tiparire">
         <section id="memo">
-          <div>
-          <div class="company-info">
-            <div>{company_name}</div>
-            <br>
-            <span>{company_address}</span> <br>
-            <span>{company_city_zip_state}</span><br>
-            <span>{company_phone_fax}</span> <br>
-            <span>{company_email_web}</span> </div>
-          <div class="middle">
-            <section id="invoice-title-number">
-            <table width="100%" height="100" cellspacing="0" cellpadding="0">
+          
+         
+            <section >
+            <table width="100%" height="100" border="1">
               <tbody>
                 <tr>
-                  <td>
-                    <div id="title" align="center" >F A C T U R A</div>
-                    <div>Data
-                      facturii: 03.05.2021<br>
-                      Data scadentă: 17.05.2021 </div>
+                  <td style="font-size:12px;" width="30%" valign="top"><strong>VANZATOR:</strong><br>
+            
+              <br>
+             <label id="company_name">UN BAIAT SI O FATA SRL</label><br>
+              <label id="company_address">Campulung, jud.Arges</label> <br>
+              <label id="company_cui">RO2323434</label> <br>
+              <label id="company_cif">J03/344/1994</label><br>
+              <label id="company_phone">0248-262540</label>  <br>
+              <label id="company_email">office@ubf.ro</label><br>
+              <label id="company_banca">RO34RZBR0000060002540032</label></td>
+                  <td width="40%" cellpadding="10">
+                    <div align="center" id="invoice-title-number" ><h1>F A C T U R A &nbsp;&nbsp;&nbsp;F I S C A L A</h1></div>
+                    <div align="center"><h2>Nr : <label id="nr_fact">UBF2022</label> &nbsp;&nbsp; din data de <label id="data_fact">15.12.2021</label></h2>
+                        </div>
+                      
                   </td>
+                  <td style="font-size:12px;" width="30%" valign="top"><strong>CUMPARATOR:</strong><br>
+                    <br>
+                    <label id="client_name">SC ZORILE SRL</label> <br>
+                    <label id="client_address">Pitesti, Str.Rozelor, nr.5, jud.Arges</label> <br>
+                    <label id="client_cui">RO12393842</label><br>
+                    <label id="client_cif">J03/5423/2002</label><br>
+                  <label id="company_phone">0248-262540</label>  <br>
+              <label id="company_email">client@client.ro</label> </td> 
                 </tr>
               </tbody>
             </table>
-            </section>
-          </div>
-          <div class="logo"><img
-            src="pictures/logo.png" alt="logo" title="logo"> </div>
-            </div>
+          
+         
+         
         </section>
         <table style="height:842px; width:595px;font-size:12px;" align="center"
-          cellspacing="0" cellpadding="0" border="0">
+          cellspacing="0" cellpadding="0" border="0" id="tabel_factura">
           <tbody>
             <tr>
               <td valign="top">
                 
                                 <br>
-                <table width="100%" cellspacing="0" cellpadding="0">
-                  <tbody>
-                    <tr>
-                      <td style="font-size:12px;" width="35%" valign="top"> <strong></strong><br>
-                      </td>
-                      <td width="35%" valign="top"> <br>
-                      </td>
-                      <td style="font-size:12px;" width="30%" valign="top"><strong>Numele
-                          clientului]</strong><br>
-                        [Adresa clientului] <br>
-                        Reg. com.: [Nr.Reg.Comertului]<br>
-                        CIF: [CIF al clientului] </td>
-                    </tr>
-                  </tbody>
-                </table>
+              
               	<div class="limiter">
                   <div class="container-table100">
                     <div class="wrap-table100">
@@ -60,12 +55,14 @@
                         <table>
                           <thead>
                             <tr class="table100-head">
-                              <th class="column1">Date</th>
-                              <th class="column2">Order ID</th>
-                              <th class="column3">Name</th>
-                              <th class="column4">Price</th>
-                              <th class="column5">Quantity</th>
-                              <th class="column6">Total</th>
+                              <th class="column1">Nr.<br>crt.</th>
+                              <th class="column2">Denumire produs</th>
+                              <th class="column3">U.M.</th>
+                              <th class="column4">Cota TVA</th>
+                              <th class="column5">Cantitate</th>
+                              <th class="column6">Pret Unitar</th>
+                              <th class="column6">Valoare</th>
+                              <th class="column6">T.V.A.</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -363,3 +360,4 @@
         </table>
       </div>
 
+    </div>  

@@ -1,11 +1,13 @@
 import 'dart:html';
+import 'dart:convert';
 import 'load_detalii.dart';
 import 'global.dart';
-import 'ubf_document.dart';
+import 'ubf_factura.dart';
+import '../meniuri/cautare_client.dart';
 import '../meniuri/cautare_element.dart';
 
-class DetaliiElement {
-  Future detaliiElement() async {
+class DetaliiFactura {
+  Future detaliiArticol() async {
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_element.html');
     await Future.delayed(const Duration(milliseconds: 50));
@@ -19,16 +21,18 @@ class DetaliiElement {
 
     _formDetalii.replaceWith(_formElement);
 
-    _textElem.innerHtml = UBFDocument.emitentDoc;
-    _denumire.defaultValue = Global.denumire;
-    _cod.defaultValue = 'Cod: ' + Global.cod_elem;
+    _textElem.innerHtml = UBFFactura.articol['denumire'];
+    _denumire.defaultValue = UBFFactura.articol['denumire'];
+    _cod.defaultValue = 'Cod: ' + UBFFactura.articol['codElem'];
 
     _btnAdaug.onClick.listen((e) {
-      Global.cantitate = _cantitate.value.toString();
-      Global.continut = Global.continut + Global.cod_elem + '|' + Global.cantitate + '^';
-      // window.alert('Continut= ${Global.continut}');
+      UBFFactura.articol['cantitate'] = _cantitate.value.toString();
+      //transform map in sir json
+      UBFFactura.articoleFactura = UBFFactura.articoleFactura + jsonEncode(UBFFactura.articol);
+
+      window.alert('Articole factura = ${UBFFactura.articoleFactura}}');
       _formElement.remove();
-      CautareElement.cautareElement("RETETAR");
+      CautareElement.cautareElement("FACTURA");
     });
 
     //cod.defaultValue = _json[i]['cod_elem'];

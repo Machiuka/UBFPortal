@@ -1,0 +1,97 @@
+#container {
+  position: relative;
+  width: 100%
+  }
+
+div {
+border-radius: 5px;
+color:black;
+}
+
+#header {
+height: 0px;
+background-color: #F38630;
+margin-bottom: 10px;
+}
+
+.left {
+  
+width: 95%;
+background-color: #A7DBD8;
+margin-bottom: 10px;
+  
+}
+
+.right {
+height: 100%;
+width: 25%;
+background-color: #E0E4CC;
+position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+margin-bottom: 10px;
+  
+}
+
+#footer {
+height: 0px;
+background-color: #69D2E7;
+clear: both;
+}
+
+#fixedright {
+  height: 50px;
+  width: calc(25% - 6px);
+  background-color: #FFFFFF;
+  position: fixed;
+ margin: 1px 1px 1px 1px;
+}
+
+thead {
+background: #231E5E;
+color: #FFF;
+}
+
+tbody tr:nth-child(odd) {
+background: #E9F5D7;
+  
+
+}
+
+tbody tr:hover {
+background-color: #86C133;
+}
+
+.customertable {
+  table-layout: fixed;
+  overflow-x:auto;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.shortcolumn {
+  width: 10%;
+  
+}
+
+.longcolumn {
+  width: 45%;
+  
+}
+
+.numbercolumn {
+  width: 25%;
+  
+  
+}
+#textMic{
+  font-size: 8px;
+  font-style: italic;
+}
+#invoice-title-number {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-align: center;
+  color: #858585;
+}

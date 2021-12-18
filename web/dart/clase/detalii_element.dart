@@ -1,5 +1,4 @@
 import 'dart:html';
-import 'dart:svg';
 import 'load_detalii.dart';
 import 'global.dart';
 import 'ubf_document.dart';
@@ -26,8 +25,7 @@ class DetaliiElement {
 
     _btnAdaug.onClick.listen((e) {
       Global.cantitate = _cantitate.value.toString();
-      Global.continut =
-          Global.continut + Global.cod_elem + '|' + Global.cantitate + '^';
+      Global.continut = Global.continut + Global.cod_elem + '|' + Global.cantitate + '^';
       // window.alert('Continut= ${Global.continut}');
       _formElement.remove();
       CautareElement.cautareElement("RETETAR");

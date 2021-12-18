@@ -19,7 +19,7 @@ class UBFServer {
 
     Map<String, dynamic> _obj;
     _obj = {
-      "bazaDate": "tbl_retete",
+      "bazaDate": "tbl_produse",
       "opt": "rd",
     };
 

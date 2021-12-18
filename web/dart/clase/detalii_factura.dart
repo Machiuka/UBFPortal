@@ -49,7 +49,9 @@ class DetaliiFactura {
       _formElement.remove();
       CautareElement.cautareElement("FACTURA");
     });
-
-    //cod.defaultValue = _json[i]['cod_elem'];
+    _btnAnulez.onClick.listen((e) {
+      _formElement.remove();
+      CautareElement.cautareElement('FACTURA');
+    });
   }
 }

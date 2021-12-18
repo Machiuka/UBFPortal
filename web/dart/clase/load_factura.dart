@@ -11,6 +11,7 @@ import 'ubf_client.dart';
 import 'load_detalii.dart';
 import 'detalii_factura.dart';
 import '../meniuri/adaugare_factura.dart';
+import '../meniuri/formular_meniu.dart';
 
 class LoadFactura {
   Future loadArticol(String caut, String tabel, String numeServer) async {
@@ -34,13 +35,18 @@ class LoadFactura {
       opt: "r",
       tabel: tabel,
     )
-        .then((rezultat) {
+        .then((rezultat) async {
       //   window.alert(rezultat);
       final _json = json.decode(rezultat);
       lista.children.clear();
       for (int i = 0; i < _json.length; i++) {
         LIElement elem = LIElement();
         lista.children.add(elem..text = _json[i]['denumire']);
+        if (_json[i]['denumire'] == "Nu s-au gasit rezultate") {
+          await Future.delayed(const Duration(seconds: 1));
+          _formDetalii.remove();
+          CautareElement.cautareElement('FACTURA');
+        }
         elem.onClick.listen((e) async {
           UBFFactura.articol['codElem'] = _json[i]['cod_elem'];
           UBFFactura.articol['denumire'] = _json[i]['denumire'];
@@ -75,26 +81,30 @@ class LoadFactura {
       opt: "r",
       tabel: tabel,
     )
-        .then((rezultat) {
+        .then((rezultat) async {
       //   window.alert(rezultat);
       final _json = json.decode(rezultat);
       lista.children.clear();
       for (int i = 0; i < _json.length; i++) {
         LIElement elem = LIElement();
         lista.children.add(elem..text = _json[i]['denumire']);
-        elem.onClick.listen((e) async {
-          UBFClient.adresa = _json[i]['adresa'];
-          UBFClient.denumire = _json[i]['denumire'];
-          UBFClient.ciNr = _json[i]['ci_nr'];
-          UBFClient.ciPol = _json[i]['ci_pol'];
-          UBFClient.delegat = _json[i]['delegat'];
-          UBFClient.masina = _json[i]['masina'];
-          UBFClient.discount = int.parse(_json[i]['discount']);
-          UBFClient.tPlata = int.parse(_json[i]['t_plata']);
-          //Am stabilit clientul acum cautam articolele din factura
-          _formDetalii.remove();
-          CautareElement.cautareElement('FACTURA');
-        });
+        if (_json[i]['denumire'] == "Nu s-au gasit rezultate") {
+          window.location.reload();
+        } else {
+          elem.onClick.listen((e) async {
+            UBFClient.adresa = _json[i]['adresa'];
+            UBFClient.denumire = _json[i]['denumire'];
+            UBFClient.ciNr = _json[i]['ci_nr'];
+            UBFClient.ciPol = _json[i]['ci_pol'];
+            UBFClient.delegat = _json[i]['delegat'];
+            UBFClient.masina = _json[i]['masina'];
+            UBFClient.discount = int.parse(_json[i]['discount']);
+            UBFClient.tPlata = int.parse(_json[i]['t_plata']);
+            //Am stabilit clientul acum cautam articolele din factura
+            _formDetalii.remove();
+            CautareElement.cautareElement('FACTURA');
+          });
+        }
       }
     });
   }

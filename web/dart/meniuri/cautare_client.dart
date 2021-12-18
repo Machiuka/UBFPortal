@@ -14,6 +14,9 @@ class CautareClient {
     FormElement _formCautare = querySelector('#formCautare') as FormElement;
     _formDetalii.replaceWith(_formCautare);
 
+    Element titluDetalii = querySelector('#titluDetalii') as Element;
+    titluDetalii.innerHtml = 'Cautare Client';
+
     InputElement _txtCautare = querySelector("#txtCautare") as InputElement;
 
     _btnOK.onClick.listen((e) {

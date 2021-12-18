@@ -20,6 +20,8 @@ class LoadFactura {
     LoadDetalii.incarcFormular('html/form_detalii.html');
     await Future.delayed(const Duration(milliseconds: 50));
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
+    DivElement _divButoane = querySelector('.butoane') as DivElement;
+    _divButoane.hidden = true;
     _formCautare.replaceWith(_formDetalii);
 
     late final UListElement lista = querySelector('#listaDetalii') as UListElement;
@@ -59,8 +61,9 @@ class LoadFactura {
     // FormElement _formCautare = querySelector("#formCautare") as FormElement;
     // LoadDetalii.incarcFormular('html/form_detalii.html');
     //await Future.delayed(const Duration(milliseconds: 50));
-    //FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
-    //_formCautare.replaceWith(_formDetalii);
+    FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
+    DivElement _divButoane = querySelector('.butoane') as DivElement; //nu am nevoie de butoane
+    _divButoane.hidden = true;
 
     late final UListElement lista = querySelector('#listaDetalii') as UListElement;
 
@@ -89,6 +92,7 @@ class LoadFactura {
           UBFClient.discount = int.parse(_json[i]['discount']);
           UBFClient.tPlata = int.parse(_json[i]['t_plata']);
           //Am stabilit clientul acum cautam articolele din factura
+          _formDetalii.remove();
           CautareElement.cautareElement('FACTURA');
         });
       }

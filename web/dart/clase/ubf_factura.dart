@@ -40,7 +40,7 @@ class UBFFactura {
 //sectiunea Cumparator o ia din clasa UBFClient
 
 //Sectiunea date
-  static Map<String, dynamic> articol = {'codElem': '', 'denumire': '', 'cantitate': 0, 'pret': 0, 'ctva': 9};
+  static Map<String, dynamic> articol = {'codElem': '', 'denumire': '', 'cantitate': 0, 'pret': 0, 'ctva': 9, 'valoare': 0, 'tva': 0};
 
   //static Map<String, dynamic> articoleFactura = {"produs": produs, "cantitate": cantitate, "pret": pret, "ctva": ctva};
   static String articoleFactura = ''; //Aici preia articolele in format JSON pt import ulterior in articole_factura din tbl_facturi

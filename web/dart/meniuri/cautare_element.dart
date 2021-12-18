@@ -10,12 +10,20 @@ class CautareElement {
   static void cautareElement(String titlu) async {
     //Element _divTopNav = querySelector('#top_nav') as Element;
     //_divTopNav.hidden = true;
-    //  FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
+
+    // FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
+
     LoadDetalii.incarcFormular('html/form_cautare.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
+    if (titlu == 'FACTURA') {
+      Element titluDetalii = querySelector('#titluDetalii') as Element;
+      titluDetalii.innerHtml = 'Cautare produs finit';
+    }
+
     Element _btnOK = querySelector('#btnOK') as Element;
     FormElement _formCautare = querySelector('#formCautare') as FormElement;
+
     //_formDetalii.replaceWith(_formCautare);
 
     InputElement _txtCautare = querySelector("#txtCautare") as InputElement;
@@ -54,7 +62,7 @@ class CautareElement {
 
           lf.loadArticol(caut!, "tbl_produse", "serverCautare");
         } else {
-          //De actualizat
+          //De actualizat *******************************
 
           LoadDetalii.incarcFormular('html/form_document.html'); //Este cerut la raspuns_tabel
           await Future.delayed(const Duration(milliseconds: 50));

@@ -23,3 +23,8 @@ class Aiurea {
     "webCumparator": webCumparator
   };
 }
+
+clientAddress.innerHtml = _json['date_cumparator']['adresaCumparator'];
+    clientcif.innerHtml = _json['date_cumparator']['cifCumparator'];
+    clientcui.innerHtml = _json['date_cumparator']['cuiCumparator'];
+    clientName.innerHtml = _json['date_cumparator']['numeCumparator'];

@@ -5,6 +5,7 @@ import 'global.dart';
 import 'ubf_factura.dart';
 import '../meniuri/cautare_client.dart';
 import '../meniuri/cautare_element.dart';
+import 'package:intl/intl.dart';
 
 class DetaliiFactura {
   Future detaliiArticol() async {
@@ -30,6 +31,7 @@ class DetaliiFactura {
     _cod.defaultValue = 'Cod: ' + UBFFactura.articol['codElem'];
 
     _btnAdaug.onClick.listen((e) {
+      //  UBFFactura.nrFact = (UBFFactura.nrFact! + 1);
       UBFFactura.articol['cantitate'] = _cantitate.value;
       UBFFactura.articol['ctva'] = _ctva.value;
       double ctva = double.parse(_ctva.value!);
@@ -44,8 +46,17 @@ class DetaliiFactura {
       UBFFactura.articol['valoare'] = val.toStringAsFixed(2);
       //transform map in sir json
       UBFFactura.articoleFactura = UBFFactura.articoleFactura + jsonEncode(UBFFactura.articol);
-
-      window.alert('Articole factura = ${UBFFactura.articoleFactura}');
+      final DateFormat formatareData = DateFormat('yyyy-M-dd');
+      UBFFactura.dataFact = formatareData.format(DateTime.now());
+      UBFFactura.totalFactFaraTva = UBFFactura.totalFactFaraTva + val;
+      UBFFactura.totalFactura = UBFFactura.totalFactura + valCuTva;
+      UBFFactura.tva = UBFFactura.tva + tva;
+      if (ctva == 19) {
+        UBFFactura.tva19 = UBFFactura.tva19 + tva;
+      } else {
+        UBFFactura.tva9 = UBFFactura.tva9 + tva;
+      }
+      // window.alert('Articole factura = ${UBFFactura.articoleFactura}');
       _formElement.remove();
       CautareElement.cautareElement("FACTURA");
     });

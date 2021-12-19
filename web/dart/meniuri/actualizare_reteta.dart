@@ -89,7 +89,7 @@ class ActualizareReteta {
               await Future.delayed(const Duration(milliseconds: 50));
               //   window.alert(Global.continut);
               formUpdate.remove();
-              ld.loadIncarcareDoc("tbl_produse", "serverUpdateReteta", UBFDocument());
+              ld.loadIncarcareDoc("tbl_produse", "serverUpdateReteta", "rt", UBFDocument());
             });
 
             _btnInapoi.onClick.listen((event) {

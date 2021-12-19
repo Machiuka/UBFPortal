@@ -11,7 +11,8 @@ import 'ubf_client.dart';
 import 'load_detalii.dart';
 import 'detalii_factura.dart';
 import '../meniuri/adaugare_factura.dart';
-import '../meniuri/formular_meniu.dart';
+import '../forms/invoice.dart';
+import '../forms/form_factura.dart';
 
 class LoadFactura {
   Future loadArticol(String caut, String tabel, String numeServer) async {
@@ -95,14 +96,17 @@ class LoadFactura {
             UBFClient.adresa = _json[i]['adresa'];
             UBFClient.denumire = _json[i]['denumire'];
             UBFClient.ciNr = _json[i]['ci_nr'];
+            UBFClient.cui = _json[i]['cod_fiscal'];
+            UBFClient.cif = _json[i]['reg_com'];
             UBFClient.ciPol = _json[i]['ci_pol'];
             UBFClient.delegat = _json[i]['delegat'];
+            UBFClient.analitic = _json[i]['analitic'];
             UBFClient.masina = _json[i]['masina'];
             UBFClient.discount = int.parse(_json[i]['discount']);
             UBFClient.tPlata = int.parse(_json[i]['t_plata']);
             //Am stabilit clientul acum cautam articolele din factura
             _formDetalii.remove();
-            CautareElement.cautareElement('FACTURA');
+            FormFactura.dateClient();
           });
         }
       }
@@ -221,20 +225,29 @@ class LoadFactura {
     });
   }
 
-  loadIncarcareDoc(String tabel, String numeServer, UBFDocument? docData) {
+  loadIncarcareFact(String tabel, String numeServer, String tipDoc, UBFFactura? factData) {
 //Incarca date pe server. Despre Useri sau Documente
     Loader kk = Loader();
-    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tabel: tabel, docData: docData).then((rezultat) async {
-      //await Future.delayed(const Duration(milliseconds: 50));
-      // window.alert(rezultat);
-      try {
-        //     rezultat = rezultat.replaceAll("[", "");
-        // rezultat = rezultat.replaceAll("]", "");
-        final _json = json.decode(rezultat);
-        RaspunsTabel.raspunsTabel(_json);
-      } catch (e) {
-        window.alert('EROARE!!!...' + e.toString());
-      }
-    });
+    if (factData != null) {
+      kk.adaugaPeServer(numeServer: numeServer, opt: "c", tipDoc: tipDoc, tabel: tabel, factData: factData).then((rezultat) async {
+        //await Future.delayed(const Duration(milliseconds: 50));
+
+        try {
+          //Elimina \ si " din rezulttat
+          rezultat = rezultat.replaceAll("\\", "");
+          rezultat = rezultat.replaceAll('"{', '{');
+          rezultat = rezultat.replaceAll('}"', '}');
+          //print(rezultat);
+
+          final _json = json.decode(rezultat);
+          //   window.alert(rezultat);
+          Invoice.afisFactura(_json);
+        } catch (e) {
+          window.alert('EROARE!!!...' + e.toString());
+        }
+      });
+    } else {
+      window.alert('factData NULL');
+    }
   }
 }

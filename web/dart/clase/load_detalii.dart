@@ -160,10 +160,10 @@ class LoadDetalii {
     });
   }
 
-  loadIncarcareDoc(String tabel, String numeServer, UBFDocument? docData) {
+  loadIncarcareDoc(String tabel, String numeServer, String tipDoc, UBFDocument? docData) {
 //Incarca date pe server. Despre Useri sau Documente
     Loader kk = Loader();
-    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tabel: tabel, docData: docData).then((rezultat) async {
+    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tipDoc: tipDoc, tabel: tabel, docData: docData).then((rezultat) async {
       //await Future.delayed(const Duration(milliseconds: 50));
       // window.alert(rezultat);
       try {
@@ -177,10 +177,10 @@ class LoadDetalii {
     });
   }
 
-  loadIncarcareClient(String tabel, String numeServer, UBFClient? clientData) {
+  loadIncarcareClient(String tabel, String numeServer, String tipDoc, UBFClient? clientData) {
 //Incarca date pe server. Despre Useri sau Documente
     Loader kk = Loader();
-    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tabel: tabel, clientData: clientData).then((rezultat) async {
+    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tipDoc: tipDoc, tabel: tabel, clientData: clientData).then((rezultat) async {
       //await Future.delayed(const Duration(milliseconds: 50));
       // window.alert(rezultat);
       try {
@@ -194,10 +194,10 @@ class LoadDetalii {
     });
   }
 
-  loadIncarcareUser(String tabel, String numeServer, UBFUser? docUser) {
+  loadIncarcareUser(String tabel, String tipDoc, String numeServer, UBFUser? docUser) {
 //Incarca date pe server. Despre Useri sau Documente
     Loader kk = Loader();
-    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tabel: tabel, userData: docUser).then((rezultat) {
+    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tipDoc: tipDoc, tabel: tabel, userData: docUser).then((rezultat) {
       final _json = json.decode(rezultat);
     });
   }

@@ -22,7 +22,7 @@ class UBFClient {
   static String? numeAgent;
   static int tPlata = 0;
 
-  Map toJson() => {
+  Map<String, dynamic> toJson() => {
         'idx': idx,
         'codElem': codElem,
         'denumire': denumire,

@@ -4,6 +4,7 @@ import 'dart:svg';
 import '../clase/load_detalii.dart';
 import '../clase/global.dart';
 import '../clase/ubf_document.dart';
+import '../clase/ubf_factura.dart';
 import '../clase/load_factura.dart';
 
 class CautareElement {
@@ -52,7 +53,7 @@ class CautareElement {
           //   window.alert(Global.continut);
           _formCautare.remove();
 
-          ld.loadIncarcareDoc("tbl_produse", "serverAdaugReteta", UBFDocument());
+          ld.loadIncarcareDoc("tbl_produse", "serverAdaugReteta", "rt", UBFDocument());
         }
       }
       if (titlu == 'FACTURA') {
@@ -62,14 +63,9 @@ class CautareElement {
 
           lf.loadArticol(caut!, "tbl_produse", "serverCautare");
         } else {
-          //De actualizat *******************************
-
-          LoadDetalii.incarcFormular('html/form_document.html'); //Este cerut la raspuns_tabel
-          await Future.delayed(const Duration(milliseconds: 50));
-          //   window.alert(Global.continut);
           _formCautare.remove();
 
-          ld.loadIncarcareDoc("tbl_produse", "serverAdaugReteta", UBFDocument());
+          lf.loadIncarcareFact("tbl_facturi", "serverAdaugFactura", "fe", UBFFactura());
         }
       }
     });

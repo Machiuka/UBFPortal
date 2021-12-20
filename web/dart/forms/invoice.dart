@@ -28,6 +28,10 @@ class Invoice {
     SpanElement dataDoc1 = querySelector('.dataDoc1') as SpanElement;
     SpanElement dataDoc2 = querySelector('.dataDoc2') as SpanElement;
     SpanElement dataDoc3 = querySelector('.dataDoc3') as SpanElement;
+    SpanElement totalGeneral = querySelector('#totalGeneral') as SpanElement;
+    SpanElement totalTVA19 = querySelector('#totalTVA19') as SpanElement;
+    SpanElement totalTVA9 = querySelector('#totalTVA9') as SpanElement;
+    SpanElement totalFact = querySelector('#totalFact') as SpanElement;
 
     LabelElement nrFact = querySelector('#nr_fact') as LabelElement;
 
@@ -56,6 +60,10 @@ class Invoice {
     dataDoc1.innerHtml = _json['data_fact'];
     dataDoc2.innerHtml = _json['data_fact'];
     dataDoc3.innerHtml = _json['data_fact'];
+    totalGeneral.innerHtml = _json['total_factura'];
+    totalFact.innerHtml = _json['total_fara_tva'];
+    totalTVA9.innerHtml = _json['tva_9'];
+    totalTVA19.innerHtml = _json['tva_19'];
 
     //Incarc zona client
     clientName.innerHtml = _json['date_cumparator']['denumire'];
@@ -67,5 +75,46 @@ class Invoice {
     ciDelegat.innerHtml = _json['date_cumparator']['ciNr'];
     masina.innerHtml = _json['date_cumparator']['masina'];
     ciPol.innerHtml = _json['date_cumparator']['ciPol'];
+
+    //Zona tabel factura
+    //Map<String, dynamic> articoleFact = _json['articole_fact'];
+    TableSectionElement tabel = querySelector('#tableBody') as TableSectionElement;
+    TableRowElement row = TableRowElement();
+    TableCellElement cell = TableCellElement();
+
+    SpanElement celDenumire = querySelector('#celDenumire') as SpanElement;
+
+    Map<String, dynamic> articol;
+
+    List<dynamic> articoleFact = _json['articole_fact'];
+    for (var i = 0; i < articoleFact.length; i++) {
+      //articoleFact este o lista. Fiecare articol este un sir de tip Json.
+      // Pentru a o transforma in map trebuie intai sa folosesc encode, sa il recunoasca ca
+      //json nu sir. Apoi cu decode din json il facem map
+
+      var articolul = jsonEncode((articoleFact[i]));
+      articol = jsonDecode(articolul);
+
+      row = tabel.insertRow(-1); //insereaza rand in tabel
+      cell = row.insertCell(0);
+      cell.text = (i + 1).toString();
+      cell = row.insertCell(1);
+      cell.text = articol['denumire'];
+      cell = row.insertCell(2);
+      cell.text = articol['unit_mas'];
+      cell = row.insertCell(3);
+      cell.text = articol['ctva'];
+      cell = row.insertCell(4);
+      cell.text = articol['cantitate'];
+      cell = row.insertCell(5);
+      cell.text = articol['pret'];
+      cell = row.insertCell(6);
+      cell.text = articol['valoare'];
+      cell = row.insertCell(7);
+      cell.text = articol['tva'];
+
+      //window.alert(articol['denumire']);
+
+    }
   }
 }

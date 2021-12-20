@@ -53,6 +53,10 @@ class Loader {
     }
 
     String _js = jsonEncode(_obj);
+    _js = _js.replaceAll("\\", "");
+    _js = _js.replaceAll('"{', '[{');
+    _js = _js.replaceAll(',"}}', ']}}');
+
     // window.alert(_js);
     String _path = 'http://localhost/' + numeServer + '?x=' + _js;
     // print(_path);

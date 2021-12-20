@@ -53,6 +53,11 @@ class LoadFactura {
           UBFFactura.articol['denumire'] = _json[i]['denumire'];
           UBFFactura.articol['pret'] = _json[i]['pret_vanzare'];
           UBFFactura.articol['ctva'] = _json[i]['cota_tva'];
+          if (_json[i]['gramaj'] == 1000) {
+            UBFFactura.articol['unit_mas'] = 'kg';
+          } else {
+            UBFFactura.articol['unit_mas'] = 'buc';
+          }
 
           DetaliiFactura detaliiFactura = DetaliiFactura();
           detaliiFactura.detaliiArticol();
@@ -241,6 +246,7 @@ class LoadFactura {
 
           final _json = json.decode(rezultat);
           //   window.alert(rezultat);
+          //print(rezultat);
           Invoice.afisFactura(_json);
         } catch (e) {
           window.alert('EROARE!!!...' + e.toString());

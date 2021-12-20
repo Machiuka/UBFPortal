@@ -20,7 +20,7 @@ class UBFClient {
   static String? ciPol;
   static String? masina;
   static String? numeAgent;
-  static int tPlata = 0;
+  static int? tPlata;
 
   Map<String, dynamic> toJson() => {
         'idx': idx,

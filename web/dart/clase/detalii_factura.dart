@@ -41,7 +41,9 @@ class DetaliiFactura {
       double tva = tvaProdus * cantitate;
       double valCuTva = pret * cantitate;
       double val = valCuTva - tva;
+      pret = pret - tvaProdus;
 
+      UBFFactura.articol['pret'] = pret.toStringAsFixed(2);
       UBFFactura.articol['tva'] = tva.toStringAsFixed(2);
       UBFFactura.articol['valoare'] = val.toStringAsFixed(2);
       //transform map in sir json

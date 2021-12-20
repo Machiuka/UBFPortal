@@ -5,6 +5,7 @@ import '../clase/css.dart';
 import 'adaugare_reteta.dart';
 import 'stergere_reteta.dart';
 import 'cautare_client.dart';
+import 'cautare_factura.dart';
 
 class FormularMeniu {
   static void formularMeniu(String titlu) async {
@@ -27,6 +28,9 @@ class FormularMeniu {
     _btnCautare.onClick.listen((e) {
       if (titlu == "RETETAR") {
         CautareReteta.cautareReteta(titlu);
+      }
+      if (titlu == "FACTURA") {
+        CautareFactura.cautareFactura(titlu);
       }
     });
     _btnAdaugare.onClick.listen((e) {

@@ -19,7 +19,7 @@ class ActualizareReteta {
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServer,
-      opt: "r",
+      optiune: "r",
       tabel: tabel,
     )
         .then((rezultat) {
@@ -31,7 +31,7 @@ class ActualizareReteta {
         lista.children.add(elem..text = _json[i]['denumire']);
         elem.onClick.listen((e) {
           String crit = elem.innerHtml.toString();
-          kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServer, opt: "r").then((value) async {
+          kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServer, optiune: "r").then((value) async {
             value = value.replaceAll("[", "");
             value = value.replaceAll("]", "");
             //   window.alert(value);

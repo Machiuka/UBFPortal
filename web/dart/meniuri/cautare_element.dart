@@ -1,8 +1,7 @@
 import 'dart:html';
-import 'dart:convert';
-import 'dart:svg';
 import '../clase/load_detalii.dart';
 import '../clase/global.dart';
+import '../clase/ubf_client.dart';
 import '../clase/ubf_document.dart';
 import '../clase/ubf_factura.dart';
 import '../clase/load_factura.dart';
@@ -64,7 +63,24 @@ class CautareElement {
           lf.loadArticol(caut!, "tbl_produse", "serverCautare");
         } else {
           _formCautare.remove();
-
+          if (UBFFactura.discount > 0) {
+            UBFClient.discount = UBFFactura.discount;
+          }
+          //calculeaza discount
+          if (UBFClient.discount! > 0) {
+            int? discount = UBFClient.discount;
+            UBFFactura.discount = discount!;
+            UBFFactura.valDiscount = UBFFactura.totalFactFaraTva * discount / 100;
+            UBFFactura.totalFactFaraTva = UBFFactura.totalFactFaraTva - UBFFactura.valDiscount;
+            UBFFactura.tvaDiscount = UBFFactura.tva19 * discount / 100;
+            UBFFactura.tva19 = UBFFactura.tva19 - UBFFactura.tvaDiscount;
+            UBFFactura.tvaDiscount = UBFFactura.tva9 * discount / 100;
+            UBFFactura.tva9 = UBFFactura.tva9 - UBFFactura.tvaDiscount;
+            UBFFactura.tvaDiscount = UBFFactura.tva * discount / 100;
+            UBFFactura.tva = UBFFactura.tva - UBFFactura.tvaDiscount;
+            UBFFactura.totalFactura = UBFFactura.totalFactFaraTva + UBFFactura.tva;
+          }
+          UBFFactura.termenPlata = UBFClient.tPlata!;
           lf.loadIncarcareFact("tbl_facturi", "serverAdaugFactura", "fe", UBFFactura());
         }
       }

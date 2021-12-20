@@ -33,7 +33,7 @@ class LoadFactura {
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServer,
-      opt: "r",
+      optiune: "r",
       tabel: tabel,
     )
         .then((rezultat) async {
@@ -84,7 +84,7 @@ class LoadFactura {
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServer,
-      opt: "r",
+      optiune: "r",
       tabel: tabel,
     )
         .then((rezultat) async {
@@ -121,52 +121,29 @@ class LoadFactura {
   loadInterogare(String caut, String tabel, String numeServerPrimar, [String numeServerSecundar = '']) {
     //cauta pe serverul primar ceea ce primeste din meniul cautare si afiseaza detaliile primite de pe serverul secundar
     //de pe serverul primar primeste o lista clickabila si de pe cel secundar primeste un tabel cu detaliile elementului selectat din lista
-    late final UListElement lista = querySelector('#listaDetalii') as UListElement;
-    FormElement formDetalii = querySelector("#formDetalii") as FormElement;
+
     Loader kk = Loader();
     kk
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServerPrimar,
-      opt: "r",
+      optiune: "r",
       tabel: tabel,
     )
-        .then((rezultat) {
-      final _json = json.decode(rezultat);
-      lista.children.clear();
-      for (int i = 0; i < _json.length; i++) {
-        LIElement elem = LIElement();
-        lista.children.add(elem..text = _json[i]['denumire']);
-        elem.onClick.listen((e) {
-          String crit = elem.innerHtml.toString();
-          kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServerSecundar, opt: "r").then((value) async {
-            value = value.replaceAll("[", "");
-            value = value.replaceAll("]", "");
-            //     window.alert('Value este $value');
-            final _js = json.decode(value);
+        .then((rezultat) async {
+      try {
+        //Elimina \ si " din rezulttat
+        rezultat = rezultat.replaceAll("\\", "");
+        rezultat = rezultat.replaceAll('"{', '{');
+        rezultat = rezultat.replaceAll('}"', '}');
+        //print(rezultat);
 
-            lista.children.clear();
-            //       FormElement formDetalii =querySelector("#formDetalii") as FormElement;
-
-            LoadDetalii.incarcFormular('html/form_tabel.html');
-            await Future.delayed(const Duration(milliseconds: 50));
-            Tabelare tabelul = Tabelare();
-            FormElement formTabel = querySelector("#formTabel") as FormElement;
-            Element titluTabel = querySelector("#titluTabel") as Element;
-            Element btnInapoi = querySelector("#btnCCC") as Element;
-            formDetalii.replaceWith(
-                formTabel); //inlocuie formDetalii cu formTabel. Proprietatea hidden nu a functionat, iar remove() pierde metodele atasate butoanelor
-            tabelul.adauga(_js, 'tabelDetalii', 0);
-            btnInapoi.onClick.listen((event) {
-              formTabel.replaceWith(formDetalii);
-            });
-
-            titluTabel.innerHtml = "Detalii pt $crit";
-            //   window.alert(titluTabel.innerHtml);
-
-            //window.alert(_js.toString());
-          });
-        });
+        final _json = json.decode(rezultat);
+        //window.alert(rezultat);
+        //print(rezultat);
+        Invoice.afisFactura(_json);
+      } catch (e) {
+        window.alert('EROARE!!!...' + e.toString());
       }
     });
   }
@@ -180,7 +157,7 @@ class LoadFactura {
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServer,
-      opt: "r",
+      optiune: "r",
       tabel: tabel,
     )
         .then((rezultat) {
@@ -195,7 +172,7 @@ class LoadFactura {
           if (confirmare) {
             String crit = _json[i]['id'].toString();
             //    window.alert('Criteriul de stergere este $crit');
-            kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServer, opt: "d").then((value) async {
+            kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServer, optiune: "d").then((value) async {
               value = value.replaceAll("[", "");
               value = value.replaceAll("]", "");
 

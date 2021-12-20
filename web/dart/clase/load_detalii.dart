@@ -27,7 +27,7 @@ class LoadDetalii {
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServer,
-      opt: "r",
+      optiune: "r",
       tabel: tabel,
     )
         .then((rezultat) {
@@ -58,7 +58,7 @@ class LoadDetalii {
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServerPrimar,
-      opt: "r",
+      optiune: "r",
       tabel: tabel,
     )
         .then((rezultat) {
@@ -69,7 +69,7 @@ class LoadDetalii {
         lista.children.add(elem..text = _json[i]['denumire']);
         elem.onClick.listen((e) {
           String crit = elem.innerHtml.toString();
-          kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServerSecundar, opt: "r").then((value) async {
+          kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServerSecundar, optiune: "r").then((value) async {
             value = value.replaceAll("[", "");
             value = value.replaceAll("]", "");
             //     window.alert('Value este $value');
@@ -110,7 +110,7 @@ class LoadDetalii {
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServer,
-      opt: "r",
+      optiune: "r",
       tabel: tabel,
     )
         .then((rezultat) {
@@ -125,7 +125,7 @@ class LoadDetalii {
           if (confirmare) {
             String crit = _json[i]['id'].toString();
             //    window.alert('Criteriul de stergere este $crit');
-            kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServer, opt: "d").then((value) async {
+            kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServer, optiune: "d").then((value) async {
               value = value.replaceAll("[", "");
               value = value.replaceAll("]", "");
 

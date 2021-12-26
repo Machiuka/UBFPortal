@@ -60,7 +60,7 @@ class CautareElement {
         if (caut != '') {
           //sterg formularul pentru a nu se adauga cautare peste cautare
 
-          lf.loadArticol(caut!, "tbl_produse", "serverCautare");
+          lf.loadArticol('fe', caut!, "tbl_produse", "serverCautare");
         } else {
           _formCautare.remove();
           if (UBFFactura.discount > 0) {

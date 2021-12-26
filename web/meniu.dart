@@ -4,7 +4,6 @@ import 'dart/clase/global.dart';
 import 'package:intl/intl.dart';
 import 'dart/meniuri/rapoarte_meniu.dart';
 import 'dart/meniuri/formular_meniu.dart';
-import 'dart/meniuri/incarc_factura.dart';
 import 'dart/clase/svg_file.dart';
 import 'dart/meniuri/livrare_meniu.dart';
 import 'dart/clase/css.dart';

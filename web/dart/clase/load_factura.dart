@@ -10,12 +10,12 @@ import 'detalii_element.dart';
 import 'ubf_client.dart';
 import 'load_detalii.dart';
 import 'detalii_factura.dart';
-import '../meniuri/adaugare_factura.dart';
+
 import '../forms/invoice.dart';
 import '../forms/form_factura.dart';
 
 class LoadFactura {
-  Future loadArticol(String caut, String tabel, String numeServer) async {
+  Future loadArticol(String tipDoc, String caut, String tabel, String numeServer) async {
     //cauta produse pt factura
 
     FormElement _formCautare = querySelector("#formCautare") as FormElement;
@@ -52,7 +52,9 @@ class LoadFactura {
           UBFFactura.articol['codElem'] = _json[i]['cod_elem'];
           UBFFactura.articol['denumire'] = _json[i]['denumire'];
           UBFFactura.articol['pret'] = _json[i]['pret_vanzare'];
-          UBFFactura.articol['ctva'] = _json[i]['cota_tva'];
+          if (tipDoc == 'fe') {
+            UBFFactura.articol['ctva'] = _json[i]['cota_tva'];
+          }
           if (_json[i]['gramaj'] == 1000) {
             UBFFactura.articol['unit_mas'] = 'kg';
           } else {
@@ -67,7 +69,7 @@ class LoadFactura {
   }
 
   //****************************** */
-  Future loadClient(String caut, String tabel, String numeServer) async {
+  Future loadClient(String tipDoc, String caut, String tabel, String numeServer) async {
     //Cauta clientul dupa criteriul de cautare si returneaza datele lui, spre a fi adaugate in factura
 
     // FormElement _formCautare = querySelector("#formCautare") as FormElement;
@@ -107,18 +109,20 @@ class LoadFactura {
             UBFClient.delegat = _json[i]['delegat'];
             UBFClient.analitic = _json[i]['analitic'];
             UBFClient.masina = _json[i]['masina'];
-            UBFClient.discount = int.parse(_json[i]['discount']);
-            UBFClient.tPlata = int.parse(_json[i]['t_plata']);
+            if (tipDoc == 'fe') {
+              UBFClient.discount = int.parse(_json[i]['discount']);
+              UBFClient.tPlata = int.parse(_json[i]['t_plata']);
+            }
             //Am stabilit clientul acum cautam articolele din factura
             _formDetalii.remove();
-            FormFactura.dateClient();
+            FormFactura.dateClient(tipDoc);
           });
         }
       }
     });
   }
 
-  loadInterogare(String caut, String tabel, String numeServerPrimar, [String numeServerSecundar = '']) {
+  loadInterogare(String tipDoc, String caut, String tabel, String numeServerPrimar, [String numeServerSecundar = '']) {
     //cauta pe serverul primar ceea ce primeste din meniul cautare si afiseaza detaliile primite de pe serverul secundar
     //de pe serverul primar primeste o lista clickabila si de pe cel secundar primeste un tabel cu detaliile elementului selectat din lista
 
@@ -141,7 +145,7 @@ class LoadFactura {
         final _json = json.decode(rezultat);
         //window.alert(rezultat);
         //print(rezultat);
-        Invoice.afisFactura(_json);
+        Invoice.afisFactura(tipDoc, _json);
       } catch (e) {
         window.alert('EROARE!!!...' + e.toString());
       }
@@ -224,7 +228,7 @@ class LoadFactura {
           final _json = json.decode(rezultat);
           //   window.alert(rezultat);
           //print(rezultat);
-          Invoice.afisFactura(_json);
+          Invoice.afisFactura(tipDoc, _json);
         } catch (e) {
           window.alert('EROARE!!!...' + e.toString());
         }

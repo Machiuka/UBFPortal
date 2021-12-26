@@ -3,12 +3,18 @@ import '../meniuri/cautare_element.dart';
 import '../clase/load_detalii.dart';
 import '../clase/ubf_factura.dart';
 import '../clase/ubf_client.dart';
+import '../clase/global.dart';
 
 class FormFactura {
-  static void dateClient() async {
-    LoadDetalii.incarcFormular('html/form_factura.html');
+  static void dateClient(String tipDoc) async {
+    //tip doc poate sa fie fi, fe, av, rt. Aici putem avea fe sau av
+    String formular = 'html/form_factura.html';
+
+    LoadDetalii.incarcFormular(formular);
     await Future.delayed(const Duration(milliseconds: 50));
     FormElement _formFactura = querySelector("#formFactura") as FormElement;
+    DivElement _isFactura = querySelector('#isFactura') as DivElement;
+
     Element _btnAnulare = querySelector("#btnAnulareF") as Element;
     Element _btnAdauga = querySelector("#btnAdaugaF") as Element;
     InputElement _nrFact = querySelector("#nrFact") as InputElement;
@@ -20,20 +26,41 @@ class FormFactura {
     InputElement _discount = querySelector("#discount") as InputElement;
     InputElement _tPlata = querySelector("#tPlata") as InputElement;
 
-    _discount.defaultValue = UBFClient.discount.toString();
-    _tPlata.defaultValue = UBFClient.tPlata.toString();
+    if (tipDoc == 'fe') {
+      _discount.defaultValue = UBFClient.discount.toString();
+      _tPlata.defaultValue = UBFClient.tPlata.toString();
+      _nrFact.defaultValue = (Global.ultimNumar['nrFactura']! + 1).toString();
+    }
+    if (tipDoc == 'av') {
+      _isFactura.hidden = true; //la aviz nu am nevoie de ce este in div isFactura din form_factura.html
+      _nrFact.defaultValue = (Global.ultimNumar['nrAviz']! + 1).toString();
+    }
+
+    _numeClient.defaultValue = UBFClient.denumire;
 
     _btnAdauga.onClick.listen((e) {
-      UBFClient.discount = int.parse(_discount.value!);
-      UBFClient.tPlata = int.parse(_tPlata.value!);
+      UBFFactura.nrFact = int.parse(_nrFact.defaultValue!);
+      if (tipDoc == 'fe') {
+        UBFClient.discount = int.parse(_discount.value!);
+        UBFClient.tPlata = int.parse(_tPlata.value!);
+        Global.ultimNumar['nrFactura'] = UBFFactura.nrFact!;
+      }
+      if (tipDoc == 'av') {
+        Global.ultimNumar['nrAviz'] = UBFFactura.nrFact!;
+      }
+
       UBFClient.delegat = _delegat.value;
       UBFClient.ciNr = _ciDelegat.value;
       UBFClient.ciPol = _ciPol.value;
       UBFClient.masina = _masina.value;
-      UBFFactura.nrFact = int.parse(_nrFact.value!);
-      _formFactura.remove();
 
-      CautareElement.cautareElement('FACTURA');
+      _formFactura.remove();
+      if (tipDoc == 'fe') {
+        CautareElement.cautareElement('FACTURA');
+      }
+      if (tipDoc == 'av') {
+        CautareElement.cautareElement('AVIZ');
+      }
     });
   }
 }

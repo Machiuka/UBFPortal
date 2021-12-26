@@ -1,7 +1,6 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/load_factura.dart';
-import 'actualizare_reteta.dart';
 
 class CautareFactura {
   static void cautareFactura(String titlu) async {
@@ -25,13 +24,13 @@ class CautareFactura {
         if (caut != null) {
           _formCautare.remove();
 
-          lf.loadInterogare(caut, "tbl_facturi", "serverAdaugFactura", "");
+          lf.loadInterogare('fe', caut, "tbl_facturi", "serverAdaugFactura", "");
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }
       } else if (titlu == 'AVIZ') {
         if (caut != null) {
-          lf.loadInterogare(caut, "tbl_avize", "serverAdaugFactura", "");
+          lf.loadInterogare('av', caut, "tbl_avize", "serverAdaugFactura", "");
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }

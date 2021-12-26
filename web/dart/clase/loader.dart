@@ -13,13 +13,12 @@ class Loader {
     "Accept": "application/json",
   };
 
-  // Future<void> makeRequest(Event _) async {
   Future<String> cautaPeServer({required String criteriu, required String tabel, required String numeServer, required String optiune}) async {
     numeServer = numeServer + ".php";
     //const path = 'https://netta.ro/ubf/test/'.?numeServer.'?x={"obj":"pf"}';
     String path = 'http://localhost/' + numeServer + '?x={"criteriu":"$criteriu", "tabel":"$tabel", "optiune":"$optiune"}';
     //window.alert(path);
-    print(path);
+    // window.alert(path);
     // var response = await http.get(Uri.parse(path), headers: _headers);
     var response = await http.get(Uri.parse(path));
     if (response.statusCode == 200) {
@@ -48,7 +47,7 @@ class Loader {
     if (tipDoc == 'rt') {
       _obj = null;
       _obj = {"tabel": tabel, "docData": docData!.toJson(), "userData": userData};
-    } else if (tipDoc == 'fe') {
+    } else if (tipDoc == 'fe' || tipDoc == 'av') {
       _obj = null;
       _obj = {"tabel": tabel, "optiune": opt, "factData": factData!.toJson()};
     }

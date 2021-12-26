@@ -11,7 +11,7 @@ class LivrareMeniu {
     Element _divTopNav = querySelector('#top_nav') as Element;
     _divTopNav.hidden = true;
     LoadDetalii.incarcFormular('html/livrare_nav.html');
-    await Future.delayed(const Duration(milliseconds: 50));
+    await Future.delayed(const Duration(milliseconds: 350));
 
     Element _btnFacturi = querySelector('#btnFacturi') as Element;
     Element _btnAvize = querySelector('#btnAvize') as Element;
@@ -23,7 +23,8 @@ class LivrareMeniu {
       FormularMeniu.formularMeniu('FACTURA');
     });
     _btnAvize.onClick.listen((e) {
-      window.alert('Apasat buton Avize');
+      _divLivrariNav.remove();
+      FormularMeniu.formularMeniu('AVIZ');
     });
 
     _btnBack.onClick.listen((e) {

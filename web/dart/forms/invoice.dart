@@ -7,9 +7,9 @@ import '../clase/css.dart';
 import 'package:intl/intl.dart';
 
 class Invoice {
-  static void afisFactura(Map<String, dynamic> _json) async {
+  static void afisFactura(String tipDoc, Map<String, dynamic> _json) async {
     if (_json['nr_fact'] == null) {
-      window.alert('Factura Inexistenta!!!');
+      window.alert('Document Inexistent!!!');
       window.location.reload();
     } else {
       CSS.eliminaCSS("css/styles.css");
@@ -18,8 +18,12 @@ class Invoice {
       CSS.aplicaCSS("css/invoice.css");
 
       // ignore: unnecessary_null_comparison
+      String formular = 'html/invoice.html';
+      if (tipDoc == 'av') {
+        formular = 'html/aviz.html';
+      }
 
-      LoadDetalii.incarcFormular('html/invoice.html');
+      LoadDetalii.incarcFormular(formular);
       await Future.delayed(const Duration(milliseconds: 350));
 
       DivElement divFactura = querySelector('#divFactura') as DivElement;
@@ -57,13 +61,16 @@ class Invoice {
 //*************** */
 
       final DateFormat formatareData = DateFormat('dd.M.yyyy');
-
-      int termenPlata = int.parse(_json['termen_plata']);
       DateTime dataF = DateTime.parse(_json['data_fact']);
-      DateTime dataP = dataF.add(new Duration(days: termenPlata));
       String dataFs = formatareData.format(dataF);
-      String dataFp = formatareData.format(dataP);
-      tPlata.innerHtml = _json['termen_plata'];
+
+      if (tipDoc == 'fe') {
+        int termenPlata = int.parse(_json['termen_plata']);
+        DateTime dataP = dataF.add(new Duration(days: termenPlata));
+        String dataFp = formatareData.format(dataP);
+        tPlata.innerHtml = _json['termen_plata'];
+        dataDoc3.innerHtml = dataFp;
+      }
 
 //Incarc zona Vanzator
       webpage.innerHtml = _json['date_vanzator']['webVanzator'];
@@ -78,11 +85,19 @@ class Invoice {
 
       dataDoc1.innerHtml = dataFs;
       dataDoc2.innerHtml = dataFs;
-      dataDoc3.innerHtml = dataFp;
-      totalGeneral.innerHtml = _json['total_factura'];
       totalFact.innerHtml = _json['total_fara_tva'];
-      totalTVA9.innerHtml = _json['tva_9'];
-      totalTVA19.innerHtml = _json['tva_19'];
+      double valDiscount = 0;
+      double tvaDiscount = 0;
+      String discount = '';
+
+      if (tipDoc == 'fe') {
+        totalGeneral.innerHtml = _json['total_factura'];
+        totalTVA9.innerHtml = _json['tva_9'];
+        totalTVA19.innerHtml = _json['tva_19'];
+        valDiscount = double.parse(_json['val_discount']);
+        tvaDiscount = double.parse(_json['tva_discount']);
+        discount = _json['discount'];
+      }
 
       //Incarc zona client
       clientName.innerHtml = _json['date_cumparator']['denumire'];
@@ -94,9 +109,6 @@ class Invoice {
       ciDelegat.innerHtml = _json['date_cumparator']['ciNr'];
       masina.innerHtml = _json['date_cumparator']['masina'];
       ciPol.innerHtml = _json['date_cumparator']['ciPol'];
-      double valDiscount = double.parse(_json['val_discount']);
-      double tvaDiscount = double.parse(_json['tva_discount']);
-      String discount = _json['discount'];
 
       //Zona tabel factura
       //Map<String, dynamic> articoleFact = _json['articole_fact'];
@@ -108,7 +120,9 @@ class Invoice {
       Map<String, dynamic> articol;
 
       List<dynamic> articoleFact = _json['articole_fact'];
+      int k;
       for (var i = 0; i < articoleFact.length; i++) {
+        k = 0;
         //articoleFact este o lista. Fiecare articol este un sir de tip Json.
         // Pentru a o transforma in map trebuie intai sa folosesc encode, sa il recunoasca ca
         //json nu sir. Apoi cu decode din json il facem map
@@ -117,29 +131,41 @@ class Invoice {
         articol = jsonDecode(articolul);
 
         row = tabel.insertRow(-1); //insereaza rand in tabel
-        cell = row.insertCell(0);
+        cell = row.insertCell(k);
         cell.text = (i + 1).toString();
-        cell = row.insertCell(1);
+        k = k + 1;
+        cell = row.insertCell(k);
         cell.text = articol['denumire'];
-        cell = row.insertCell(2);
+        k = k + 1;
+        cell = row.insertCell(k);
         cell.text = articol['unit_mas'];
-        cell = row.insertCell(3);
-        cell.text = articol['ctva'];
-        cell = row.insertCell(4);
+        if (tipDoc == 'fe') {
+          k = k + 1;
+          cell = row.insertCell(k);
+          cell.text = articol['ctva'];
+        }
+        k = k + 1;
+        cell = row.insertCell(k);
         cell.text = articol['cantitate'];
-        cell = row.insertCell(5);
+        k = k + 1;
+        cell = row.insertCell(k);
         cell.text = articol['pret'];
-        cell = row.insertCell(6);
+        k = k + 1;
+        cell = row.insertCell(k);
         cell.text = articol['valoare'];
-        cell = row.insertCell(7);
-        cell.text = articol['tva'];
 
+        if (tipDoc == 'fe') {
+          k = k + 1;
+          cell = row.insertCell(k);
+          cell.text = articol['tva'];
+        }
         //window.alert(articol['denumire']);
         j = i + 1;
       }
       j = j + 1;
-      if (int.parse(discount) > 0) {
+      if (tipDoc == 'fe' && int.parse(discount) > 0) {
         row = tabel.insertRow(-1); //insereaza rand in tabel
+
         cell = row.insertCell(0);
         cell.text = j.toString();
         cell = row.insertCell(1);

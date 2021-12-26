@@ -40,6 +40,9 @@ class FormularMeniu {
       if (titlu == "FACTURA") {
         CautareClient.cautareClient(titlu);
       }
+      if (titlu == "AVIZ") {
+        CautareClient.cautareClient(titlu);
+      }
     });
 
     _btnModificare.onClick.listen((e) {

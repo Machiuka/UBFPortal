@@ -27,7 +27,7 @@ class CautareClient {
         if (caut != null) {
           _formCautare.replaceWith(_formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare
           LoadFactura lf = LoadFactura();
-          lf.loadClient(caut, 'tbl_clienti', 'serverCautStergClient');
+          lf.loadClient('fe', caut, 'tbl_clienti', 'serverCautStergClient');
           //AdaugareFactura.adaugareFactura(caut, "tbl_clienti", "serverCautStergClient");
         } else {
           window.location.reload(); //echivalent cu refresh pagina

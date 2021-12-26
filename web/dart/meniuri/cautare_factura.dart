@@ -30,6 +30,7 @@ class CautareFactura {
         }
       } else if (titlu == 'AVIZ') {
         if (caut != null) {
+          _formCautare.remove();
           lf.loadInterogare('av', caut, "tbl_avize", "serverAdaugFactura", "");
         } else {
           window.location.reload(); //echivalent cu refresh pagina

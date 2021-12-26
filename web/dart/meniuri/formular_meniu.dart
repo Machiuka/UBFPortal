@@ -29,7 +29,7 @@ class FormularMeniu {
       if (titlu == "RETETAR") {
         CautareReteta.cautareReteta(titlu);
       }
-      if (titlu == "FACTURA") {
+      if (titlu == "FACTURA" || titlu == "AVIZ") {
         CautareFactura.cautareFactura(titlu);
       }
     });

@@ -17,6 +17,7 @@ class DetaliiFactura {
     InputElement _cod = querySelector("#cod") as InputElement;
     InputElement _ctva = querySelector("#ctva") as InputElement;
     InputElement _cantitate = querySelector("#cantitate") as InputElement;
+    InputElement _unitMas = querySelector("#unitMas") as InputElement;
     InputElement _pret = querySelector("#pret") as InputElement;
     Element _textElem = querySelector("#titluElement") as Element;
     Element _btnAdaug = querySelector("#btnAdaug") as Element;
@@ -26,6 +27,7 @@ class DetaliiFactura {
 
     _textElem.innerHtml = UBFFactura.articol['denumire'];
     _denumire.defaultValue = UBFFactura.articol['denumire'];
+    _unitMas.defaultValue = UBFFactura.articol['unit_mas'];
     _ctva.defaultValue = UBFFactura.articol['ctva'];
     _pret.defaultValue = UBFFactura.articol['pret'];
     _cod.defaultValue = 'Cod: ' + UBFFactura.articol['codElem'];
@@ -41,8 +43,11 @@ class DetaliiFactura {
       double tvaProdus = pret * ctva / (100 + ctva);
       double tva = tvaProdus * cantitate;
       double valCuTva = pret * cantitate;
-      double val = valCuTva - tva;
-      pret = pret - tvaProdus;
+      double val = valCuTva;
+      if (tipDoc == 'fe') {
+        pret = pret - tvaProdus;
+        val = valCuTva - tva;
+      }
 
       UBFFactura.articol['pret'] = pret.toStringAsFixed(2);
       UBFFactura.articol['tva'] = tva.toStringAsFixed(2);

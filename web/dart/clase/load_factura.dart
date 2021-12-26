@@ -60,7 +60,7 @@ class LoadFactura {
 
           UBFFactura.articol['ctva'] = _json[i]['cota_tva'];
 
-          if (_json[i]['gramaj'] == 1000) {
+          if (_json[i]['gramaj'] == '1000') {
             UBFFactura.articol['unit_mas'] = 'kg';
           } else {
             UBFFactura.articol['unit_mas'] = 'buc';

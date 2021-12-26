@@ -19,7 +19,9 @@ class Invoice {
 
       // ignore: unnecessary_null_comparison
       String formular = 'html/invoice.html';
+      bool cuPret = true;
       if (tipDoc == 'av') {
+        cuPret = window.confirm("Doriti afisare preturi? Ok, pt confirmare, Cancel pt afisare fara preturi");
         formular = 'html/aviz.html';
       }
 
@@ -74,7 +76,11 @@ class Invoice {
 
 //Incarc zona Vanzator
       webpage.innerHtml = _json['date_vanzator']['webVanzator'];
-      nrFact.innerHtml = UBFFactura.prefix + _json['nr_fact'].toString();
+      if (tipDoc == 'fe') {
+        nrFact.innerHtml = UBFFactura.prefix + _json['nr_fact'].toString();
+      } else {
+        nrFact.innerHtml = _json['nr_fact'].toString();
+      }
       companyAddress.innerHtml = _json['date_vanzator']['adresaVanzator'];
       companycif.innerHtml = _json['date_vanzator']['cifVanzator'];
       companycui.innerHtml = _json['date_vanzator']['cuiVanzator'];
@@ -85,7 +91,7 @@ class Invoice {
 
       dataDoc1.innerHtml = dataFs;
       dataDoc2.innerHtml = dataFs;
-      totalFact.innerHtml = _json['total_fara_tva'];
+      totalFact.innerHtml = cuPret == true ? _json['total_fara_tva'] : '';
       double valDiscount = 0;
       double tvaDiscount = 0;
       String discount = '';
@@ -149,10 +155,10 @@ class Invoice {
         cell.text = articol['cantitate'];
         k = k + 1;
         cell = row.insertCell(k);
-        cell.text = articol['pret'];
+        cell.text = cuPret == true ? articol['pret'] : '';
         k = k + 1;
         cell = row.insertCell(k);
-        cell.text = articol['valoare'];
+        cell.text = cuPret == true ? articol['valoare'] : '';
 
         if (tipDoc == 'fe') {
           k = k + 1;

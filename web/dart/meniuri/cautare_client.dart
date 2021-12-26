@@ -32,7 +32,23 @@ class CautareClient {
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }
-      } else if (titlu == 'MODIFICARE FACTURA') {
+      }
+//-------------------------
+      if (titlu == "AVIZ") {
+        //Aici se ocupa de butonul Adaugare avize
+
+        if (caut != null) {
+          _formCautare.replaceWith(_formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare
+          LoadFactura lf = LoadFactura();
+          lf.loadClient('av', caut, 'tbl_clienti', 'serverCautStergClient');
+          //AdaugareFactura.adaugareFactura(caut, "tbl_clienti", "serverCautStergClient");
+        } else {
+          window.location.reload(); //echivalent cu refresh pagina
+        }
+      }
+//-----------------------
+
+      if (titlu == 'MODIFICARE FACTURA') {
         //modifica doar ultima factura
         if (caut != null) {
           _formCautare.replaceWith(_formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare

@@ -8,7 +8,7 @@ import '../meniuri/cautare_element.dart';
 import 'package:intl/intl.dart';
 
 class DetaliiFactura {
-  Future detaliiArticol() async {
+  Future detaliiArticol(String tipDoc) async {
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_element.html');
     await Future.delayed(const Duration(milliseconds: 50));
@@ -33,6 +33,7 @@ class DetaliiFactura {
     _btnAdaug.onClick.listen((e) {
       //  UBFFactura.nrFact = (UBFFactura.nrFact! + 1);
       UBFFactura.articol['cantitate'] = _cantitate.value;
+
       UBFFactura.articol['ctva'] = _ctva.value;
       double ctva = double.parse(_ctva.value!);
       double cantitate = double.parse(_cantitate.value!);
@@ -61,11 +62,21 @@ class DetaliiFactura {
       }
       // window.alert('Articole factura = ${UBFFactura.articoleFactura}');
       _formElement.remove();
-      CautareElement.cautareElement("FACTURA");
+      if (tipDoc == 'fe') {
+        CautareElement.cautareElement("FACTURA");
+      }
+      if (tipDoc == 'av') {
+        CautareElement.cautareElement("AVIZ");
+      }
     });
     _btnAnulez.onClick.listen((e) {
       _formElement.remove();
-      CautareElement.cautareElement('FACTURA');
+      if (tipDoc == 'fe') {
+        CautareElement.cautareElement('FACTURA');
+      }
+      if (tipDoc == 'av') {
+        CautareElement.cautareElement('AVIZ');
+      }
     });
   }
 }

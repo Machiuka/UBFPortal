@@ -32,7 +32,7 @@ class FormFactura {
       _nrFact.defaultValue = (Global.ultimNumar['nrFactura']! + 1).toString();
     }
     if (tipDoc == 'av') {
-      _isFactura.hidden = true; //la aviz nu am nevoie de ce este in div isFactura din form_factura.html
+      _isFactura.hidden = false; //la aviz  am totusi nevoie de ce este in div isFactura din form_factura.html
       _nrFact.defaultValue = (Global.ultimNumar['nrAviz']! + 1).toString();
     }
 

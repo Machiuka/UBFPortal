@@ -46,15 +46,20 @@ class LoadFactura {
         if (_json[i]['denumire'] == "Nu s-au gasit rezultate") {
           await Future.delayed(const Duration(seconds: 1));
           _formDetalii.remove();
-          CautareElement.cautareElement('FACTURA');
+          if (tipDoc == 'fe') {
+            CautareElement.cautareElement('FACTURA');
+          }
+          if (tipDoc == 'av') {
+            CautareElement.cautareElement('AVIZ');
+          }
         }
         elem.onClick.listen((e) async {
           UBFFactura.articol['codElem'] = _json[i]['cod_elem'];
           UBFFactura.articol['denumire'] = _json[i]['denumire'];
           UBFFactura.articol['pret'] = _json[i]['pret_vanzare'];
-          if (tipDoc == 'fe') {
-            UBFFactura.articol['ctva'] = _json[i]['cota_tva'];
-          }
+
+          UBFFactura.articol['ctva'] = _json[i]['cota_tva'];
+
           if (_json[i]['gramaj'] == 1000) {
             UBFFactura.articol['unit_mas'] = 'kg';
           } else {
@@ -62,7 +67,7 @@ class LoadFactura {
           }
 
           DetaliiFactura detaliiFactura = DetaliiFactura();
-          detaliiFactura.detaliiArticol();
+          detaliiFactura.detaliiArticol(tipDoc);
         });
       }
     });

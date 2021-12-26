@@ -84,6 +84,20 @@ class CautareElement {
           lf.loadIncarcareFact("tbl_facturi", "serverAdaugFactura", "fe", UBFFactura());
         }
       }
+      //----------------------
+      if (titlu == 'AVIZ') {
+        String? caut = _txtCautare.value;
+        if (caut != '') {
+          //sterg formularul pentru a nu se adauga cautare peste cautare
+
+          lf.loadArticol('av', caut!, "tbl_produse", "serverCautare");
+        } else {
+          _formCautare.remove();
+
+          lf.loadIncarcareFact("tbl_avize", "serverAdaugFactura", "av", UBFFactura());
+        }
+      }
+      //-------------------
     });
   }
 }

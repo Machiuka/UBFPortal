@@ -1,12 +1,13 @@
 import 'dart:html';
-import 'dart/clase/load_detalii.dart';
-import 'dart/clase/global.dart';
+import '../clase/load_detalii.dart';
+import '../clase/global.dart';
 import 'package:intl/intl.dart';
-import 'dart/meniuri/rapoarte_meniu.dart';
-import 'dart/meniuri/formular_meniu.dart';
-import 'dart/clase/svg_file.dart';
-import 'dart/meniuri/livrare_meniu.dart';
-import 'dart/clase/css.dart';
+import 'rapoarte_meniu.dart';
+import 'formular_meniu.dart';
+import '../clase/svg_file.dart';
+import 'livrare_meniu.dart';
+import '../clase/css.dart';
+import '../clase/login.dart';
 
 //Aici este actiunea cand se face click pe meniurile din meniu_nav.dart
 class Meniu {
@@ -22,6 +23,7 @@ class Meniu {
     Element _btnRapoarte = querySelector('#btnRapoarte') as Element;
     Element _btnPreviziuni = querySelector('#btnPreviziuni') as Element;
     Element _btnAdministrare = querySelector('#btnAdministrare') as Element;
+    Element _btnExit = querySelector('#btnExit') as Element;
 
     _btnLivrare.onClick.listen((e) {
       LivrareMeniu.livrareMeniu();
@@ -41,6 +43,11 @@ class Meniu {
 
     _btnAdministrare.onClick.listen((e) {
       window.alert('Apasat buton Administrare');
+    });
+
+    _btnExit.onClick.listen((e) {
+      Login logOut = Login();
+      logOut.logOut();
     });
   }
 }

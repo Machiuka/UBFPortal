@@ -1,8 +1,10 @@
-import 'meniu.dart';
+import 'dart:html';
+import 'dart/meniuri/meniu.dart';
+import 'dart/clase/global.dart';
 import 'dart/clase/ultim_numar.dart';
+import 'dart/clase/login.dart';
 
 void main() async {
-  UltimNumar.ultimNumar();
-  Meniu.topMeniu();
-  await Future.delayed(const Duration(milliseconds: 50)); //sa apuce sa incarce formularele
+  Login login = Login();
+  login.verificaParola();
 }

@@ -6,6 +6,7 @@ import 'ubf_document.dart';
 import 'ubf_user.dart';
 import 'ubf_client.dart';
 import 'ubf_factura.dart';
+import 'global.dart';
 
 class Loader {
   //nu am nevoie de headers, fiindca setarea e din serverul php
@@ -13,10 +14,17 @@ class Loader {
     "Accept": "application/json",
   };
 
-  Future<String> cautaPeServer({required String criteriu, required String tabel, required String numeServer, required String optiune}) async {
+  Future<String> cautaPeServer({
+    required String criteriu,
+    required String tabel,
+    required String numeServer,
+    required String optiune,
+  }) async {
     numeServer = numeServer + ".php";
     //const path = 'https://netta.ro/ubf/test/'.?numeServer.'?x={"obj":"pf"}';
-    String path = 'http://localhost/' + numeServer + '?x={"criteriu":"$criteriu", "tabel":"$tabel", "optiune":"$optiune"}';
+    String path = 'http://localhost/' +
+        numeServer +
+        '?x={"criteriu":"$criteriu", "tabel":"$tabel", "optiune":"$optiune", "durataSesiunii":"${Global.durataSesiunii}", "operator":"${Global.operator}"}';
     //window.alert(path);
     // window.alert(path);
     // var response = await http.get(Uri.parse(path), headers: _headers);

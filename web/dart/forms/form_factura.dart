@@ -14,6 +14,7 @@ class FormFactura {
     await Future.delayed(const Duration(milliseconds: 50));
     FormElement _formFactura = querySelector("#formFactura") as FormElement;
     DivElement _isFactura = querySelector('#isFactura') as DivElement;
+    Element _titluFactura = querySelector('#titluFactura') as Element;
 
     Element _btnAnulare = querySelector("#btnAnulareF") as Element;
     Element _btnAdauga = querySelector("#btnAdaugaF") as Element;
@@ -30,10 +31,12 @@ class FormFactura {
       _discount.defaultValue = UBFClient.discount.toString();
       _tPlata.defaultValue = UBFClient.tPlata.toString();
       _nrFact.defaultValue = (Global.ultimNumar['nrFactura']! + 1).toString();
+      _titluFactura.innerHtml = 'FACTURA FISCALA';
     }
     if (tipDoc == 'av') {
-      _isFactura.hidden = false; //la aviz  am totusi nevoie de ce este in div isFactura din form_factura.html
+      _isFactura.hidden = true; //la aviz  am totusi nevoie de ce este in div isFactura din form_factura.html
       _nrFact.defaultValue = (Global.ultimNumar['nrAviz']! + 1).toString();
+      _titluFactura.innerHtml = 'AVIZ EXPEDITIE';
     }
 
     _numeClient.defaultValue = UBFClient.denumire;

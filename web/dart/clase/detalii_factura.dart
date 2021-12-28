@@ -22,6 +22,7 @@ class DetaliiFactura {
     Element _textElem = querySelector("#titluElement") as Element;
     Element _btnAdaug = querySelector("#btnAdaug") as Element;
     Element _btnAnulez = querySelector("#btnAnulez") as Element;
+    _btnAdaug.hidden = true;
 
     _formDetalii.replaceWith(_formElement);
 
@@ -31,6 +32,7 @@ class DetaliiFactura {
     _ctva.defaultValue = UBFFactura.articol['ctva'];
     _pret.defaultValue = UBFFactura.articol['pret'];
     _cod.defaultValue = 'Cod: ' + UBFFactura.articol['codElem'];
+    _cantitate.onChange.listen((event) => _btnAdaug.hidden = false);
 
     _btnAdaug.onClick.listen((e) {
       //  UBFFactura.nrFact = (UBFFactura.nrFact! + 1);

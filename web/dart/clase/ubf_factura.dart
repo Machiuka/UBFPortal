@@ -40,6 +40,7 @@ class UBFFactura {
     "contVanzator": contVanzator,
     "bancaVanzator": bancaVanzator,
     "contTrezVanzator": contTrezVanzator,
+    "emailVanzator": emailVanzator,
     "trezVanzator": trezVanzator,
     "telVanzator": telVanzator,
     "webVanzator": webVanzator

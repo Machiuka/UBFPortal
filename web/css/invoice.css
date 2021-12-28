@@ -3,7 +3,11 @@
   width: 100%
   }
 
-div {
+  th {
+    text-align:center;
+    }
+
+  div {
 border-radius: 5px;
 color:black;
 }
@@ -49,8 +53,9 @@ clear: both;
 }
 
 thead {
-background: #231E5E;
-color: #FFF;
+background: #706ab9;
+color: rgb(31, 29, 29);
+
 }
 
 tbody tr:nth-child(odd) {
@@ -59,6 +64,8 @@ background: #E9F5D7;
 
 }
 
+
+
 tbody tr:hover {
 background-color: #86C133;
 }
@@ -66,23 +73,42 @@ background-color: #86C133;
 .customertable {
   table-layout: fixed;
   overflow-x:auto;
-  width: 100%;
+  width: 95%;
   word-wrap: break-word;
+}
+
+.headerTable {
+  width:95%;
+   height:"100";
+    border:"0";
+    word-wrap: break-word;
+
+}
+.footTable {
+
+  width:95%;
+  border: spacing 0;  
+  padding: 2;
+  
 }
 
 .shortcolumn {
   width: 10%;
   
+
+  
 }
 
 .longcolumn {
   width: 45%;
+
   
 }
 
 .numbercolumn {
   width: 25%;
   
+ 
   
 }
 #textMic{
@@ -95,3 +121,9 @@ background-color: #86C133;
   text-align: center;
   color: #858585;
 }
+td{padding: 6px;}
+
+@page {
+  size: A4;
+}
+

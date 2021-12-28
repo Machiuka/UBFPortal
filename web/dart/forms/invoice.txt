@@ -146,55 +146,40 @@ class Invoice {
         row = tabel.insertRow(-1); //insereaza rand in tabel
         cell = row.insertCell(k);
         cell.text = (i + 1).toString();
-        cell.id = 'nrcrt';
-        rule = '#nrcrt {text-align:center;}';
-        styleSheet.insertRule(rule, 0);
         k = k + 1;
         cell = row.insertCell(k);
         cell.text = articol['denumire'];
-        cell.id = 'denArt';
-        rule = '#denArt {text-align:left;}';
+        rule = 'td {text-align:left;}';
         styleSheet.insertRule(rule, 0);
         k = k + 1;
         cell = row.insertCell(k);
         cell.text = articol['unit_mas'];
-        cell.id = 'unMas';
-        rule = '#unMas {text-align:center;}';
+        rule = 'td {text-align:center;}';
         styleSheet.insertRule(rule, 0);
 
         if (tipDoc == 'fe') {
           k = k + 1;
           cell = row.insertCell(k);
           cell.text = articol['ctva'];
-          cell.id = 'cotaT';
-          rule = '#cotaT {text-align:center;}';
-          styleSheet.insertRule(rule, 0);
         }
         k = k + 1;
         cell = row.insertCell(k);
         cell.text = articol['cantitate'];
-        cell.id = 'uncant';
-        rule = '#uncant {text-align:center;}';
-        styleSheet.insertRule(rule, 0);
         k = k + 1;
         cell = row.insertCell(k);
         cell.text = cuPret == true ? articol['pret'] : '';
-        cell.id = 'pretArt';
-        rule = '#pretArt {text-align:right;}';
-        styleSheet.insertRule(rule, 0);
 
         k = k + 1;
         cell = row.insertCell(k);
         cell.text = cuPret == true ? articol['valoare'] : '';
-        cell.id = 'valArt';
-        rule = '#valArt {text-align:right;}';
+        rule = 'td {text-align:right;}';
         styleSheet.insertRule(rule, 0);
+
         if (tipDoc == 'fe') {
           k = k + 1;
           cell = row.insertCell(k);
           cell.text = articol['tva'];
-          cell.id = 'tvaArt';
-          rule = '#tvaArt {text-align:right}';
+          rule = 'td {text-align:right;}';
           styleSheet.insertRule(rule, 0);
         }
         //window.alert(articol['denumire']);
@@ -206,14 +191,8 @@ class Invoice {
 
         cell = row.insertCell(0);
         cell.text = j.toString();
-        cell.id = 'crtDisco';
-        rule = '#crtDisco {text-align:center;}';
-        styleSheet.insertRule(rule, 0);
         cell = row.insertCell(1);
         cell.text = 'Discount $discount %';
-        cell.id = 'procDisco';
-        rule = '#procDisco {text-align:left;}';
-        styleSheet.insertRule(rule, 0);
         cell = row.insertCell(2);
         cell.text = '';
         cell = row.insertCell(3);
@@ -224,14 +203,8 @@ class Invoice {
         cell.text = '';
         cell = row.insertCell(6);
         cell.text = '-' + valDiscount.toStringAsFixed(2);
-        cell.id = 'valDisco';
-        rule = '#valDisco {text-align:right;}';
-        styleSheet.insertRule(rule, 0);
         cell = row.insertCell(7);
         cell.text = '-' + tvaDiscount.toStringAsFixed(2);
-        cell.id = 'tvaDisco';
-        rule = '#tvaDisco {text-align:right;}';
-        styleSheet.insertRule(rule, 0);
       }
     }
   }

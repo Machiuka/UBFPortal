@@ -21,6 +21,7 @@ class CautareClient {
 
     _btnOK.onClick.listen((e) {
       String? caut = _txtCautare.value;
+      //---------------------------------------
       if (titlu == "FACTURA") {
         //Aici se ocupa de butonul Adaugare factura
 

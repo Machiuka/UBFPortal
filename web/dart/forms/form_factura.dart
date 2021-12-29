@@ -26,6 +26,10 @@ class FormFactura {
     InputElement _masina = querySelector("#masina") as InputElement;
     InputElement _discount = querySelector("#discount") as InputElement;
     InputElement _tPlata = querySelector("#tPlata") as InputElement;
+    _delegat.defaultValue = UBFClient.delegat;
+    _ciDelegat.defaultValue = UBFClient.ciNr;
+    _ciPol.defaultValue = UBFClient.ciPol;
+    _masina.defaultValue = UBFClient.masina;
 
     if (tipDoc == 'fe') {
       _discount.defaultValue = UBFClient.discount.toString();
@@ -47,6 +51,9 @@ class FormFactura {
         UBFClient.discount = int.parse(_discount.value!);
         UBFClient.tPlata = int.parse(_tPlata.value!);
         Global.ultimNumar['nrFactura'] = UBFFactura.nrFact!;
+        UBFFactura.discount = int.parse(_discount.value!);
+        UBFFactura.termenPlata = int.parse(_tPlata.value!);
+        UBFFactura.achitata = UBFFactura.termenPlata > 0 ? 0 : 1;
       }
       if (tipDoc == 'av') {
         Global.ultimNumar['nrAviz'] = UBFFactura.nrFact!;
@@ -64,6 +71,9 @@ class FormFactura {
       if (tipDoc == 'av') {
         CautareElement.cautareElement('AVIZ');
       }
+    });
+    _btnAnulare.onClick.listen((e) {
+      window.location.reload();
     });
   }
 }

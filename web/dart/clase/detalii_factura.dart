@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'load_detalii.dart';
 import 'global.dart';
 import 'ubf_factura.dart';
-import '../meniuri/cautare_client.dart';
+import '../meniuri/cautare_cumparator.dart';
 import '../meniuri/cautare_element.dart';
 import 'package:intl/intl.dart';
 

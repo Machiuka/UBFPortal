@@ -1,18 +1,23 @@
 import 'dart:html';
+import '../clase/load_client.dart';
+import '../clase/loader.dart';
 import '../clase/load_detalii.dart';
-import 'actualizare_reteta.dart';
-import '../clase/load_factura.dart';
+import '../clase/ubf_client.dart';
+import '../forms/form_client.dart';
 
 class CautareClient {
-  static void cautareClient(String titlu) async {
-    //Se foloseste atat la cautare cat si la actualizare
-    FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
+  static void cautareClient(String crud) async {
+    //Se foloseste atat la cautare cat si la actualizare si stergere client
+    LoadDetalii ld = LoadDetalii();
+    UBFClient client = UBFClient();
+    LoadClient lc = LoadClient();
+    Loader loader = Loader();
+    //  FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_cautare.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
     Element _btnOK = querySelector('#btnOK') as Element;
     FormElement _formCautare = querySelector('#formCautare') as FormElement;
-    _formDetalii.replaceWith(_formCautare);
 
     Element titluDetalii = querySelector('#titluDetalii') as Element;
     titluDetalii.innerHtml = 'Cautare Client';
@@ -22,42 +27,15 @@ class CautareClient {
     _btnOK.onClick.listen((e) {
       String? caut = _txtCautare.value;
       //---------------------------------------
-      if (titlu == "FACTURA") {
-        //Aici se ocupa de butonul Adaugare factura
 
-        if (caut != null) {
-          _formCautare.replaceWith(_formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare
-          LoadFactura lf = LoadFactura();
-          lf.loadClient('fe', caut, 'tbl_clienti', 'serverCautStergClient');
-          //AdaugareFactura.adaugareFactura(caut, "tbl_clienti", "serverCautStergClient");
-        } else {
-          window.location.reload(); //echivalent cu refresh pagina
-        }
-      }
-//-------------------------
-      if (titlu == "AVIZ") {
-        //Aici se ocupa de butonul Adaugare avize
+      if (caut != null) {
+        _formCautare.remove();
 
-        if (caut != null) {
-          _formCautare.replaceWith(_formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare
-          LoadFactura lf = LoadFactura();
-          lf.loadClient('av', caut, 'tbl_clienti', 'serverCautStergClient');
-          //AdaugareFactura.adaugareFactura(caut, "tbl_clienti", "serverCautStergClient");
-        } else {
-          window.location.reload(); //echivalent cu refresh pagina
-        }
-      }
-//-----------------------
+        lc.loadClient(crud, caut, 'tbl_clienti', 'serverCautare');
 
-      if (titlu == 'MODIFICARE FACTURA') {
-        //modifica doar ultima factura
-        if (caut != null) {
-          _formCautare.replaceWith(_formDetalii); //sterg formularul pentru a nu se adauga cautare peste cautare
-          ActualizareReteta actualizareReteta = ActualizareReteta();
-          actualizareReteta.actualizareReteta(caut, "tbl_produse", "serverCautStergClient");
-        } else {
-          window.location.reload(); //echivalent cu refresh pagina
-        }
+        //echivalent cu refresh pagina
+      } else {
+        window.location.reload(); //echivalent cu refresh pagina
       }
     });
   }

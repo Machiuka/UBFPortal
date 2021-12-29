@@ -30,11 +30,12 @@ class ActualizareReteta {
         LIElement elem = LIElement();
         lista.children.add(elem..text = _json[i]['denumire']);
         elem.onClick.listen((e) {
-          String crit = elem.innerHtml.toString();
-          kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServer, optiune: "r").then((value) async {
+          String crit = _json[i]['cod_elem'];
+          kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServer, optiune: "u").then((value) async {
             value = value.replaceAll("[", "");
             value = value.replaceAll("]", "");
-            //   window.alert(value);
+            //window.alert(value);
+
             final _js = json.decode(value);
 
             lista.children.clear();

@@ -26,7 +26,7 @@ class Loader {
         numeServer +
         '?x={"criteriu":"$criteriu", "tabel":"$tabel", "optiune":"$optiune", "durataSesiunii":"${Global.durataSesiunii}", "operator":"${Global.operator}"}';
     //window.alert(path);
-    // window.alert(path);
+    //window.alert(path);
     // var response = await http.get(Uri.parse(path), headers: _headers);
     var response = await http.get(Uri.parse(path));
     if (response.statusCode == 200) {
@@ -58,6 +58,9 @@ class Loader {
     } else if (tipDoc == 'fe' || tipDoc == 'av') {
       _obj = null;
       _obj = {"tabel": tabel, "optiune": opt, "factData": factData!.toJson()};
+    } else if (tipDoc == 'cl') {
+      _obj = null;
+      _obj = {"tabel": tabel, "optiune": opt, "clientData": clientData!.toJson()};
     }
 
     String _js = jsonEncode(_obj);

@@ -12,7 +12,6 @@ class UBFClient {
   static String? banca;
   static String? tel;
   static String? email;
-  static String? webPage;
   static String? grupa;
   static String? cif;
   static String? delegat;
@@ -34,7 +33,6 @@ class UBFClient {
         'banca': banca,
         'tel': tel,
         'email': email,
-        'webPage': webPage,
         'grupa': grupa,
         'cif': cif,
         'delegat': delegat,

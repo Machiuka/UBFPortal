@@ -58,12 +58,10 @@ class Invoice {
       LabelElement clientAddress = querySelector('#client_address') as LabelElement;
       LabelElement clientcif = querySelector('#client_cif') as LabelElement;
       LabelElement clientcui = querySelector('#client_cui') as LabelElement;
-      LabelElement clienttel = querySelector('#client_tel') as LabelElement;
       SpanElement delegat = querySelector('#delegat') as SpanElement;
       SpanElement masina = querySelector('#nrAuto') as SpanElement;
       SpanElement ciDelegat = querySelector('#ciDelegat') as SpanElement;
       SpanElement ciPol = querySelector('#ciPol') as SpanElement;
-      LabelElement clientEmail = querySelector('#client_email') as LabelElement;
 
 //*************** */
 
@@ -117,11 +115,9 @@ class Invoice {
       clientcif.innerHtml = _json['date_cumparator']['cif'];
       delegat.innerHtml = _json['date_cumparator']['delegat'];
       clientcui.innerHtml = _json['date_cumparator']['cui'];
-      clienttel.innerHtml = _json['date_cumparator']['tel'];
       ciDelegat.innerHtml = _json['date_cumparator']['ciNr'];
       masina.innerHtml = _json['date_cumparator']['masina'];
       ciPol.innerHtml = _json['date_cumparator']['ciPol'];
-      clientEmail.innerHtml = _json['date_cumparator']['email'];
 
       //Zona tabel factura
       //Map<String, dynamic> articoleFact = _json['articole_fact'];

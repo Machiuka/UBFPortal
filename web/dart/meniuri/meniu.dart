@@ -1,7 +1,7 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/global.dart';
-import 'package:intl/intl.dart';
+import 'administrare_meniu.dart';
 import 'rapoarte_meniu.dart';
 import 'formular_meniu.dart';
 import '../clase/svg_file.dart';
@@ -42,7 +42,7 @@ class Meniu {
     });
 
     _btnAdministrare.onClick.listen((e) {
-      window.alert('Apasat buton Administrare');
+      AdministrareMeniu.administrareMeniu();
     });
 
     _btnExit.onClick.listen((e) {

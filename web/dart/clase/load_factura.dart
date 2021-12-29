@@ -10,6 +10,7 @@ import 'detalii_element.dart';
 import 'ubf_client.dart';
 import 'load_detalii.dart';
 import 'detalii_factura.dart';
+import 'load_client.dart';
 
 import '../forms/invoice.dart';
 import '../forms/form_factura.dart';
@@ -107,7 +108,7 @@ class LoadFactura {
           elem.onClick.listen((e) async {
             UBFClient.adresa = _json[i]['adresa'];
             UBFClient.denumire = _json[i]['denumire'];
-            UBFClient.ciNr = _json[i]['ci_nr'];
+            UBFClient.ciNr = _json[i]['ci_numar'];
             UBFClient.cui = _json[i]['cod_fiscal'];
             UBFClient.cif = _json[i]['reg_com'];
             UBFClient.ciPol = _json[i]['ci_pol'];
@@ -120,12 +121,14 @@ class LoadFactura {
             }
             //Am stabilit clientul acum cautam articolele din factura
             _formDetalii.remove();
+
             FormFactura.dateClient(tipDoc);
           });
         }
       }
     });
   }
+  //---------------------------------
 
   loadInterogare(String tipDoc, String caut, String tabel, String numeServerPrimar, [String numeServerSecundar = '']) {
     //cauta pe serverul primar ceea ce primeste din meniul cautare si afiseaza detaliile primite de pe serverul secundar

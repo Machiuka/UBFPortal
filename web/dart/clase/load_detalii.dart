@@ -22,8 +22,8 @@ class LoadDetalii {
 
     late final UListElement lista = querySelector('#listaDetalii') as UListElement;
     FormElement formDetalii = querySelector("#formDetalii") as FormElement;
-    Loader kk = Loader();
-    kk
+    Loader loader = Loader();
+    loader
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServer,
@@ -53,8 +53,8 @@ class LoadDetalii {
     //de pe serverul primar primeste o lista clickabila si de pe cel secundar primeste un tabel cu detaliile elementului selectat din lista
     late final UListElement lista = querySelector('#listaDetalii') as UListElement;
     FormElement formDetalii = querySelector("#formDetalii") as FormElement;
-    Loader kk = Loader();
-    kk
+    Loader loader = Loader();
+    loader
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServerPrimar,
@@ -69,7 +69,7 @@ class LoadDetalii {
         lista.children.add(elem..text = _json[i]['denumire']);
         elem.onClick.listen((e) {
           String crit = elem.innerHtml.toString();
-          kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServerSecundar, optiune: "r").then((value) async {
+          loader.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServerSecundar, optiune: "r").then((value) async {
             value = value.replaceAll("[", "");
             value = value.replaceAll("]", "");
             //     window.alert('Value este $value');
@@ -105,8 +105,8 @@ class LoadDetalii {
     //cauta pe serverul si primeste o lista clickabila. Sterge apoi elementul selectat, dupa id
     late final UListElement lista = querySelector('#listaDetalii') as UListElement;
     FormElement formDetalii = querySelector("#formDetalii") as FormElement;
-    Loader kk = Loader();
-    kk
+    Loader loader = Loader();
+    loader
         .cautaPeServer(
       criteriu: caut,
       numeServer: numeServer,
@@ -125,7 +125,7 @@ class LoadDetalii {
           if (confirmare) {
             String crit = _json[i]['id'].toString();
             //    window.alert('Criteriul de stergere este $crit');
-            kk.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServer, optiune: "d").then((value) async {
+            loader.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServer, optiune: "d").then((value) async {
               value = value.replaceAll("[", "");
               value = value.replaceAll("]", "");
 
@@ -162,8 +162,8 @@ class LoadDetalii {
 
   loadIncarcareDoc(String tabel, String numeServer, String tipDoc, UBFDocument? docData) {
 //Incarca date pe server. Despre Useri sau Documente
-    Loader kk = Loader();
-    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tipDoc: tipDoc, tabel: tabel, docData: docData).then((rezultat) async {
+    Loader loader = Loader();
+    loader.adaugaPeServer(numeServer: numeServer, opt: "c", tipDoc: tipDoc, tabel: tabel, docData: docData).then((rezultat) async {
       //await Future.delayed(const Duration(milliseconds: 50));
       // window.alert(rezultat);
       try {
@@ -177,17 +177,25 @@ class LoadDetalii {
     });
   }
 
-  loadIncarcareClient(String tabel, String numeServer, String tipDoc, UBFClient? clientData) {
+  loadIncarcareClient(String tabel, String numeServer, String crud, UBFClient? clientData) {
 //Incarca date pe server. Despre Useri sau Documente
-    Loader kk = Loader();
-    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tipDoc: tipDoc, tabel: tabel, clientData: clientData).then((rezultat) async {
+    //window.alert(UBFClient.codElem.toString());
+    //window.alert(UBFClient.denumire);
+    Loader loader = Loader();
+    loader.adaugaPeServer(numeServer: numeServer, opt: crud, tipDoc: 'cl', tabel: tabel, clientData: clientData).then((rezultat) async {
       //await Future.delayed(const Duration(milliseconds: 50));
-      // window.alert(rezultat);
+      //    window.alert(rezultat);
       try {
         //     rezultat = rezultat.replaceAll("[", "");
         // rezultat = rezultat.replaceAll("]", "");
         final _json = json.decode(rezultat);
-        RaspunsTabel.raspunsTabel(_json);
+        //  window.alert(rezultat);
+        if (crud != 'd') {
+          RaspunsTabel.raspunsTabel(_json);
+        } else {
+          window.alert(rezultat);
+          window.location.reload();
+        }
       } catch (e) {
         window.alert('EROARE!!!...' + e.toString());
       }
@@ -196,8 +204,8 @@ class LoadDetalii {
 
   loadIncarcareUser(String tabel, String tipDoc, String numeServer, UBFUser? docUser) {
 //Incarca date pe server. Despre Useri sau Documente
-    Loader kk = Loader();
-    kk.adaugaPeServer(numeServer: numeServer, opt: "c", tipDoc: tipDoc, tabel: tabel, userData: docUser).then((rezultat) {
+    Loader loader = Loader();
+    loader.adaugaPeServer(numeServer: numeServer, opt: "c", tipDoc: tipDoc, tabel: tabel, userData: docUser).then((rezultat) {
       final _json = json.decode(rezultat);
     });
   }

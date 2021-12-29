@@ -5,7 +5,7 @@ import 'cautare_reteta.dart';
 import '../clase/css.dart';
 import 'adaugare_reteta.dart';
 import 'stergere_reteta.dart';
-import 'cautare_client.dart';
+import 'cautare_cumparator.dart';
 import 'cautare_factura.dart';
 
 class FormularMeniu {
@@ -43,7 +43,7 @@ class FormularMeniu {
         AdaugareReteta.adaugareReteta("Adauga Reteta", "tbl_produse", "serverAdaugReteta");
       }
       if (titlu == "FACTURA" || titlu == "AVIZ") {
-        CautareClient.cautareClient(titlu);
+        CautareCumparator.cautareCumparator(titlu);
       }
     });
 

@@ -111,6 +111,10 @@ background-color: #86C133;
  
   
 }
+.textMediu{
+  font-size: 9px !important;
+  
+}
 #textMic{
   font-size: 8px;
   font-style: italic;

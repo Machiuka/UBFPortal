@@ -36,7 +36,7 @@ class AdaugareReteta {
     InputElement _obsDoc = querySelector("#obsDoc") as InputElement;
 
     if (titlu == "Adauga Reteta") {
-      _codPF.placeholder = "Cod Produs Finit";
+      _codPF.defaultValue = (Global.ultimNumar['nrReteta']! + 1).toString();
       _denumirePF.placeholder = "Denumire Produs Finit";
       _valabilitate.placeholder = "Termen de valabilitate in zile";
     }

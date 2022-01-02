@@ -15,7 +15,7 @@ class AdministrareMeniu {
     await Future.delayed(const Duration(milliseconds: 50));
 
     Element _btnAdminClienti = querySelector('#btnAdminClienti') as Element;
-    Element _btnAdminGest = querySelector('#btnAdminGest') as Element;
+    Element _btnSetari = querySelector('#btnSetari') as Element;
     Element _btnAdminInapoi = querySelector('#btnAdminInapoi') as Element;
 
     DivElement _administrareNav = querySelector('#administrare_nav') as DivElement;
@@ -24,7 +24,7 @@ class AdministrareMeniu {
       _administrareNav.remove();
       AdminClienti.administrareClienti();
     });
-    _btnAdminGest.onClick.listen((e) {
+    _btnSetari.onClick.listen((e) {
       _administrareNav.remove();
       // FormularMeniu.formularMeniu('AVIZ');
     });

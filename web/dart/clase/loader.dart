@@ -58,7 +58,8 @@ class Loader {
       _obj = {"tabel": tabel, "docData": docData!.toJson(), "userData": userData};
     } else if (tipDoc == 'fe' || tipDoc == 'av') {
       _obj = null;
-      _obj = {"tabel": tabel, "optiune": opt, "factData": factData!.toJson()};
+      //_obj = {"tabel": tabel, "optiune": opt, "factData": factData!.toJson()};
+      _obj = {"tipDoc": tipDoc, "tabel": tabel, "optiune": opt, "factData": factData!.toJson()};
     } else if (tipDoc == 'cl') {
       _obj = null;
       _obj = {"tabel": tabel, "optiune": opt, "clientData": clientData!.toJson()};

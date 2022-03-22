@@ -22,7 +22,8 @@ class Loader {
   }) async {
     numeServer = numeServer + ".php";
     //const path = 'https://netta.ro/ubf/test/'.?numeServer.'?x={"obj":"pf"}';
-    String path = 'http://localhost/' +
+    //  String path = 'http://localhost/' +
+    String path = Global.url +
         numeServer +
         '?x={"criteriu":"$criteriu", "tabel":"$tabel", "optiune":"$optiune", "durataSesiunii":"${Global.durataSesiunii}", "operator":"${Global.operator}"}';
     //window.alert(path);
@@ -69,8 +70,9 @@ class Loader {
     _js = _js.replaceAll(',"}}', ']}}');
 
     // window.alert(_js);
-    String _path = 'http://localhost/' + numeServer + '?x=' + _js;
-    print(_path);
+    //String _path = 'http://localhost/' + numeServer + '?x=' + _js;
+    String _path = Global.url + numeServer + '?x=' + _js;
+    //  print(_path);
     //window.alert(_path);
 
     // var response = await http.get(Uri.parse(path), headers: _headers);

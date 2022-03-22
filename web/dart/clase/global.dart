@@ -7,7 +7,8 @@ class Global {
   //static String url = "http://127.0.0.1/serv.php?x={}";
   static String userAccess = 'notOK'; //OK inseamna ca are access userul. NotOK inseamna ca nu are access
   static int durataSesiunii = 60; //durata sesiunii in minute. 120 minute nu mai este intrebat de parola de catre server
-  static String url = 'http://localhost/servPF.php?x={"obj":"pf"}';
+  //static String url = 'http://localhost/servPF.php?x={"obj":"pf"}';
+  static String url = 'https://netta.ro/ubf/vanzari/server/';
   static String? bazaDate; //tabelul de care avem nevoie
   static String operator = "";
   static String codOperator = "A01";

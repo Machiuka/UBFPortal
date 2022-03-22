@@ -189,8 +189,10 @@ class LoadDetalii {
         //     rezultat = rezultat.replaceAll("[", "");
         // rezultat = rezultat.replaceAll("]", "");
         final _json = json.decode(rezultat);
-        //  window.alert(rezultat);
-        if (crud != 'd') {
+        if (crud == 'c') {
+          window.alert("Clientul " + _json['denumire'] + " a fost creat cu succes!");
+          window.location.reload();
+        } else if (crud != 'd') {
           RaspunsTabel.raspunsTabel(_json);
         } else {
           window.alert(rezultat);

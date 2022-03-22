@@ -3,7 +3,7 @@ import '../clase/load_client.dart';
 import '../clase/loader.dart';
 import '../clase/load_detalii.dart';
 import '../clase/ubf_client.dart';
-import '../forms/form_client.dart';
+//import '../forms/form_client.dart';
 
 class CautareClient {
   static void cautareClient(String crud) async {

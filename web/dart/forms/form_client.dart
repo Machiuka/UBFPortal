@@ -11,7 +11,7 @@ class FormClient {
 
     LoadDetalii.incarcFormular(formular);
     await Future.delayed(const Duration(milliseconds: 50));
-    FormElement _formClient = querySelector("#formDocument") as FormElement;
+    FormElement _formClient = querySelector("#formClient") as FormElement;
 
     Element _btnAnulare = querySelector("#btnAnClient") as Element;
     Element _btnAdauga = querySelector("#btnAdClient") as Element;
@@ -69,7 +69,7 @@ class FormClient {
 
     LoadDetalii.incarcFormular(formular);
     await Future.delayed(const Duration(milliseconds: 50));
-    FormElement _formClient = querySelector("#formDocument") as FormElement;
+    FormElement _formClient = querySelector("#formClient") as FormElement;
 
     Element _btnAnulare = querySelector("#btnAnClient") as Element;
     Element _btnAdauga = querySelector("#btnAdClient") as Element;
@@ -136,6 +136,7 @@ class FormClient {
       UBFClient.numeAgent = _numeAgent.value;
 
       ld.loadIncarcareClient('tbl_clienti', 'serverAdaugClient', 'u', client);
+      window.location.reload();
     });
 
     _btnAnulare.onClick.listen((e) => window.location.reload());

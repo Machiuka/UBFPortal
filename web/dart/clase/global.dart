@@ -6,9 +6,10 @@ class Global {
   static Optiune optiune = Optiune as Optiune;
   //static String url = "http://127.0.0.1/serv.php?x={}";
   static String userAccess = 'notOK'; //OK inseamna ca are access userul. NotOK inseamna ca nu are access
-  static int durataSesiunii = 60; //durata sesiunii in minute. 120 minute nu mai este intrebat de parola de catre server
+  static int durataSesiunii = 60; //durata sesiunii in minute. 60 minute nu mai este intrebat de parola de catre server
   //static String url = 'http://localhost/servPF.php?x={"obj":"pf"}';
   static String url = 'https://netta.ro/ubf/vanzari/server/';
+  //static String url = 'http://localhost/';
   static String? bazaDate; //tabelul de care avem nevoie
   static String operator = "";
   static String codOperator = "A01";
@@ -28,6 +29,7 @@ class Global {
   static String denumire = '';
   static String cod_elem = '';
   static String cantitate = '';
+  static String pret = ''; //este pretul cu TVA pentru a fi actualizat in factura, reteta, aviz
   static String articoleFactura = ''; //este un sir de tip Json
 
 }

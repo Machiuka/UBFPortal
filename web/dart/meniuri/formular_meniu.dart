@@ -24,7 +24,7 @@ class FormularMeniu {
     Element _divModificare = querySelector('#divModificare') as Element;
     Element _btnStergere = querySelector('#btnStergere') as Element;
     Element _titluH1 = querySelector('#titluDetalii') as Element;
-    if (titlu == 'FACTURA' || titlu == 'AVIZ') _divModificare.hidden = true;
+    // if (titlu == 'FACTURA' || titlu == 'AVIZ') _divModificare.hidden = true;
     LoadFactura lf = LoadFactura();
     bool confirm = false;
 
@@ -50,6 +50,14 @@ class FormularMeniu {
     _btnModificare.onClick.listen((e) {
       if (titlu == "RETETAR") {
         CautareReteta.cautareReteta('MODIFICARE PRODUS FINIT');
+      }
+      if (titlu == "FACTURA") {
+        //**************DE REZOLVAT
+        window.alert("Modificare ultima factura");
+      }
+      if (titlu == "AVIZ") {
+        //*************DE REZOLVAT */
+        window.alert("Modificare ultim aviz");
       }
     });
 

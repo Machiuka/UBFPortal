@@ -12,7 +12,7 @@ class Login {
     Loader loader = Loader();
     String userCode = Global.codOperator;
     loader.cautaPeServer(criteriu: '', tabel: 'tbl_users', numeServer: 'serverLogare', optiune: userCode).then((value) {
-      window.alert(value);
+      // window.alert(value);
       final _json = json.decode(value);
       if (_json['userAccess'] == 'OK') {
         Global.operator = _json['userName'];

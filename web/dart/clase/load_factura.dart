@@ -195,7 +195,7 @@ class LoadFactura {
           //print(rezultat);
 
           final _json = json.decode(rezultat);
-          //   window.alert(rezultat);
+          //window.alert(rezultat);
           //print(rezultat);
           Invoice.afisFactura(tipDoc, _json);
         } catch (e) {

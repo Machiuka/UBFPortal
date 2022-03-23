@@ -15,6 +15,7 @@ class DetaliiFactura {
     FormElement _formElement = querySelector("#formElement") as FormElement;
     InputElement _denumire = querySelector("#denumire") as InputElement;
     InputElement _cod = querySelector("#cod") as InputElement;
+    InputElement _valabilitate = querySelector("#valabilitate") as InputElement;
     InputElement _ctva = querySelector("#ctva") as InputElement;
     InputElement _cantitate = querySelector("#cantitate") as InputElement;
     InputElement _unitMas = querySelector("#unitMas") as InputElement;
@@ -28,6 +29,7 @@ class DetaliiFactura {
 
     _textElem.innerHtml = UBFFactura.articol['denumire'];
     _denumire.defaultValue = UBFFactura.articol['denumire'];
+    _valabilitate.defaultValue = UBFFactura.articol['valabilitate'];
     _unitMas.defaultValue = UBFFactura.articol['unit_mas'];
     _ctva.defaultValue = UBFFactura.articol['ctva'];
     _pret.defaultValue = UBFFactura.articol['pret'];
@@ -37,6 +39,7 @@ class DetaliiFactura {
     _btnAdaug.onClick.listen((e) {
       //  UBFFactura.nrFact = (UBFFactura.nrFact! + 1);
       UBFFactura.articol['cantitate'] = _cantitate.value;
+      UBFFactura.articol['valabilitate'] = _valabilitate.value;
 
       UBFFactura.articol['ctva'] = _ctva.value;
       double ctva = double.parse(_ctva.value!);

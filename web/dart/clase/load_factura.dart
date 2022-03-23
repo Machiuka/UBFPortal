@@ -58,6 +58,7 @@ class LoadFactura {
           UBFFactura.articol['codElem'] = _json[i]['cod_elem'];
           UBFFactura.articol['denumire'] = _json[i]['denumire'];
           UBFFactura.articol['pret'] = _json[i]['pret_vanzare'];
+          UBFFactura.articol['valabilitate'] = _json[i]['valabilitate']; //termenul de valabilitate e necesar la completarea Certif de garantie
 
           UBFFactura.articol['ctva'] = _json[i]['cota_tva'];
 

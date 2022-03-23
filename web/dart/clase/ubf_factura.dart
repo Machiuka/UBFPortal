@@ -49,7 +49,17 @@ class UBFFactura {
   static Map<String, dynamic> dateCumparator = UBFClient().toJson();
 
 //Sectiunea date
-  static Map<String, dynamic> articol = {'codElem': '', 'unit_mas': 'buc', 'cantitate': 0, 'pret': 0, 'ctva': 9, 'valoare': 0, 'tva': 0};
+  static Map<String, dynamic> articol = {
+    'codElem': '',
+    'denumire': '',
+    'unit_mas': 'buc',
+    'cantitate': 0,
+    'valabilitate': 0,
+    'pret': 0,
+    'ctva': 9,
+    'valoare': 0,
+    'tva': 0
+  };
 
   //static Map<String, dynamic> articoleFactura = {"produs": produs, "cantitate": cantitate, "pret": pret, "ctva": ctva};
   static String articoleFactura = ''; //Aici preia articolele in format JSON pt import ulterior in articole_factura din tbl_facturi

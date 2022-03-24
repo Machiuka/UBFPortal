@@ -1,5 +1,3 @@
-import 'global.dart';
-
 class UBFClient {
   static int? idx;
   static int? codElem;
@@ -20,6 +18,7 @@ class UBFClient {
   static String? masina;
   static String? numeAgent;
   static int? tPlata;
+  static String? nrLot; //nr lotului de produse
 
   Map<String, dynamic> toJson() => {
         'idx': idx,
@@ -40,6 +39,7 @@ class UBFClient {
         'ciPol': ciPol,
         'masina': masina,
         'numeAgent': numeAgent,
-        'tPlata': tPlata
+        'tPlata': tPlata,
+        'nrLot': nrLot
       };
 }

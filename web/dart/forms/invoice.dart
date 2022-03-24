@@ -119,6 +119,7 @@ class Invoice {
       ciDelegat.innerHtml = _json['date_cumparator']['ciNr'];
       masina.innerHtml = _json['date_cumparator']['masina'];
       ciPol.innerHtml = _json['date_cumparator']['ciPol'];
+      nrLot.innerHtml = _json['date_cumparator']['nrLot'];
 
       //Zona tabel factura
       //Map<String, dynamic> articoleFact = _json['articole_fact'];

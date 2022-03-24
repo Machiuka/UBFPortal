@@ -20,6 +20,7 @@ class FormFactura {
     Element _btnAdauga = querySelector("#btnAdaugaF") as Element;
     InputElement _nrFact = querySelector("#nrFact") as InputElement;
     InputElement _numeClient = querySelector("#numeClient") as InputElement;
+    InputElement _nrLot = querySelector("#nrLot") as InputElement;
     InputElement _delegat = querySelector("#delegat") as InputElement;
     InputElement _ciDelegat = querySelector("#ciDelegat") as InputElement;
     InputElement _ciPol = querySelector("#ciPol") as InputElement;
@@ -50,6 +51,7 @@ class FormFactura {
       if (tipDoc == 'fe') {
         UBFClient.discount = int.parse(_discount.value!);
         UBFClient.tPlata = int.parse(_tPlata.value!);
+        UBFClient.nrLot = _nrLot.value;
         Global.ultimNumar['nrFactura'] = UBFFactura.nrFact!;
         UBFFactura.discount = int.parse(_discount.value!);
         UBFFactura.termenPlata = int.parse(_tPlata.value!);

@@ -92,9 +92,6 @@
         <br>
         <span class="textMic" text-align="left">Factura valabilă fără semnatură şi ştampilă cf. art. 319
           alin 29 din Legea nr. 227/2015 privind Codul fiscal.</span></td>
-          <td><br>
-            <br>
-            <span class="textMic" text-align="left">Produsele fac parte din lotul nr.<span id="nrLot">81</span>. Orice reclamatie va fi insotita de nr.lotului.</span></td>
     </tr>
   </tbody>
 </table>

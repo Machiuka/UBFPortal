@@ -16,14 +16,15 @@ class Login {
     CSS.aplicaCSS("css/styles.css");
     CSS.aplicaCSS("css/styles_button.css");
     CSS.aplicaCSS("css/styles_formular.css");
-    LoadDetalii.incarcFormular('html/form_detalii.html');
+    LoadDetalii.incarcFormular('html/form_users.html');
     await Future.delayed(const Duration(milliseconds: 50));
-    FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
-    DivElement _divButoane = querySelector('#divButoane') as DivElement;
-    Element _titluDiv = querySelector('#titluDetalii') as Element;
+    FormElement _formUsers = querySelector("#formUsers") as FormElement;
+
+    //DivElement _divButoane = querySelector('#divButoane') as DivElement;// ***** Imi da eroare pe serverul netta la compilare.****
+    //Element _titluDiv = querySelector('#titluDetalii') as Element;
     late final UListElement lista = querySelector('#listaDetalii') as UListElement;
-    _divButoane.hidden = true;
-    _titluDiv.innerHtml = 'L O G I N';
+    //_divButoane.hidden = true;
+    // _titluDiv.innerHtml = 'L O G I N';
     loader
         .cautaPeServer(
       criteriu: 'xxx',

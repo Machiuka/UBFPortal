@@ -19,19 +19,17 @@ class CautareFactura {
       String? caut = _txtCautare.value;
       LoadFactura lf = LoadFactura();
       if (titlu == "FACTURA") {
-        //Aici se ocupa de butonul Retetar
-
         if (caut != null) {
           _formCautare.remove();
 
-          lf.loadInterogare('fe', caut, "tbl_facturi", "serverAdaugFactura", "");
+          lf.loadInterogare('fe', caut, "tbl_facturi", "serverFactura", "");
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }
       } else if (titlu == 'AVIZ') {
         if (caut != null) {
           _formCautare.remove();
-          lf.loadInterogare('av', caut, "tbl_avize", "serverAdaugFactura", "");
+          lf.loadInterogare('av', caut, "tbl_avize", "serverFactura", "");
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }

@@ -51,13 +51,9 @@ class FormularMeniu {
       if (titlu == "RETETAR") {
         CautareReteta.cautareReteta('MODIFICARE PRODUS FINIT');
       }
-      if (titlu == "FACTURA") {
+      if (titlu == "FACTURA" || titlu == "AVIZ") {
         //**************DE REZOLVAT
         window.alert("Modificare ultima factura");
-      }
-      if (titlu == "AVIZ") {
-        //*************DE REZOLVAT */
-        window.alert("Modificare ultim aviz");
       }
     });
 
@@ -68,11 +64,11 @@ class FormularMeniu {
       if (titlu == "FACTURA") {
         //StergereReteta.stergere("Sterge Reteta", "tbl_produse", "serverCautStergReteta");
         confirm = window.confirm("Ultima factura va fi stearsa. Ok, pt confirmare, Cancel pt anulare");
-        if (confirm) lf.loadStergere('fe', 'tbl_facturi', 'serverAdaugFactura');
+        if (confirm) lf.loadStergere('fe', 'tbl_facturi', 'serverFactura');
       }
       if (titlu == "AVIZ") {
         confirm = window.confirm("Ultimul aviz va fi sters. Ok, pt confirmare, Cancel pt anulare");
-        if (confirm) lf.loadStergere('av', 'tbl_avize', 'serverAdaugFactura');
+        if (confirm) lf.loadStergere('av', 'tbl_avize', 'serverFactura');
       }
     });
   }

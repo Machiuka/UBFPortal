@@ -81,7 +81,7 @@ class CautareElement {
             UBFFactura.totalFactura = UBFFactura.totalFactFaraTva + UBFFactura.tva;
           }
           UBFFactura.termenPlata = UBFClient.tPlata!;
-          lf.loadIncarcareFact("tbl_facturi", "serverAdaugFactura", "fe", UBFFactura());
+          lf.loadIncarcareFact("tbl_facturi", "serverFactura", "fe", UBFFactura(), "c");
         }
       }
       //----------------------
@@ -94,7 +94,7 @@ class CautareElement {
         } else {
           _formCautare.remove();
 
-          lf.loadIncarcareFact("tbl_avize", "serverAdaugFactura", "av", UBFFactura());
+          lf.loadIncarcareFact("tbl_avize", "serverFactura", "av", UBFFactura(), "c");
         }
       }
       //-------------------

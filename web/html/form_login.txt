@@ -1,7 +1,7 @@
 <form id="formLogin" class="formular"> 
     <h1 id="titluDetalii">LOGARE IN SISTEM</h1>
     <div class="info">
-        <input type="text" id="txtUserName" placeholder="Introduceti numele dvs" disabled>
+        <input type="text" id="txtUserName" placeholder="Introduceti numele dvs" pattern="[A-Za-z0-9]">
         <input type="password" id="txtUserPass" placeholder="Introduceti parola">
     </div>
     

@@ -146,17 +146,13 @@ class LoadFactura {
         .then((rezultat) async {
       try {
         //Elimina \ si " din rezulttat
-        if (1 == 2) {
-          rezultat = rezultat.replaceAll("\\", "");
-          rezultat = rezultat.replaceAll('"{', '{');
-          rezultat = rezultat.replaceAll('}"', '}');
-        }
-
+        rezultat = rezultat.replaceAll("\\", "");
+        rezultat = rezultat.replaceAll('"{', '{');
+        rezultat = rezultat.replaceAll('}"', '}');
         //print(rezultat);
-        // window.alert(rezultat);
-        // print(rezultat);
-        final _json = json.decode(rezultat);
 
+        final _json = json.decode(rezultat);
+        //window.alert(rezultat);
         //print(rezultat);
         Invoice.afisFactura(tipDoc, _json);
       } catch (e) {
@@ -185,12 +181,11 @@ class LoadFactura {
     });
   }
 
-  loadIncarcareFact(String tabel, String numeServer, String tipDoc, UBFFactura? factData, String optiune) {
+  loadIncarcareFact(String tabel, String numeServer, String tipDoc, UBFFactura? factData) {
 //Incarca date pe server. Despre Useri sau Documente
-//optiune este c -create sau u - update
     Loader kk = Loader();
     if (factData != null) {
-      kk.adaugaPeServer(numeServer: numeServer, opt: optiune, tipDoc: tipDoc, tabel: tabel, factData: factData).then((rezultat) async {
+      kk.adaugaPeServer(numeServer: numeServer, opt: "c", tipDoc: tipDoc, tabel: tabel, factData: factData).then((rezultat) async {
         //await Future.delayed(const Duration(milliseconds: 50));
 
         try {

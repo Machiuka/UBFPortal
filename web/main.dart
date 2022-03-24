@@ -1,10 +1,16 @@
-import 'dart:html';
-import 'dart/meniuri/meniu.dart';
-import 'dart/clase/global.dart';
-import 'dart/clase/ultim_numar.dart';
 import 'dart/clase/login.dart';
+import 'dart:html';
+import 'dart/clase/local_storage.dart';
 
 void main() async {
+  LocalStorage local = LocalStorage();
   Login login = Login();
-  login.verificaParola();
+
+  String utilizator = local.cauta('utilizator').toString();
+
+  if (utilizator.length < 5) {
+    login.incarcaUser();
+  } else {
+    login.verificaParola();
+  }
 }

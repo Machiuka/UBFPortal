@@ -11,8 +11,8 @@ class Global {
   static String url = 'https://netta.ro/ubf/vanzari/server/';
   //static String url = 'http://localhost/';
   static String? bazaDate; //tabelul de care avem nevoie
-  static String operator = "";
-  static String codOperator = "A01";
+  static String operator = "xxx";
+  static String codOperator = "xxx"; //A01...A04
   static String continut = ''; //continutul retetei, facturii, avizului...sub forma '102^2|
   //ultimNumar preia la inceput ultimele numere de pe server pentru fiecare categorie (factura, aviz, etc) pt a avea numere/coduri unice
   static Map<String, int> ultimNumar = {

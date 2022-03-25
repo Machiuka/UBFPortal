@@ -24,46 +24,16 @@ class UBFFactura {
   static String operator = Global.operator;
 
 //Sectiunea Vanzator
-  /*
+
   Map<String, String> dateVanzator() {
-    window.alert('HELLO');
     LocalStorage _local = LocalStorage();
     String _sufix = _local.cauta('sufix').toString();
     if (_sufix == '_atp') {
-      window.alert('Este ATP');
-      return VanzatorATP.dateVanzator;
+      return VanzatorATP().dateVanzator();
     } else {
-      window.alert('Este UBF');
-      return VanzatorUBF.dateVanzator;
+      return VanzatorUBF().dateVanzator();
     }
   }
-*/
-
-  static String numeVanzator = "ALEX AND THEO PARTY SRL";
-  static String cuiVanzator = "RO16811327";
-  static String cifVanzator = "J03/1647/2004";
-  static String adresaVanzator = "Campulung, jud.Arges";
-  static String contVanzator = "RO42BTRLRONCRT0P38620102";
-  static String bancaVanzator = "Banca Transilvania";
-  static String contTrezVanzator = "RO86TREZ0475069XXX1467";
-  static String trezVanzator = "Trezoreria Campulung";
-  static String telVanzator = "0248 511 099";
-  static String emailVanzator = "office@unbaiatsiofata.ro";
-  static String webVanzator = "www.unbaiatsiofata.ro";
-
-  static Map<String, dynamic> dateVanzator = {
-    "numeVanzator": numeVanzator,
-    "cuiVanzator": cuiVanzator,
-    "cifVanzator": cifVanzator,
-    "adresaVanzator": adresaVanzator,
-    "contVanzator": contVanzator,
-    "bancaVanzator": bancaVanzator,
-    "contTrezVanzator": contTrezVanzator,
-    "emailVanzator": emailVanzator,
-    "trezVanzator": trezVanzator,
-    "telVanzator": telVanzator,
-    "webVanzator": webVanzator
-  };
 
 //sectiunea Cumparator
   static Map<String, dynamic> dateCumparator = UBFClient().toJson();
@@ -94,7 +64,7 @@ class UBFFactura {
         'tva19': tva19,
         'tva9': tva9,
         'total_tva': tva,
-        'date_vanzator': dateVanzator,
+        'date_vanzator': dateVanzator(),
         'discount': discount,
         'val_discount': valDiscount,
         'tva_discount': tvaDiscount,

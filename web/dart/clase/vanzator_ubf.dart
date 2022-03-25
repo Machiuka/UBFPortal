@@ -16,17 +16,17 @@ class VanzatorUBF {
   static String emailVanzator = "office@unbaiatsiofata.ro";
   static String webVanzator = "www.unbaiatsiofata.ro";
 
-  static Map<String, String> dateVanzator = {
-    "numeVanzator": numeVanzator,
-    "cuiVanzator": cuiVanzator,
-    "cifVanzator": cifVanzator,
-    "adresaVanzator": adresaVanzator,
-    "contVanzator": contVanzator,
-    "bancaVanzator": bancaVanzator,
-    "contTrezVanzator": contTrezVanzator,
-    "emailVanzator": emailVanzator,
-    "trezVanzator": trezVanzator,
-    "telVanzator": telVanzator,
-    "webVanzator": webVanzator
-  };
+  Map<String, String> dateVanzator() => {
+        "numeVanzator": numeVanzator,
+        "cuiVanzator": cuiVanzator,
+        "cifVanzator": cifVanzator,
+        "adresaVanzator": adresaVanzator,
+        "contVanzator": contVanzator,
+        "bancaVanzator": bancaVanzator,
+        "contTrezVanzator": contTrezVanzator,
+        "emailVanzator": emailVanzator,
+        "trezVanzator": trezVanzator,
+        "telVanzator": telVanzator,
+        "webVanzator": webVanzator
+      };
 }

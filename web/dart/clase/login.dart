@@ -126,9 +126,9 @@ class Login {
     });
   }
 
-  void _access() {
+  void _access() async {
     UltimNumar.ultimNumar();
-    //  Meniu.topMeniu();
-    // await Future.delayed(const Duration(milliseconds: 50)); //sa apuce sa incarce formularele
+    //   Meniu.topMeniu();
+    //   await Future.delayed(const Duration(milliseconds: 50)); //sa apuce sa incarce formularele
   }
 }

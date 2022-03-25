@@ -63,7 +63,7 @@ class Login {
         Global.operator = _json['userName'];
         Global.userAccess = 'OK';
 
-        _access();
+        UltimNumar.ultimNumar();
       } else {
         parola();
       }
@@ -117,18 +117,12 @@ class Login {
           Global.operator = _json['userName'];
           Global.userAccess = 'OK';
           _formLogin.remove();
-          _access();
+          UltimNumar.ultimNumar();
         } else {
           window.alert('USER SAU PAROLA INCORECTE!!!');
           window.location.reload();
         }
       });
     });
-  }
-
-  void _access() async {
-    UltimNumar.ultimNumar();
-    //   Meniu.topMeniu();
-    //   await Future.delayed(const Duration(milliseconds: 50)); //sa apuce sa incarce formularele
   }
 }

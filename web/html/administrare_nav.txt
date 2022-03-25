@@ -6,7 +6,9 @@
     <a class="btn btn-interc"  style="background-color: #00539F;" rel="noopener nofollow external noreferrer" target="_blank" data-wpel-link="external">
     <span id="btnAdminClienti">Administrare clienti</span>
     </a></div>
-     <a class="btn btn-interc"  style="background-color: #00539F;" rel="noopener nofollow external noreferrer" target="_blank" data-wpel-link="external">
+    <a class="btn btn-interc"  style="background-color: #00539F;" rel="noopener nofollow external noreferrer" target="_blank" data-wpel-link="external">
+        <span id="btnFirma">Schimbare firma</span>
+    <a class="btn btn-interc"  style="background-color: #00539F;" rel="noopener nofollow external noreferrer" target="_blank" data-wpel-link="external">
         <span id="btnSetari">Setari Sistem</span>
         </a>
         <a class="btn btn-interc"  style="background-color: #00539F;" rel="noopener nofollow external noreferrer" target="_blank" data-wpel-link="external">

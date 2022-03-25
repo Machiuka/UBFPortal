@@ -5,6 +5,7 @@ import '../clase/ubf_client.dart';
 import '../clase/ubf_document.dart';
 import '../clase/ubf_factura.dart';
 import '../clase/load_factura.dart';
+import '../clase/local_storage.dart';
 
 class CautareElement {
   static void cautareElement(String titlu) async {
@@ -12,6 +13,7 @@ class CautareElement {
     //_divTopNav.hidden = true;
 
     // FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
+    LocalStorage local = LocalStorage();
 
     LoadDetalii.incarcFormular('html/form_cautare.html');
     await Future.delayed(const Duration(milliseconds: 50));
@@ -31,6 +33,10 @@ class CautareElement {
     _btnOK.onClick.listen((e) async {
       LoadDetalii ld = LoadDetalii();
       LoadFactura lf = LoadFactura();
+
+      String tabelF = "tbl_facturi" + local.cauta('sufix').toString();
+      String tabelA = "tbl_avize" + local.cauta('sufix').toString();
+      //window.alert(tabelA + " CE " + tabelF);
 
       if (titlu == "RETETAR") {
         //Aici se ocupa de butonul Retetar
@@ -81,7 +87,7 @@ class CautareElement {
             UBFFactura.totalFactura = UBFFactura.totalFactFaraTva + UBFFactura.tva;
           }
           UBFFactura.termenPlata = UBFClient.tPlata!;
-          lf.loadIncarcareFact("tbl_facturi", "serverFactura", "fe", UBFFactura(), "c");
+          lf.loadIncarcareFact(tabelF, "serverFactura", "fe", UBFFactura(), "c");
         }
       }
       //----------------------
@@ -94,7 +100,7 @@ class CautareElement {
         } else {
           _formCautare.remove();
 
-          lf.loadIncarcareFact("tbl_avize", "serverFactura", "av", UBFFactura(), "c");
+          lf.loadIncarcareFact(tabelA, "serverFactura", "av", UBFFactura(), "c");
         }
       }
       //-------------------

@@ -1,5 +1,10 @@
+import 'dart:html';
+
 import 'ubf_client.dart';
+import 'vanzator_ubf.dart';
+import 'vanzator_atp.dart';
 import 'global.dart';
+import 'local_storage.dart';
 
 class UBFFactura {
   static int? idx;
@@ -19,6 +24,20 @@ class UBFFactura {
   static String operator = Global.operator;
 
 //Sectiunea Vanzator
+  /*
+  Map<String, String> dateVanzator() {
+    window.alert('HELLO');
+    LocalStorage _local = LocalStorage();
+    String _sufix = _local.cauta('sufix').toString();
+    if (_sufix == '_atp') {
+      window.alert('Este ATP');
+      return VanzatorATP.dateVanzator;
+    } else {
+      window.alert('Este UBF');
+      return VanzatorUBF.dateVanzator;
+    }
+  }
+*/
 
   static String numeVanzator = "ALEX AND THEO PARTY SRL";
   static String cuiVanzator = "RO16811327";
@@ -45,6 +64,7 @@ class UBFFactura {
     "telVanzator": telVanzator,
     "webVanzator": webVanzator
   };
+
 //sectiunea Cumparator
   static Map<String, dynamic> dateCumparator = UBFClient().toJson();
 

@@ -7,9 +7,11 @@ import 'ubf_user.dart';
 import 'ubf_client.dart';
 import 'ubf_factura.dart';
 import 'global.dart';
+import 'local_storage.dart';
 
 class Loader {
   //nu am nevoie de headers, fiindca setarea e din serverul php
+
   final _headers = {
     "Accept": "application/json",
   };

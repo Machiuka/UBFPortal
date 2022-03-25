@@ -1,10 +1,12 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/load_factura.dart';
+import '../clase/local_storage.dart';
 
 class CautareFactura {
   static void cautareFactura(String titlu) async {
     //Se foloseste atat la cautare cat si la actualizare
+    LocalStorage local = LocalStorage();
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_cautare.html');
     await Future.delayed(const Duration(milliseconds: 50));
@@ -14,6 +16,9 @@ class CautareFactura {
     _formDetalii.replaceWith(_formCautare);
 
     InputElement _txtCautare = querySelector("#txtCautare") as InputElement;
+    String tabelF = "tbl_facturi" + local.cauta('sufix').toString();
+    String tabelA = "tbl_avize" + local.cauta('sufix').toString();
+    //window.alert(tabelA + " CF " + tabelF);
 
     _btnOK.onClick.listen((e) {
       String? caut = _txtCautare.value;
@@ -22,14 +27,14 @@ class CautareFactura {
         if (caut != null) {
           _formCautare.remove();
 
-          lf.loadInterogare('fe', caut, "tbl_facturi", "serverFactura", "");
+          lf.loadInterogare('fe', caut, tabelF, "serverFactura", "");
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }
       } else if (titlu == 'AVIZ') {
         if (caut != null) {
           _formCautare.remove();
-          lf.loadInterogare('av', caut, "tbl_avize", "serverFactura", "");
+          lf.loadInterogare('av', caut, tabelA, "serverFactura", "");
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }

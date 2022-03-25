@@ -1,6 +1,7 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/css.dart';
+import '../forms/form_firma.dart';
 import 'admin_clienti.dart';
 
 class AdministrareMeniu {
@@ -15,6 +16,7 @@ class AdministrareMeniu {
     await Future.delayed(const Duration(milliseconds: 50));
 
     Element _btnAdminClienti = querySelector('#btnAdminClienti') as Element;
+    Element _btnFirma = querySelector('#btnFirma') as Element;
     Element _btnSetari = querySelector('#btnSetari') as Element;
     Element _btnAdminInapoi = querySelector('#btnAdminInapoi') as Element;
 
@@ -24,6 +26,13 @@ class AdministrareMeniu {
       _administrareNav.remove();
       AdminClienti.administrareClienti();
     });
+
+    _btnFirma.onClick.listen((e) {
+      //De aici se schimba firma.
+      _administrareNav.remove();
+      FormFirma.formFirma();
+    });
+
     _btnSetari.onClick.listen((e) {
       _administrareNav.remove();
       // FormularMeniu.formularMeniu('AVIZ');

@@ -77,6 +77,8 @@ class Login {
     Global.durataSesiunii = 0;
     Global.userAccess = 'NotOK';
     local.sterge();
+    // local.adauga('codUtilizator', 'xxx');
+    //local.adauga('utilizator', 'xxx');
     loader.cautaPeServer(criteriu: '', tabel: 'tbl_users', numeServer: 'serverLogare', optiune: userCode).then((value) {
       //   window.alert(value);
       window.location.reload();

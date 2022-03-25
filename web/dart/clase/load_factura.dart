@@ -189,6 +189,7 @@ class LoadFactura {
 //Incarca date pe server. Despre Useri sau Documente
 //optiune este c -create sau u - update
     Loader kk = Loader();
+
     if (factData != null) {
       kk.adaugaPeServer(numeServer: numeServer, opt: optiune, tipDoc: tipDoc, tabel: tabel, factData: factData).then((rezultat) async {
         //await Future.delayed(const Duration(milliseconds: 50));
@@ -199,7 +200,7 @@ class LoadFactura {
           rezultat = rezultat.replaceAll('"{', '{');
           rezultat = rezultat.replaceAll('}"', '}');
           //print(rezultat);
-
+          // window.alert(rezultat);
           final _json = json.decode(rezultat);
           //window.alert(rezultat);
           //print(rezultat);

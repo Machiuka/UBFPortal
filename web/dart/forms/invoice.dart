@@ -93,6 +93,7 @@ class Invoice {
       companytrezorerie.innerHtml = _json['date_vanzator']['contTrezVanzator'];
       companybanca.innerHtml = _json['date_vanzator']['contVanzator'];
       companyName.innerHtml = _json['date_vanzator']['numeVanzator'];
+      // window.alert('Nume vanzator ' + _json['date_vanzator']['numeVanzator']);
 
       dataDoc1.innerHtml = dataFs;
       dataDoc2.innerHtml = dataFs;

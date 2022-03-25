@@ -51,7 +51,6 @@ class FormFactura {
       if (tipDoc == 'fe') {
         UBFClient.discount = int.parse(_discount.value!);
         UBFClient.tPlata = int.parse(_tPlata.value!);
-        UBFClient.nrLot = _nrLot.value;
         Global.ultimNumar['nrFactura'] = UBFFactura.nrFact!;
         UBFFactura.discount = int.parse(_discount.value!);
         UBFFactura.termenPlata = int.parse(_tPlata.value!);
@@ -60,7 +59,7 @@ class FormFactura {
       if (tipDoc == 'av') {
         Global.ultimNumar['nrAviz'] = UBFFactura.nrFact!;
       }
-
+      UBFClient.nrLot = _nrLot.value;
       UBFClient.delegat = _delegat.value;
       UBFClient.ciNr = _ciDelegat.value;
       UBFClient.ciPol = _ciPol.value;

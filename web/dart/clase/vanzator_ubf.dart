@@ -5,13 +5,13 @@ class VanzatorUBF {
 //Sectiunea Vanzator
 
   static String numeVanzator = "UN BAIAT SI O FATA SRL";
-  static String cuiVanzator = "RO16811327";
-  static String cifVanzator = "J03/1647/2004";
+  static String cuiVanzator = "RO9084617";
+  static String cifVanzator = "J03/11/1997";
   static String adresaVanzator = "Campulung, jud.Arges";
-  static String contVanzator = "RO42BTRLRONCRT0P38620102";
-  static String bancaVanzator = "Banca Transilvania";
-  static String contTrezVanzator = "RO86TREZ0475069XXX1467";
-  static String trezVanzator = "Trezoreria Campulung";
+  static String contVanzator = "RO40INGB0000999908067778";
+  static String bancaVanzator = "Ing Bank";
+  static String contTrezVanzator = " ";
+  static String trezVanzator = " ";
   static String telVanzator = "0248 511 099";
   static String emailVanzator = "office@unbaiatsiofata.ro";
   static String webVanzator = "www.unbaiatsiofata.ro";

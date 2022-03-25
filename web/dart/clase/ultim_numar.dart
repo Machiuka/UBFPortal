@@ -4,10 +4,11 @@ import 'global.dart';
 import 'loader.dart';
 import 'dart:convert';
 import 'local_storage.dart';
+import '../meniuri/meniu.dart';
 import '../forms/form_firma.dart';
 
 class UltimNumar {
-  static void ultimNumar() {
+  static void ultimNumar() async {
     LocalStorage local = LocalStorage();
     String sufix = local.cauta('sufix').toString();
     //  window.alert('Sufix este ' + sufix);
@@ -16,6 +17,8 @@ class UltimNumar {
       // sufix e de forma _atp sau _ubf
       FormFirma.formFirma();
     } else {
+      Meniu.topMeniu();
+      await Future.delayed(const Duration(milliseconds: 50)); //sa apuce sa incarce formularele
       Loader ld = Loader();
       ld.cautaPeServer(criteriu: 'criteriu', tabel: 'tabel', numeServer: 'serverUltimNumar', optiune: sufix).then((value) {
         final _json = json.decode(value);

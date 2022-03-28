@@ -127,19 +127,10 @@ class LoadFactura {
   }
   //---------------------------------
 
-  loadInterogare(String tipDoc, String caut, String tabel, String numeServerPrimar, [String numeServerSecundar = '']) async {
+  loadInterogare(String tipDoc, String caut, String tabel, String numeServerPrimar, [String numeServerSecundar = '']) {
     //cauta pe serverul primar ceea ce primeste din meniul cautare si afiseaza detaliile primite de pe serverul secundar
     //de pe serverul primar primeste o lista clickabila si de pe cel secundar primeste un tabel cu detaliile elementului selectat din lista
 
-    //FormElement _formCautare = querySelector("#formCautare") as FormElement;
-    LoadDetalii.incarcFormular('html/form_detalii.html');
-    await Future.delayed(const Duration(milliseconds: 50));
-    FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
-    DivElement _divButoane = querySelector('.butoane') as DivElement;
-    _divButoane.hidden = true;
-    //_formCautare.replaceWith(_formDetalii);
-
-    late final UListElement lista = querySelector('#listaDetalii') as UListElement;
     Loader kk = Loader();
     kk
         .cautaPeServer(
@@ -149,47 +140,26 @@ class LoadFactura {
       tabel: tabel,
     )
         .then((rezultat) async {
-      //Elimina \ si " din rezultat
-      rezultat = rezultat.replaceAll("\\", "");
-      rezultat = rezultat.replaceAll('"{', '{');
-      rezultat = rezultat.replaceAll('}"', '}');
-      //print(rezultat);
-      //window.alert(rezultat);
-      rezultat = "[" + rezultat + "]";
-      print(rezultat);
-      final _json = json.decode(rezultat);
-      // window.alert(rezultat);
-      lista.children.clear();
-      for (int i = 0; i < _json.length; i++) {
-        LIElement elem = LIElement();
-        if (tabel.contains('facturi') || tabel.contains('avize')) {
-          lista.children.add(elem..text = _json[i]['nr_fact'] + "/" + _json[i]['data_fact'] + " (" + _json[i]['date_cumparator']['denumire'] + ")");
+      try {
+        //Elimina \ si " din rezulttat
+        if (1 == 2) {
+          rezultat = rezultat.replaceAll("\\", "");
+          rezultat = rezultat.replaceAll('"{', '{');
+          rezultat = rezultat.replaceAll('}"', '}');
+        }
+
+        //print(rezultat);
+        // window.alert(rezultat);
+        // print(rezultat);
+        final _json = json.decode(rezultat);
+//*******************************Aici trebuie sa afiseze un tabel cu rezultate */        //print(rezultat);
+        if (tipDoc == "nir") {
+          NIR.afisNir(tipDoc, _json);
         } else {
-          lista.children.add(elem..text = _json[i]['nr_nir'] + "/" + _json[i]['data_fact'] + " (" + _json[i]['date_cumparator']['denumire'] + ")");
+          Invoice.afisFactura(tipDoc, _json);
         }
-        if (_json[i]['data_fact'] == "Nu s-au gasit rezultate") {
-          await Future.delayed(const Duration(seconds: 1));
-          _formDetalii.remove();
-          if (tipDoc == 'fe') {
-            CautareElement.cautareElement('FACTURA');
-          }
-          if (tipDoc == 'av') {
-            CautareElement.cautareElement('AVIZ');
-          }
-        }
-        elem.onClick.listen((e) async {
-          _formDetalii.remove();
-          if (tipDoc == "nir") {
-            NIR.afisNir(tipDoc, _json[i]);
-          } else {
-            Invoice.afisFactura(tipDoc, _json[i]);
-          }
-        });
-      } //print(rezultat);
-      if (tipDoc == "nir") {
-        NIR.afisNir(tipDoc, _json);
-      } else {
-        Invoice.afisFactura(tipDoc, _json);
+      } catch (e) {
+        window.alert('EROARE!!!...' + e.toString());
       }
     });
   }
@@ -228,7 +198,7 @@ class LoadFactura {
           rezultat = rezultat.replaceAll('"{', '{');
           rezultat = rezultat.replaceAll('}"', '}');
           //print(rezultat);
-          //       window.alert("Raspuns server: " + rezultat);
+          window.alert("Raspuns server: " + rezultat);
           final _json = json.decode(rezultat);
 
           //print(rezultat);

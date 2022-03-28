@@ -18,7 +18,6 @@ class LoadClient {
     DivElement _divButoane = querySelector('.butoane') as DivElement; //nu am nevoie de butoane
     _divButoane.hidden = true;
     LoadDetalii ld = LoadDetalii();
-    Loader loader = Loader();
     UBFClient client = UBFClient();
     late final UListElement lista = querySelector('#listaDetalii') as UListElement;
 
@@ -71,7 +70,7 @@ class LoadClient {
             } else if (crud == 'r') {
               final String criteriu = UBFClient.denumire ?? '';
 
-              loader.cautaPeServer(criteriu: criteriu, tabel: tabel, numeServer: numeServer, optiune: 'r').then((value) async {
+              kk.cautaPeServer(criteriu: criteriu, tabel: tabel, numeServer: numeServer, optiune: 'r').then((value) async {
                 value = value.replaceAll("[", "");
                 value = value.replaceAll("]", "");
                 //     window.alert('Value este $value');

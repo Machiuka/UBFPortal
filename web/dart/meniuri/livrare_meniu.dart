@@ -15,6 +15,7 @@ class LivrareMeniu {
 
     Element _btnFacturi = querySelector('#btnFacturi') as Element;
     Element _btnAvize = querySelector('#btnAvize') as Element;
+    Element _btnNir = querySelector('#btnNir') as Element;
     Element _btnBack = querySelector('#btnBack') as Element;
     Element _divLivrariNav = querySelector('#livrare_nav') as Element;
 
@@ -25,6 +26,10 @@ class LivrareMeniu {
     _btnAvize.onClick.listen((e) {
       _divLivrariNav.remove();
       FormularMeniu.formularMeniu('AVIZ');
+    });
+    _btnNir.onClick.listen((e) {
+      _divLivrariNav.remove();
+      FormularMeniu.formularNir('NIR');
     });
 
     _btnBack.onClick.listen((e) {

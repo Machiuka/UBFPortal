@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'global.dart';
 import 'loader.dart';
 import 'dart:convert';

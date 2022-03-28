@@ -1,5 +1,4 @@
 import 'dart:html';
-import 'global.dart';
 
 class LocalStorage {
   void adauga(String cheie, String valoare) {

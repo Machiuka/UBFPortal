@@ -22,20 +22,6 @@ class UBFDocument {
   static int? gramaj;
   static String? linkPhoto;
 
-  /*
-  UBFDocument(
-      {this.idx,
-      this.dataDoc,
-      this.nrDoc,
-      this.emitentDoc,
-      this.destinatarDoc,
-      this.tipDoc,
-      this.continutDoc,
-      this.dateEmitentDoc,
-      this.dateDestinatarDoc,
-      this.obsDoc});
-*/
-
   Map toJson() => {
         'idx': idx,
         'dataDoc': dataDoc,

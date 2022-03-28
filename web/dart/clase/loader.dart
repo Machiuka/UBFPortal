@@ -7,7 +7,6 @@ import 'ubf_user.dart';
 import 'ubf_client.dart';
 import 'ubf_factura.dart';
 import 'global.dart';
-import 'local_storage.dart';
 
 class Loader {
   //nu am nevoie de headers, fiindca setarea e din serverul php
@@ -28,8 +27,8 @@ class Loader {
     String path = Global.url +
         numeServer +
         '?x={"criteriu":"$criteriu", "tabel":"$tabel", "optiune":"$optiune", "durataSesiunii":"${Global.durataSesiunii}", "operator":"${Global.operator}"}';
-    //window.alert(path);
-    //window.alert(path);
+
+    // window.alert(path);
     // var response = await http.get(Uri.parse(path), headers: _headers);
     var response = await http.get(Uri.parse(path));
     if (response.statusCode == 200) {

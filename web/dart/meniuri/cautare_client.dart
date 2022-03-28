@@ -1,17 +1,13 @@
 import 'dart:html';
 import '../clase/load_client.dart';
-import '../clase/loader.dart';
 import '../clase/load_detalii.dart';
-import '../clase/ubf_client.dart';
-//import '../forms/form_client.dart';
 
 class CautareClient {
   static void cautareClient(String crud) async {
     //Se foloseste atat la cautare cat si la actualizare si stergere client
-    LoadDetalii ld = LoadDetalii();
-    UBFClient client = UBFClient();
+
     LoadClient lc = LoadClient();
-    Loader loader = Loader();
+
     //  FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_cautare.html');
     await Future.delayed(const Duration(milliseconds: 50));

@@ -1,7 +1,6 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/css.dart';
-import '../forms/form_firma.dart';
 import 'admin_clienti.dart';
 
 class AdministrareMeniu {

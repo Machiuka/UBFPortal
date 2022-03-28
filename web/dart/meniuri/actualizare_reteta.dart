@@ -12,7 +12,7 @@ class ActualizareReteta {
     //cauta pe serverul primar ceea ce primeste din meniul cautare si afiseaza detaliile primite de pe serverul secundar
     //de pe serverul primar primeste o lista clickabila si de pe cel secundar primeste un tabel cu detaliile elementului selectat din lista
     late final UListElement lista = querySelector('#listaDetalii') as UListElement;
-    FormElement formDetalii = querySelector("#formDetalii") as FormElement;
+
     LoadDetalii ld = LoadDetalii();
     Loader kk = Loader();
     kk

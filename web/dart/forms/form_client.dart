@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/ubf_client.dart';
@@ -11,7 +10,6 @@ class FormClient {
 
     LoadDetalii.incarcFormular(formular);
     await Future.delayed(const Duration(milliseconds: 50));
-    FormElement _formClient = querySelector("#formClient") as FormElement;
 
     Element _btnAnulare = querySelector("#btnAnClient") as Element;
     Element _btnAdauga = querySelector("#btnAdClient") as Element;
@@ -69,7 +67,6 @@ class FormClient {
 
     LoadDetalii.incarcFormular(formular);
     await Future.delayed(const Duration(milliseconds: 50));
-    FormElement _formClient = querySelector("#formClient") as FormElement;
 
     Element _btnAnulare = querySelector("#btnAnClient") as Element;
     Element _btnAdauga = querySelector("#btnAdClient") as Element;

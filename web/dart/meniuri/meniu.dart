@@ -1,10 +1,8 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
-import '../clase/global.dart';
 import 'administrare_meniu.dart';
 import 'rapoarte_meniu.dart';
 import 'formular_meniu.dart';
-import '../clase/svg_file.dart';
 import 'livrare_meniu.dart';
 import '../clase/css.dart';
 import '../clase/login.dart';

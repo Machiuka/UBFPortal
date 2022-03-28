@@ -1,18 +1,14 @@
 import 'dart:convert';
 import 'dart:html';
 import '../meniuri/cautare_element.dart';
-import 'ubf_document.dart';
 import 'loader.dart';
-import 'tabelare.dart';
-import 'raspuns_tabel.dart';
 import 'ubf_factura.dart';
-import 'detalii_element.dart';
 import 'ubf_client.dart';
 import 'load_detalii.dart';
 import 'detalii_factura.dart';
-import 'load_client.dart';
 
 import '../forms/invoice.dart';
+import '../forms/nir.dart';
 import '../forms/form_factura.dart';
 
 class LoadFactura {
@@ -28,7 +24,7 @@ class LoadFactura {
     _formCautare.replaceWith(_formDetalii);
 
     late final UListElement lista = querySelector('#listaDetalii') as UListElement;
-    FormElement formDetalii = querySelector("#formDetalii") as FormElement;
+
     Loader kk = Loader();
     kk
         .cautaPeServer(
@@ -158,7 +154,11 @@ class LoadFactura {
         final _json = json.decode(rezultat);
 
         //print(rezultat);
-        Invoice.afisFactura(tipDoc, _json);
+        if (tipDoc == "nir") {
+          NIR.afisNir(tipDoc, _json);
+        } else {
+          Invoice.afisFactura(tipDoc, _json);
+        }
       } catch (e) {
         window.alert('EROARE!!!...' + e.toString());
       }
@@ -167,8 +167,7 @@ class LoadFactura {
 
   loadStergere(String tipDoc, String tabel, String numeServer) {
     //cauta pe serverul si primeste o lista clickabila. Sterge apoi elementul selectat, dupa id
-    late final UListElement lista = querySelector('#listaDetalii') as UListElement;
-    FormElement formDetalii = querySelector("#formDetalii") as FormElement;
+
     Loader kk = Loader();
     kk
         .cautaPeServer(
@@ -202,8 +201,9 @@ class LoadFactura {
           //print(rezultat);
           // window.alert(rezultat);
           final _json = json.decode(rezultat);
-          //window.alert(rezultat);
+
           //print(rezultat);
+
           Invoice.afisFactura(tipDoc, _json);
         } catch (e) {
           window.alert('EROARE!!!...' + e.toString());

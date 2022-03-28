@@ -1,6 +1,5 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
-import 'actualizare_reteta.dart';
 import '../clase/load_factura.dart';
 
 class CautareCumparator {

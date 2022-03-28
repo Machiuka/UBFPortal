@@ -1,13 +1,11 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
-import '../clase/css.dart';
 import '../forms/form_client.dart';
 import 'cautare_client.dart';
 
 class AdminClienti {
   static void administrareClienti() async {
     LoadDetalii.incarcFormular('html/admin_clienti.html');
-    LoadDetalii ld = LoadDetalii();
     await Future.delayed(const Duration(milliseconds: 50));
 
     Element _btnCautareClient = querySelector('#btnCautareClient') as Element;

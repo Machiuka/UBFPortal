@@ -18,6 +18,7 @@ class CautareFactura {
     InputElement _txtCautare = querySelector("#txtCautare") as InputElement;
     String tabelF = "tbl_facturi" + local.cauta('sufix').toString();
     String tabelA = "tbl_avize" + local.cauta('sufix').toString();
+    String tabelN = "tbl_nir" + local.cauta('sufix').toString();
     //window.alert(tabelA + " CF " + tabelF);
 
     _btnOK.onClick.listen((e) {
@@ -35,6 +36,13 @@ class CautareFactura {
         if (caut != null) {
           _formCautare.remove();
           lf.loadInterogare('av', caut, tabelA, "serverFactura", "");
+        } else {
+          window.location.reload(); //echivalent cu refresh pagina
+        }
+      } else if (titlu == 'NIR') {
+        if (caut != null) {
+          _formCautare.remove();
+          lf.loadInterogare("nir", caut, tabelN, "serverFactura", "");
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }

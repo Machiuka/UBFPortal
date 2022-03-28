@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'ubf_client.dart';
 import 'vanzator_ubf.dart';
 import 'vanzator_atp.dart';

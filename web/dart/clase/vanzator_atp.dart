@@ -1,6 +1,3 @@
-import 'ubf_client.dart';
-import 'global.dart';
-
 class VanzatorATP {
 //Sectiunea Vanzator
 

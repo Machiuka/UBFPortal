@@ -10,6 +10,30 @@ import 'cautare_cumparator.dart';
 import 'cautare_factura.dart';
 
 class FormularMeniu {
+  static void formularNir(String titlu) async {
+    CSS.aplicaCSS("css/styles.css");
+    CSS.aplicaCSS("css/styles_button.css");
+    CSS.aplicaCSS("css/styles_formular.css");
+
+    Element _divTopNav = querySelector('#top_nav') as Element;
+    _divTopNav.remove();
+    LoadDetalii.incarcFormular('html/form_detalii.html');
+    await Future.delayed(const Duration(milliseconds: 50));
+
+    Element _btnCautare = querySelector('#btnCautare') as Element;
+    // Element _btnAdaugare = querySelector('#btnAdaugare') as Element;
+    //Element _btnModificare = querySelector('#btnModificare') as Element;
+    //Element _divModificare = querySelector('#divModificare') as Element;
+    //Element _btnStergere = querySelector('#btnStergere') as Element;
+    Element _titluH1 = querySelector('#titluDetalii') as Element;
+
+    _titluH1.innerHtml = titlu;
+
+    _btnCautare.onClick.listen((e) {
+      CautareFactura.cautareFactura(titlu);
+    });
+  }
+
   static void formularMeniu(String titlu) async {
     CSS.aplicaCSS("css/styles.css");
     CSS.aplicaCSS("css/styles_button.css");
@@ -23,7 +47,6 @@ class FormularMeniu {
     Element _btnCautare = querySelector('#btnCautare') as Element;
     Element _btnAdaugare = querySelector('#btnAdaugare') as Element;
     Element _btnModificare = querySelector('#btnModificare') as Element;
-    Element _divModificare = querySelector('#divModificare') as Element;
     Element _btnStergere = querySelector('#btnStergere') as Element;
     Element _titluH1 = querySelector('#titluDetalii') as Element;
 

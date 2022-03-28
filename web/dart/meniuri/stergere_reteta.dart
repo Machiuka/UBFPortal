@@ -1,9 +1,5 @@
 import 'dart:html';
-import 'dart:convert';
-import 'dart:svg';
 import '../clase/load_detalii.dart';
-import '../clase/global.dart';
-import '../clase/ubf_document.dart';
 
 class StergereReteta {
   static void stergere(String titlu, String tabel, String server) async {

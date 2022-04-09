@@ -4,7 +4,7 @@ import 'administrare_meniu.dart';
 import 'rapoarte_meniu.dart';
 import 'formular_meniu.dart';
 import 'livrare_meniu.dart';
-import '../clase/css.dart';
+
 import '../clase/login.dart';
 import '../clase/local_storage.dart';
 import '../forms/form_firma.dart';
@@ -12,9 +12,6 @@ import '../forms/form_firma.dart';
 //Aici este actiunea cand se face click pe meniurile din meniu_nav.dart
 class Meniu {
   static void topMeniu() async {
-    CSS.aplicaCSS("css/styles.css");
-    CSS.aplicaCSS("css/styles_button.css");
-    CSS.aplicaCSS("css/styles_formular.css");
     LocalStorage local = LocalStorage();
     String sufix = '';
     sufix = local.cauta('sufix').toString();

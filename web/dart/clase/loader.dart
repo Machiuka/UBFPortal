@@ -75,14 +75,14 @@ class Loader {
     // window.alert(_js);
     //String _path = 'http://localhost/' + numeServer + '?x=' + _js;
     String _path = Global.url + numeServer + '?x=' + _js;
-    //print(_path);
+    //  print(_path);
     //window.alert(_path);
 
     // var response = await http.get(Uri.parse(path), headers: _headers);
     var response = await http.get(Uri.parse(_path));
     if (response.statusCode == 200) {
       final jsonString = response.body;
-
+      // window.alert(jsonString);
       return jsonString;
     }
     // The GET request failed. Handle the error.

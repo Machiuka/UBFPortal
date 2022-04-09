@@ -2,7 +2,7 @@ import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/ubf_document.dart';
 import '../clase/global.dart';
-import '../clase/css.dart';
+
 import 'package:intl/intl.dart';
 
 import 'cautare_element.dart';
@@ -12,9 +12,6 @@ class AdaugareReteta {
     //Aici adauga retete
 
     //UBFDocument document = UBFDocument();
-    CSS.aplicaCSS("css/styles.css");
-    CSS.aplicaCSS("css/styles_button.css");
-    CSS.aplicaCSS("css/styles_formular.css");
 
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_reteta.html');

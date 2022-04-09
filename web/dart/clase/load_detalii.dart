@@ -17,6 +17,7 @@ class LoadDetalii {
     FormElement _formCautare = querySelector("#formCautare") as FormElement;
     LoadDetalii.incarcFormular('html/form_detalii.html');
     await Future.delayed(const Duration(milliseconds: 50));
+
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     _formCautare.replaceWith(_formDetalii);
 
@@ -72,7 +73,7 @@ class LoadDetalii {
           loader.cautaPeServer(criteriu: crit, tabel: tabel, numeServer: numeServerSecundar, optiune: "r").then((value) async {
             value = value.replaceAll("[", "");
             value = value.replaceAll("]", "");
-            //     window.alert('Value este $value');
+            //    window.alert('Value reteta este $value');
             final _js = json.decode(value);
 
             lista.children.clear();
@@ -195,7 +196,7 @@ class LoadDetalii {
         } else if (crud != 'd') {
           RaspunsTabel.raspunsTabel(_json);
         } else {
-          window.alert(rezultat);
+          //    window.alert(rezultat);
           window.location.reload();
         }
       } catch (e) {

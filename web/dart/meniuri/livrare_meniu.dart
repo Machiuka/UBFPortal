@@ -1,13 +1,9 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
-import '../clase/css.dart';
 import 'formular_meniu.dart';
 
 class LivrareMeniu {
   static void livrareMeniu() async {
-    CSS.aplicaCSS("css/styles.css");
-    CSS.aplicaCSS("css/styles_button.css");
-    CSS.aplicaCSS("css/styles_formular.css");
     Element _divTopNav = querySelector('#top_nav') as Element;
     _divTopNav.hidden = true;
     LoadDetalii.incarcFormular('html/livrare_nav.html');

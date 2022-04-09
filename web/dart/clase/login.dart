@@ -4,7 +4,7 @@ import 'loader.dart';
 import 'load_detalii.dart';
 import 'global.dart';
 import 'ultim_numar.dart';
-import 'css.dart';
+
 import 'local_storage.dart';
 
 class Login {
@@ -12,9 +12,6 @@ class Login {
     LocalStorage local = LocalStorage();
     Loader loader = Loader();
 
-    CSS.aplicaCSS("css/styles.css");
-    CSS.aplicaCSS("css/styles_button.css");
-    CSS.aplicaCSS("css/styles_formular.css");
     LoadDetalii.incarcFormular('html/form_users.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
@@ -86,9 +83,7 @@ class Login {
 
   void parola() async {
     LocalStorage local = LocalStorage();
-    CSS.aplicaCSS("css/styles.css");
-    CSS.aplicaCSS("css/styles_button.css");
-    CSS.aplicaCSS("css/styles_formular.css");
+
     LoadDetalii.incarcFormular('html/form_login.html');
     await Future.delayed(const Duration(milliseconds: 50));
     FormElement _formLogin = querySelector("#formLogin") as FormElement;

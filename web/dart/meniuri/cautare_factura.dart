@@ -2,10 +2,12 @@ import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/load_factura.dart';
 import '../clase/local_storage.dart';
+import '../clase/global.dart';
 
 class CautareFactura {
-  static void cautareFactura(String titlu) async {
+  static void cautareFactura(String titlu, [bool modificare = false]) async {
     //Se foloseste atat la cautare cat si la actualizare
+
     LocalStorage local = LocalStorage();
     FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LoadDetalii.incarcFormular('html/form_cautare.html');
@@ -23,26 +25,30 @@ class CautareFactura {
 
     _btnOK.onClick.listen((e) {
       String? caut = _txtCautare.value;
+
       LoadFactura lf = LoadFactura();
       if (titlu == "FACTURA") {
         if (caut != null) {
           _formCautare.remove();
 
-          lf.loadInterogare('fe', caut, tabelF, "serverFactura", "");
+          lf.loadInterogare('fe', caut, tabelF, "serverFactura", modificare);
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }
       } else if (titlu == 'AVIZ') {
+        if (modificare == true) {
+          caut = Global.ultimNumar['nrAviz'].toString();
+        }
         if (caut != null) {
           _formCautare.remove();
-          lf.loadInterogare('av', caut, tabelA, "serverFactura", "");
+          lf.loadInterogare('av', caut, tabelA, "serverFactura", modificare);
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }
       } else if (titlu == 'NIR') {
         if (caut != null) {
           _formCautare.remove();
-          lf.loadInterogare("nir", caut, tabelN, "serverFactura", "");
+          lf.loadInterogare("nir", caut, tabelN, "serverFactura");
         } else {
           window.location.reload(); //echivalent cu refresh pagina
         }

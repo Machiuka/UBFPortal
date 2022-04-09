@@ -2,12 +2,13 @@ import 'optiune.dart';
 
 class Global {
   static Optiune optiune = Optiune as Optiune;
+  static bool operatie = false; //e nevoie la actualizare factura/aviz este true pentru actualizare
   //static String url = "http://127.0.0.1/serv.php?x={}";
   static String userAccess = 'notOK'; //OK inseamna ca are access userul. NotOK inseamna ca nu are access
   static int durataSesiunii = 60; //durata sesiunii in minute. 60 minute nu mai este intrebat de parola de catre server
   //static String url = 'http://localhost/servPF.php?x={"obj":"pf"}';
-  static String url = 'https://netta.ro/ubf/vanzari/server/';
-  //static String url = 'http://localhost/';
+  //static String url = 'https://netta.ro/ubf/vanzari/server/';
+  static String url = 'http://localhost/server/';
   static String? bazaDate; //tabelul de care avem nevoie
   static String operator = "xxx";
   static String codOperator = "xxx"; //A01...A04

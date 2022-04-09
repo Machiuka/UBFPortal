@@ -7,7 +7,7 @@ import 'local_storage.dart';
 class UBFFactura {
   static int? idx;
   static String prefix = 'UBF';
-  static int? nrFact = 1006;
+  static int? nrFact;
   static String? dataFact;
   static double totalFactFaraTva = 0.00;
   static double totalFactura = 0.00;
@@ -41,7 +41,7 @@ class UBFFactura {
     'codElem': '',
     'denumire': '',
     'unit_mas': 'buc',
-    'cantitate': 0,
+    'cantitate': '0',
     'valabilitate': 0,
     'pret': 0,
     'ctva': 9,

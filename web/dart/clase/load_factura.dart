@@ -8,6 +8,7 @@ import 'load_detalii.dart';
 import 'detalii_factura.dart';
 
 import '../forms/invoice.dart';
+import '../forms/invoice_body.dart';
 import '../forms/nir.dart';
 import '../forms/form_factura.dart';
 
@@ -127,9 +128,8 @@ class LoadFactura {
   }
   //---------------------------------
 
-  loadInterogare(String tipDoc, String caut, String tabel, String numeServerPrimar, [String numeServerSecundar = '']) async {
-    //cauta pe serverul primar ceea ce primeste din meniul cautare si afiseaza detaliile primite de pe serverul secundar
-    //de pe serverul primar primeste o lista clickabila si de pe cel secundar primeste un tabel cu detaliile elementului selectat din lista
+  loadInterogare(String tipDoc, String caut, String tabel, String numeServerPrimar, [bool modificare = false]) async {
+    //cauta pe serverul primar ceea ce primeste din meniul cautare
 
     //FormElement _formCautare = querySelector("#formCautare") as FormElement;
     LoadDetalii.incarcFormular('html/form_detalii.html');
@@ -156,7 +156,7 @@ class LoadFactura {
       //print(rezultat);
       //window.alert(rezultat);
       rezultat = "[" + rezultat + "]";
-      print(rezultat);
+      // print(rezultat);
       final _json = json.decode(rezultat);
       // window.alert(rezultat);
       lista.children.clear();
@@ -182,15 +182,14 @@ class LoadFactura {
           if (tipDoc == "nir") {
             NIR.afisNir(tipDoc, _json[i]);
           } else {
-            Invoice.afisFactura(tipDoc, _json[i]);
+            if (modificare == true) {
+              InvoiceBody.afisFactura(tipDoc, _json[i]);
+            } else {
+              Invoice.afisFactura(tipDoc, _json[i]);
+            }
           }
         });
       } //print(rezultat);
-      if (tipDoc == "nir") {
-        NIR.afisNir(tipDoc, _json);
-      } else {
-        Invoice.afisFactura(tipDoc, _json);
-      }
     });
   }
 
@@ -228,10 +227,8 @@ class LoadFactura {
           rezultat = rezultat.replaceAll('"{', '{');
           rezultat = rezultat.replaceAll('}"', '}');
           //print(rezultat);
-          //       window.alert("Raspuns server: " + rezultat);
+          //  window.alert("Raspuns server: " + rezultat);
           final _json = json.decode(rezultat);
-
-          //print(rezultat);
 
           Invoice.afisFactura(tipDoc, _json);
         } catch (e) {

@@ -43,7 +43,8 @@ class DetaliiFactura {
       double ctva = double.parse(_ctva.value!);
       double cantitate = double.parse(_cantitate.value!);
       double pret = double.parse(_pret.value!);
-      double tvaProdus = pret * ctva / (100 + ctva);
+      //double tvaProdus = pret * ctva / (100 + ctva);
+      double tvaProdus = double.parse((pret * ctva / (100 + ctva)).toStringAsFixed(2));
       double tva = tvaProdus * cantitate;
       double valCuTva = pret * cantitate;
       double val = valCuTva;

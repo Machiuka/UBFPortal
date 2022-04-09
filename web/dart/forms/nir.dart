@@ -10,12 +10,9 @@ class NIR {
     String rule;
 
     if (_json['nr_nir'] == null) {
-      window.alert('Document Inexistent!!!');
+      window.alert('NIR Inexistent!!!');
       window.location.reload();
     } else {
-      CSS.eliminaCSS("css/styles.css");
-      CSS.eliminaCSS("css/styles_button.css");
-      CSS.eliminaCSS("css/styles_formular.css");
       CSS.aplicaCSS("css/invoice.css");
 
       // ignore: unnecessary_null_comparison

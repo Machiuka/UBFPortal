@@ -11,10 +11,10 @@ class CSS {
   }
 
   static void eliminaCSS(String fisierCSS) {
-    LinkElement link = LinkElement();
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    link.href = fisierCSS;
-    link.remove();
+    document.styleSheets!.forEach((element) {
+      if (element.href!.contains(fisierCSS)) {
+        element.disabled = true;
+      }
+    });
   }
 }

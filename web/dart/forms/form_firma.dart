@@ -1,13 +1,9 @@
 import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/local_storage.dart';
-import '../clase/css.dart';
 
 class FormFirma {
   static void formFirma() async {
-    CSS.aplicaCSS("css/styles.css");
-    CSS.aplicaCSS("css/styles_button.css");
-    CSS.aplicaCSS("css/styles_formular.css");
     String formular = 'html/form_firma.html';
     String sufix = '';
     LocalStorage local = LocalStorage();

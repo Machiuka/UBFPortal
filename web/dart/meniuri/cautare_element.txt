@@ -8,14 +8,10 @@ import '../clase/load_factura.dart';
 import '../clase/local_storage.dart';
 
 class CautareElement {
-  static void cautareElement(String titlu, [bool operatie = false]) async {
+  static void cautareElement(String titlu, [bool operatie=false]) async {
     //Element _divTopNav = querySelector('#top_nav') as Element;
     //_divTopNav.hidden = true;
-    //  window.alert(operatie.toString());
 
-    if (operatie == true) {
-      Global.operatie = true;
-    }
     // FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LocalStorage local = LocalStorage();
 
@@ -72,10 +68,10 @@ class CautareElement {
 
           lf.loadArticol('fe', caut!, "tbl_produse", "serverCautare");
         } else {
-          // _formCautare.remove();
-
-          UBFClient.discount = UBFFactura.discount;
-
+          _formCautare.remove();
+          if (UBFFactura.discount > 0) {
+            UBFClient.discount = UBFFactura.discount;
+          }
           //calculeaza discount
           if (UBFClient.discount! > 0) {
             int? discount = UBFClient.discount;
@@ -90,14 +86,8 @@ class CautareElement {
             UBFFactura.tva = UBFFactura.tva - UBFFactura.tvaDiscount;
             UBFFactura.totalFactura = UBFFactura.totalFactFaraTva + UBFFactura.tva;
           }
-          // window.alert(Global.operatie.toString());
-          _formCautare.remove();
-          if (Global.operatie == false) {
-            UBFFactura.termenPlata = UBFClient.tPlata!;
-            lf.loadIncarcareFact(tabelF, "serverFactura", "fe", UBFFactura(), "c");
-          } else {
-            lf.loadIncarcareFact(tabelF, "serverFactura", "fe", UBFFactura(), "u");
-          }
+          UBFFactura.termenPlata = UBFClient.tPlata!;
+          lf.loadIncarcareFact(tabelF, "serverFactura", "fe", UBFFactura(), "c");
         }
       }
       //----------------------
@@ -109,11 +99,8 @@ class CautareElement {
           lf.loadArticol('av', caut!, "tbl_produse", "serverCautare");
         } else {
           _formCautare.remove();
-          if (operatie == false) {
-            lf.loadIncarcareFact(tabelA, "serverFactura", "av", UBFFactura(), "c");
-          } else {
-            lf.loadIncarcareFact(tabelA, "serverFactura", "av", UBFFactura(), "u");
-          }
+
+          lf.loadIncarcareFact(tabelA, "serverFactura", "av", UBFFactura(), "c");
         }
       }
       //-------------------

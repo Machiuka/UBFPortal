@@ -2,7 +2,6 @@ import 'dart:html';
 import '../clase/load_detalii.dart';
 import '../clase/load_factura.dart';
 import 'cautare_reteta.dart';
-import '../clase/css.dart';
 import '../clase/local_storage.dart';
 import 'adaugare_reteta.dart';
 import 'stergere_reteta.dart';
@@ -11,10 +10,6 @@ import 'cautare_factura.dart';
 
 class FormularMeniu {
   static void formularNir(String titlu) async {
-    CSS.aplicaCSS("css/styles.css");
-    CSS.aplicaCSS("css/styles_button.css");
-    CSS.aplicaCSS("css/styles_formular.css");
-
     Element _divTopNav = querySelector('#top_nav') as Element;
     _divTopNav.remove();
     LoadDetalii.incarcFormular('html/form_detalii.html');
@@ -35,9 +30,6 @@ class FormularMeniu {
   }
 
   static void formularMeniu(String titlu) async {
-    CSS.aplicaCSS("css/styles.css");
-    CSS.aplicaCSS("css/styles_button.css");
-    CSS.aplicaCSS("css/styles_formular.css");
     LocalStorage local = LocalStorage();
     Element _divTopNav = querySelector('#top_nav') as Element;
     _divTopNav.remove();
@@ -81,8 +73,7 @@ class FormularMeniu {
         CautareReteta.cautareReteta('MODIFICARE PRODUS FINIT');
       }
       if (titlu == "FACTURA" || titlu == "AVIZ") {
-        //**************DE REZOLVAT
-        window.alert("Modificare ultima factura");
+        CautareFactura.cautareFactura(titlu, true);
       }
     });
 

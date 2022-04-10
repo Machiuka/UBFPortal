@@ -4,7 +4,7 @@ import '../clase/load_detalii.dart';
 import 'dart:convert';
 import '../clase/css.dart';
 import 'package:intl/intl.dart';
-//import '../clase/load_factura.dart';
+import '../clase/global.dart';
 import '../clase/local_storage.dart';
 import '../meniuri/cautare_element.dart';
 
@@ -241,7 +241,9 @@ class InvoiceBody {
       }
       webpage.onClick.listen((e) {
         CSS.eliminaCSS("css/invoice.css");
+
         int _discount = int.parse(_json['discount'].toString());
+
         double _cantit = 0;
         List lista = [];
         for (var i = 0; i < nr_art; i++) {
@@ -259,10 +261,7 @@ class InvoiceBody {
         UBFFactura.dateCumparator = _json['date_cumparator'];
         UBFFactura.nrFact = int.parse(_json['nr_fact']);
         UBFFactura.dataFact = _json['data_fact'];
-        //LoadFactura lf = LoadFactura();
-
-        // String tabelF = "tbl_facturi" + local.cauta('sufix').toString();
-        //String tabelA = "tbl_avize" + local.cauta('sufix').toString();
+        Global.operator = local.cauta('utilizator')!;
         divFactura.remove();
         if (tipDoc == "fe") {
           CautareElement.cautareElement("FACTURA", true);
@@ -357,7 +356,9 @@ class InvoiceBody {
         totalTva19 = totalTva19 + tva19;
         totalTva9 = totalTva9 + tva9;
         totalDiscount = totalDiscount + discount;
-        totalTvaDiscount = totalTvaDiscount + difTva; //tvaDiscount;
+        if (discount > 0) {
+          totalTvaDiscount = totalTvaDiscount + difTva; //tvaDiscount;
+        }
         //   window.alert(totalTva.toString() + ' tva9=' + totalTva9.toString());
       }
     }

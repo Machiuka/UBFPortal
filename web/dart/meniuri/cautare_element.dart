@@ -18,11 +18,12 @@ class CautareElement {
     }
     // FormElement _formDetalii = querySelector("#formDetalii") as FormElement;
     LocalStorage local = LocalStorage();
+    UBFFactura.operator = local.cauta('utilizator')!;
 
     LoadDetalii.incarcFormular('html/form_cautare.html');
     await Future.delayed(const Duration(milliseconds: 50));
 
-    if (titlu == 'FACTURA') {
+    if (titlu == 'FACTURA' || titlu == 'AVIZ') {
       Element titluDetalii = querySelector('#titluDetalii') as Element;
       titluDetalii.innerHtml = 'Cautare produs finit';
     }
@@ -109,7 +110,8 @@ class CautareElement {
           lf.loadArticol('av', caut!, "tbl_produse", "serverCautare");
         } else {
           _formCautare.remove();
-          if (operatie == false) {
+
+          if (Global.operatie == false) {
             lf.loadIncarcareFact(tabelA, "serverFactura", "av", UBFFactura(), "c");
           } else {
             lf.loadIncarcareFact(tabelA, "serverFactura", "av", UBFFactura(), "u");

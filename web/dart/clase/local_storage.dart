@@ -28,6 +28,7 @@ class LocalStorage {
 }
 
 class Job {
+  //neutilizata
   int? id;
   String? type;
   int? salary;

@@ -92,12 +92,14 @@ class Invoice {
 
       dataDoc1.innerHtml = dataFs;
       dataDoc2.innerHtml = dataFs;
-      totalFact.innerHtml = cuPret == true ? _json['total_fara_tva'] : '';
+
+      totalFact.innerHtml = cuPret == true ? _json['total_factura'] : '';
       double valDiscount = 0;
       double tvaDiscount = 0;
       String discount = '';
 
       if (tipDoc == 'fe') {
+        totalFact.innerHtml = cuPret == true ? _json['total_fara_tva'] : '';
         totalGeneral.innerHtml = _json['total_factura'];
         totalTVA9.innerHtml = _json['tva_9'];
         totalTVA19.innerHtml = _json['tva_19'];

@@ -67,7 +67,8 @@ class NIR {
 
       dataDoc1.innerHtml = dataFs;
       dataDoc2.innerHtml = dataFs;
-      totalFact.innerHtml = _json['total_fara_tva'];
+      // totalFact.innerHtml = _json['total_fara_tva'];
+      totalFact.innerHtml = _json['total_factura'];
 
       //Incarc zona client
       clientName.innerHtml = _json['date_cumparator']['denumire'];

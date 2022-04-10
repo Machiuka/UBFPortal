@@ -332,40 +332,26 @@ class InvoiceBody {
         UBFFactura.articoleFactura = UBFFactura.articoleFactura + jsonEncode(UBFFactura.articol) + ',';
 
 //Calculeaza totaluri
-        double difTva = 0;
-        //    if (discount > 0) {
-        valDiscount = valFaraTva * discount / 100;
-        // tvaDiscount = tva * (100 - discount) / 100;
-        tvaDiscount = valDiscount * ctva / 100;
-
-        difTva = tva - tvaDiscount;
-        if (discount > 0) {
-          tva = tvaDiscount;
-          valFaraTva = valFaraTva - valDiscount;
-          valCuTva = valFaraTva + tvaDiscount;
-        }
 
         if (ctva == 19) {
           tva19 = tva;
         } else {
           tva9 = tva;
         }
+
         totalFaraTva = totalFaraTva + valFaraTva;
-        totalCuTva = totalCuTva + valCuTva;
         totalTva = totalTva + tva;
+        totalCuTva = totalFaraTva + tva;
         totalTva19 = totalTva19 + tva19;
         totalTva9 = totalTva9 + tva9;
-        totalDiscount = totalDiscount + discount;
-        if (discount > 0) {
-          totalTvaDiscount = totalTvaDiscount + difTva; //tvaDiscount;
-        }
+
         //   window.alert(totalTva.toString() + ' tva9=' + totalTva9.toString());
       }
     }
     //adauga valori factura
-    UBFFactura.valDiscount = valDiscount;
+
     UBFFactura.totalFactFaraTva = totalFaraTva;
-    UBFFactura.tvaDiscount = totalTvaDiscount;
+
     UBFFactura.tva19 = totalTva19;
     UBFFactura.tva9 = totalTva9;
     UBFFactura.tva = totalTva9 + totalTva19;

@@ -78,6 +78,8 @@ class CautareElement {
           UBFClient.discount = UBFFactura.discount;
 
           //calculeaza discount
+
+          //fiindca deja am incarcat discounturile din invoice_body.dart cand operatie este true adica actualizare
           if (UBFClient.discount! > 0) {
             int? discount = UBFClient.discount;
             UBFFactura.discount = discount!;
@@ -91,6 +93,7 @@ class CautareElement {
             UBFFactura.tva = UBFFactura.tva - UBFFactura.tvaDiscount;
             UBFFactura.totalFactura = UBFFactura.totalFactFaraTva + UBFFactura.tva;
           }
+
           // window.alert(Global.operatie.toString());
           _formCautare.remove();
           if (Global.operatie == false) {

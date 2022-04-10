@@ -28,6 +28,9 @@ class CautareFactura {
 
       LoadFactura lf = LoadFactura();
       if (titlu == "FACTURA") {
+        if (modificare == true) {
+          caut = Global.ultimNumar['nrFactura'].toString();
+        }
         if (caut != null) {
           _formCautare.remove();
 
